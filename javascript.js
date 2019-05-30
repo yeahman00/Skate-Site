@@ -31,6 +31,7 @@
       
     let checkAll = document.getElementById("selectAll");
     let run = document.getElementById("getTrick");
+    let startButton = document.getElementById('startButton');
     let standardMode = document.getElementById("standard");
     let gosMode = document.getElementById("gos");
     let noRepeatMode = document.getElementById("nrMode");
@@ -374,6 +375,12 @@
       };
         return trickPick[trickArr[0]][trickArr[1]][trickArr[2]][trickArr[3]][trickArr[4]];
       }
+
+    //displays or hides start button
+    function startButtonDisplay(x){
+        startButton.style.display = x;
+    }
+  
     //clears the game of skate mode
     function cleargos(){
         let gosDisplayYou = document.getElementById("you");
@@ -440,11 +447,14 @@
      let gosDisplay = document.getElementById("gosHud");
      let nrDisplay = document.getElementById("nrHud");
      let marathonDisplay = document.getElementById("marathonHud");
-      
-     yesNoDisplay.style.display = standardMode.checked ? "none" : "block";
-     gosDisplay.style.display = gosMode.checked ? "block" : "none";
-     nrDisplay.style.display = noRepeatMode.checked ? "block" : "none";
-     marathonDisplay.style.display = marathonMode.checked ? "block" : "none";
+
+     run.style.display = standardMode.checked ? 'block' : 'none'
+     gosDisplay.style.display = gosMode.checked ? "block" : "none"; 
+     standardMode.checked ? startButtonDisplay('none') : startButtonDisplay('block');
+     yesNoDisplay.style.display = 'none';
+     nrDisplay.style.display = 'none';
+     marathonDisplay.style.display = 'none';
+
      cleargos();
      clearNoRepeatMode();
      clearMarathonMode();
@@ -746,16 +756,10 @@
       questionDisplay.appendChild(buttonYes);
       questionDisplay.appendChild(buttonNo);
       }
-    //disable buttons after one is clicked
-      function disableYNButtons(){
-        document.getElementById("byes").disabled = true;
-        document.getElementById("bno").disabled = true;
-      }
+    
     //*****************Game Of Skate************************
     //end game of skate
     function endgos(){
-    //disable buttons after one is clicked
-      disableYNButtons();
     //end game results
       if(playAi.length === 5 || playYou.length === 5){
         let resultsDisplay = document.getElementById("results");   
@@ -799,8 +803,6 @@
     }
       
     function gameOSkate(){
-    //brings up yes no buttons and question
-      ynButtons();
     //unhide you and them
       let showYou = document.getElementById("youText");
       let showAi = document.getElementById("aiText");
@@ -817,7 +819,7 @@
         gosNo()
       });
     }
-      
+
     //*************************No Repeat**************************
     //global variable for no repeat mode* find a better way?
       let nrTrickName = [];
@@ -826,7 +828,9 @@
         if (!noRepeatTricks.length){
     //hide yes/no buttons and question
         questionDisplay.style.display = "none";
-    //unhide no repeat end comment
+    //display start button
+        startButtonDisplay('block');
+    //display no repeat end comment
         nrCommentDisplay.style.display = "block";
         nrSeeListDisplay.style.display = "block";
         nrCommentDisplay.innerHTML = "That's all of them";
@@ -842,25 +846,19 @@
         noRepeatLanded++;
         noRepeatTried++;
         nrLandedDisplay.innerHTML = noRepeatLanded + "/" + noRepeatTried;
-    //disable buttons after one is clicked
-        disableYNButtons();
     //display trick as landed
         let landedYesDisplay = nrList += '<span class="green">'+trickLib(nrTrickName)+'&nbsp - &nbsp </span>';
         landedListDisplay.innerHTML = landedYesDisplay;
-        endNoRepeat();
       }
     //trick not landed
       function nrNo(){
         noRepeatTried++;
         nrLandedDisplay.innerHTML = noRepeatLanded + "/" + noRepeatTried;
-    //disable buttons after one is clicked
-        disableYNButtons();
     //display trick as not landed
         let landedNoDisplay = nrList += '<span class="red">'+trickLib(nrTrickName)+'&nbsp - &nbsp </span>';
         landedListDisplay.innerHTML = landedNoDisplay;
-        endNoRepeat();
       }
-      
+
       function noRepeat(){
     //hide end game comments if showing
         nrCommentDisplay.style.display = "none";
@@ -870,9 +868,7 @@
         nrLandedDisplay.innerHTML = noRepeatLanded + "/" + noRepeatTried;
         landedListDisplay.innerHTML = nrList;
         }
-    //brings up yes no buttons and question
-        ynButtons();
-    //gathering all arrays from checked boxes and making one big array
+        //gathering all arrays from checked boxes and making one big array
         let stanceArr = stanceCheck();
         let fsbsArr = fsbsCheck();
         let boardArr = boardCheck();
@@ -906,7 +902,7 @@
           }  
         }
         }
-        //return noRepeatTricks;
+
         let tricksLeftDisplay = document.getElementById("nrLeft");
         let nrHudDisplay = document.getElementById("nrHud");
     //unhide display
@@ -916,29 +912,18 @@
         let nrRandomTrick = noRepeatTricks[nrNum];
         nrTrickName = nrRandomTrick;
         display(nrRandomTrick);
-    //remove selected trick from array    
+    //remove selected trick from array 
         noRepeatTricks.splice(nrNum,1);
     //display number of remaining tricks    
-        tricksLeftDisplay.innerHTML = noRepeatTricks.length;  
-        
-        let nrClickYes = document.getElementById("byes");
-        let nrClickNo = document.getElementById("bno");
-      
-      nrClickYes.addEventListener("click",function(){
-        nrYes()
-      });
-      nrClickNo.addEventListener("click",function(){
-        nrNo()
-      });
+        tricksLeftDisplay.innerHTML = noRepeatTricks.length;
       }
       
     //*************************Marathon**************************
-    //global variable for marathon mode
+    //global variables for marathon mode
       let marathonTrick = [];
       let marathonBestStreakNum = 0;
       
       function marathonYes(){
-        disableYNButtons();
         marathonStreakNum++;
         marathonStreak.innerHTML = marathonStreakNum;
         landedListDisplay.innerHTML = marathonList += '<span>'+trickLib(marathonTrick)+'&nbsp - &nbsp </span>'; 
@@ -946,7 +931,6 @@
       
       function marathonNo(){
         let marathonBestStreak = document.getElementById("bestStreak");
-        disableYNButtons();
         questionDisplay.style.display = "none";
         marathonSeeList.style.display = "block";
         marathonEnding.style.display = "block";
@@ -957,13 +941,15 @@
           marathonBestStreak.innerHTML = marathonBestStreakNum;
           marathonEnding.innerHTML = "New Best Streak!"
         }
+        startButtonDisplay('block');
         marathonStreakNum = 0;
         marathonList = '';  
       }
       
       function marathon(){
-    //yes/no buttons
-        ynButtons();
+    //display marthon hud
+        let marathonDisplay = document.getElementById("marathonHud");
+        marathonDisplay.style.display = 'block';
     //hide ending if it's showing
         marathonSeeList.style.display = "none";
         marathonEnding.style.display = "none";
@@ -971,16 +957,6 @@
          marathonStreak.innerHTML = marathonStreakNum;
          landedListDisplay.innerHTML = marathonList;
         } 
-        let marathonClickYes = document.getElementById("byes");
-        let marathonClickNo = document.getElementById("bno");
-      
-      marathonClickYes.addEventListener("click",function(){
-        marathonYes()
-      });
-      marathonClickNo.addEventListener("click",function(){
-        marathonNo()
-      });
-        
       }
       
     //*******************get a trick & standard game*********************************
@@ -1051,10 +1027,46 @@
         marathon()
       }
     }
-      
-    //run trick function on click
+
+    //checks mode and dictates what yes/no buttons will do
+    function ynButtonsEvent(){
+      let byes = document.getElementById('byes');
+      let bno = document.getElementById('bno');
+      //yes button
+      byes.addEventListener('click',function(){
+        if (document.getElementById('nrMode').checked){
+          nrYes();
+          noRepeatTricks.length ? getTrick() : endNoRepeat();
+        }
+        if (document.getElementById('marathon').checked){
+          marathonYes();
+          getTrick();
+        }
+      })
+      //no button
+      bno.addEventListener('click',function(){
+        if (document.getElementById('nrMode').checked){
+          nrNo();
+          noRepeatTricks.length ? getTrick() : endNoRepeat();
+        }
+        if (document.getElementById('marathon').checked){
+          marathonNo();
+        }
+      })
+    }
+    
+
+    //start game/roll trick/display ynButtons/hide start button
+    startButton.addEventListener('click',function(){
+      startButtonDisplay('none');
+      ynButtons();
+      getTrick();
+      ynButtonsEvent();
+    })
+
+    //run get trick function on click
     run.addEventListener("click",function(){
-      getTrick()
+      getTrick();
     //clears game of skate score and results  
       if(playYou.length === 5 || playAi.length === 5){
         cleargos();
@@ -1062,6 +1074,7 @@
     });
       
     })();//the end
+    
     
     
     
