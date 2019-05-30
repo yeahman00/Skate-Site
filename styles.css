@@ -9,7 +9,7 @@ body{
   #selectAll{
     background:#20B2AA;
   }
-  #getTrick{
+  #getTrick,#startButton{
     background:#00FA9A;
   }
   #byes{
