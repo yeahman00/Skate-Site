@@ -1,116 +1,187 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Skate Site</title>
-    <link rel='stylesheet' href='styles.css'>
-</head>
-<body>
-    <p><b>Stance</b></p>
-<input type="checkbox" id="regular" name="cb">Regular</input>
-<input type="checkbox" id="nollie" name="cb">Nollie</input>
-<input type="checkbox" id="switch" name="cb">Switch</input>
-<input type="checkbox" id="fakie" name="cb">Fakie</input>
+<html>
+    <head>
 
-<p><b>Front/Backside</b></p>
-<input type="checkbox" id="frontside" name="cb">Frontside</input>
-<input type="checkbox" id="backside" name="cb">Backside</input>
+        <title>CSkate</title>
 
-<p><b>Body Rotation</b></p>
-<input type="checkbox" id="noBody" name="cb">None</input>
-<input type="checkbox" id="halfBody" name="cb">180</input>
-<input type="checkbox" id="fullBody" name="cb">360</input>
+        <!-- Javascript -->
+        <script type="text/javascript" src="Assets/js/jquery-3.4.1.min.js"></script>
+        <script src="Assets/js/popper.min.js"></script>
+        <script src="Assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.min.js"></script>
 
-<p><b>Board Rotation</b></p>
-<input type="checkbox" id="noBoard" name="cb">None</input>
-<input type="checkbox" id="halfBoard" name="cb">180</input>
-<input type="checkbox" id="fullBoard" name="cb">360</input>
+        <!-- Bootstrap css & js -->
+        <script type="text/javascript" src="Assets/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="Assets/bootstrap-4.0.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="Assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.min.css">
 
-<p><b>Flip</b></p>
-<input type="checkbox" id="noflip" name="cb">None</input>
-<input type="checkbox" id="kickflip" name="cb">Kickflip</input>
-<input type="checkbox" id="heelflip" name="cb">Heelflip</input>
-<input type="checkbox" id="impossible" name="cb">Impossible (</input>
-<input type="checkbox" id="impossibleHalf" name="cb" disabled>180</input>
-<input type="checkbox" id="impossibleFull" name="cb" disabled>360)</input>
-<input type="checkbox" id="ollieNorth" name="cb">Ollie North (</input>
-<input type="checkbox" id="ollieNorthHalf" name="cb" disabled>180</input>
-<input type="checkbox" id="ollieNorthFull" name="cb" disabled>360)</input>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="Assets/fontawesome-free-5.8.2-web/css/all.min.css">
 
-<div>
-  <button id="selectAll">Select All</button>
-</div>
-<div>
-  <span>Max number of attempts 1-10:</span>
-<input id="attempts" placeholder="optional"></input>
-</div>
+        <!-- Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        
+    </head>
+    <body>
 
-<p><b>Mode</b></p>
-<input type="radio" id="standard" name="mode" checked>Standard</input>
-<input type="radio" id="gos" name="mode">Game of Skate</input>
-<input type="radio" id="nrMode" name="mode">No Repeat</input>
-<input type="radio" id="marathon" name="mode">Marathon</input>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-3">
+            <a class="navbar-brand" href="#">CSkate</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Play <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </div>
+        </nav>
 
-<div>
- <button id="getTrick">Get Trick</button>
- <button id='startButton' class='hide'>Start</button>
-</div>
 
-<!--game of skate mode-->
-<div id="gosHud"> 
-<div id="youText" class="hide">You:
-  <div id="you" class="displayClass"></div></div>
-<div id="aiText" class="hide">Them:
-  <div id="ai" class="displayClass"></div></div>  
-  <div id="results"></div>
-  <div id="comment"></div>
-</div>
-<!--no repeat mode-->
-<div id="nrHud" class="hide">
-  <div>Remaining:
-    <div id="nrLeft" class="displayClass"></div>
-    <div class="displayClass">&ensp;Landed:
-      <div id="nrLanded" class="displayClass"></div>
-    </div>
-  </div>
-  <div id="thatsAll"></div>
-<div id="seeList"></div>
-</div>
-<!--marathon mode-->
-<div id="marathonHud" class="hide">
-  <div>Current Streak:
-    <div id="streak" class="displayClass"></div>
-    <div class="displayClass">&ensp;Best This Session:
-      <div id="bestStreak" class="displayClass"></div>
-    </div>
-  </div>
-  <div id="marathonEnd"></div>
-  <div id="seeMList"></div>
-</div>
-<!--question and buttons-->
-<div id="question"></div>
+        <!-- MAIN -->
+        
+        <div class="container" style="max-height: 100%;">
 
-<div id="display">
-  <div id="trick"></div>
-  <div><b>Stance:</b>
-    <div id="stance" class="displayClass"></div></div>
-  <div><b>Front/Backside:</b>
-    <div id="fsbs" class="displayClass"></div></div>
-  <div><b>Body Rotation:</b>
-    <div id="body" class="displayClass"></div></div>
-  <div><b>Board Rotation:</b>
-    <div id="board" class="displayClass"></div></div>
-  <div><b>Flip:</b>
-    <div id="flip" class="displayClass"></div></div>
-  <div><b>Attempts:</b>
-    <div id="tries" class="displayClass"></div></div>
-</div> <!--display-->
-<!--tricks tried list-->
-<div id="landedList"></div>
+            <div class="row h-75 align-content-center">
+                <div class="col">
 
-<!--javascript-->
-<script src=javascript.js></script>
-</body>
+                    <h1 id="trick" class="text-center">Press Get Trick</h1>
+                    <div id="display">
+                        
+                        Stance: <div id="stance" style="display: inline;"></div><br>
+                        FS/BS: <div id="fsbs" style="display: inline;"></div><br>
+                        Body Rotation: <div id="body" style="display: inline;"></div><br>
+                        Board Rotation: <div id="board" style="display: inline;"></div><br>
+                        Flip: <div id="flip" style="display: inline;"></div><br>
+                        Attempts: <div id="tries" style="display: inline;"></div>
+                    </div> <!--display-->
+                    <!--tricks tried list-->
+                    <div id="landedList"></div>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+
+
+                    <div class="row mb-2">
+                        <div class="col">
+                            <button id="getTrick" class="btn btn-danger w-100">Get Trick</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#settings-modal"><i class="fas fa-cog"></i> Tricks</button>
+                        </div>
+                    </div>
+
+
+                    <label for="mode-select">Mode</label>
+                    <select id="mode-select" class="selectpicker w-100">
+                        <option>Standard</option>
+                        <option>Game of Skate</option>
+                        <option>No-Repeat</option>
+                        <option>Marathon</option>
+                    </select>
+
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="settings-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Trick Settings</h5>
+                                
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <p class="text-danger">Select the tricks you would like to allow in the game</p>
+                        
+
+                                    <!-- Stance -->
+                                    <label for="stance-select">Stance</label>
+                                    <select id="stance-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option selected>Regular</option>
+                                        <option>Nollie</option>
+                                        <option>Switch</option>
+                                        <option>Fakie</option>
+                                    </select>
+
+                                    <!-- Orientation -->
+                                    <label for="orientation-select">Orientation</label>
+                                    <select id="orientation-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option selected>Frontside</option>
+                                        <option selected>Backside</option>
+                                    </select>
+
+                                    <!-- Body Rotation -->
+                                    <label for="body-rotation-select">Body Rotation</label>
+                                    <select id="body-rotation-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option value="halfBody" selected>180</option>
+                                        <option value="fullBody">360</option>
+                                    </select>
+
+                                    <!-- Board Rotation -->
+                                    <label for="board-rotation-select">Board Rotation</label>
+                                    <select id="board-rotation-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option value="halfBoard" selected>180</option>
+                                        <option value="fullBoard" selected>360</option>
+                                    </select>
+
+                                    <!-- Flip -->
+                                    <label for="flip-select">Flip</label>
+                                    <select id="flip-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option selected>Kickflip</option>
+                                        <option selected>Heelflip</option>
+                                        <option selected>Impossible</option>
+                                        <option>Impossible 180</option>
+                                        <option>Impossible 360</option>
+                                        <option>Ollie North</option>
+                                        <option>Ollie North 180</option>
+                                        <option>Ollie North 360</option>
+                                    </select>
+
+                                    <!-- Attempts -->
+                                    <label>Max number of attempts</label>
+                                    <input id="attempts" type="number" class="form-control" placeholder="optional"></input>
+
+
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to game</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div><!--/modal-->
+
+                </div><!--/col-->
+            </div><!--/row-->
+        </div><!--/container-->
+              
+
+
+
+
+
+
+
+    </body>
+
+
+    <!-- Application -->
+    <script src=javascript.js></script>
+    <script>
+        // Activate selectpicker
+        $(function () {
+            $('select').selectpicker();
+        });
+    </script>
+
 </html>
