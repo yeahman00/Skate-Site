@@ -1,0 +1,195 @@
+<html>
+    <head>
+
+        <title>CSkate</title>
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="Assets/js/jquery-3.4.1.min.js"></script>
+        <script src="Assets/js/popper.min.js"></script>
+        <script src="Assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.min.js"></script>
+
+        <!-- Bootstrap css & js -->
+        <script type="text/javascript" src="Assets/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="Assets/bootstrap-4.0.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="Assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.min.css">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="Assets/fontawesome-free-5.8.2-web/css/all.min.css">
+
+        <!-- Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        
+    </head>
+    <body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-3">
+            <a class="navbar-brand" href="#">CSkate</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Play <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </div>
+        </nav>
+
+
+        <!-- MAIN -->
+        
+        <div class="container" style="max-height: 100%;">
+
+            <div class="row h-75 align-content-center">
+                <div class="col">
+
+                    <h1 class="text-center">Backflip</h1>
+                    <div id="display">
+                        <div id="trick"></div>
+                        <div>
+                            Stance:
+                            <div id="stance" class="displayClass"></div>
+                        </div>
+                        <div>
+                            Front/Backside:
+                            <div id="fsbs" class="displayClass"></div>
+                        </div>
+                        <div>
+                            Body Rotation:
+                            <div id="body" class="displayClass"></div>
+                        </div>
+                        <div>
+                            Board Rotation:
+                            <div id="board" class="displayClass"></div>
+                        </div>
+                        <div>Flip:
+                            <div id="flip" class="displayClass"></div>
+                        </div>
+                        <div>Attempts:
+                            <div id="tries" class="displayClass"></div>
+                        </div>
+                    </div> <!--display-->
+                    <!--tricks tried list-->
+                    <div id="landedList"></div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+
+
+                    <div class="row mb-2">
+                        <div class="col">
+                            <button id="getTrick" class="btn btn-danger w-100">Get Trick</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#settings-modal"><i class="fas fa-cog"></i> Tricks</button>
+                        </div>
+                    </div>
+
+
+                    <label for="game-mode-select">Game Mode</label>
+                    <select id="game-mode-select" class="selectpicker w-100">
+                        <option>Standard</option>
+                        <option>Game of Skate</option>
+                        <option>No-Repeat</option>
+                        <option>Marathon</option>
+                    </select>
+
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="settings-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Trick Settings</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                        
+
+                                    <!-- Stance -->
+                                    <label for="stance-select">Stance</label>
+                                    <select id="stance-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>Regular</option>
+                                        <option>Nollie</option>
+                                        <option>Switch</option>
+                                        <option>Fakie</option>
+                                    </select>
+
+                                    <!-- Orientation -->
+                                    <label for="orientation-select">Orientation</label>
+                                    <select id="orientation-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>Frontside</option>
+                                        <option>Backside</option>
+                                    </select>
+
+                                    <!-- Body Rotation -->
+                                    <label for="body-rotation-select">Body Rotation</label>
+                                    <select id="body-rotation-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>180</option>
+                                        <option>360</option>
+                                    </select>
+
+                                    <!-- Board Rotation -->
+                                    <label for="board-rotation-select">Board Rotation</label>
+                                    <select id="board-rotation-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>180</option>
+                                        <option>360</option>
+                                    </select>
+
+                                    <!-- Flip -->
+                                    <label for="flip-select">Flip</label>
+                                    <select id="flip-select" class="selectpicker w-100" multiple>
+                                        <option>Kickflip</option>
+                                        <option>Heelflip</option>
+                                        <option>Impossible</option>
+                                        <option>Impossible 180</option>
+                                        <option>Impossible 360</option>
+                                        <option>Ollie North</option>
+                                        <option>Ollie North 180</option>
+                                        <option>Ollie North 360</option>
+                                    </select>
+
+
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to game</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div><!--/modal-->
+
+                </div><!--/col-->
+            </div><!--/row-->
+        </div><!--/container-->
+              
+
+
+
+
+
+
+
+    </body>
+
+
+    <!-- Application -->
+    <script src=javascript.js></script>
+    <script>
+        // Activate selectpicker
+        $(function () {
+            $('select').selectpicker();
+        });
+    </script>
+
+</html>
