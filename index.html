@@ -124,28 +124,27 @@
                                     <!-- Body Rotation -->
                                     <label for="body-rotation-select">Body Rotation</label>
                                     <select id="body-rotation-select" class="selectpicker w-100 mb-3" multiple>
-                                        <option value="halfBody" selected>180</option>
+                                        <option value='noBody' selected>None</option>
+                                        <option value="halfBody">180</option>
                                         <option value="fullBody">360</option>
                                     </select>
 
                                     <!-- Board Rotation -->
                                     <label for="board-rotation-select">Board Rotation</label>
                                     <select id="board-rotation-select" class="selectpicker w-100 mb-3" multiple>
-                                        <option value="halfBoard" selected>180</option>
-                                        <option value="fullBoard" selected>360</option>
+                                        <option value='noBoard' selected>None</option>
+                                        <option value="halfBoard">180</option>
+                                        <option value="fullBoard">360</option>
                                     </select>
 
                                     <!-- Flip -->
                                     <label for="flip-select">Flip</label>
                                     <select id="flip-select" class="selectpicker w-100 mb-3" multiple>
-                                        <option selected>Kickflip</option>
-                                        <option selected>Heelflip</option>
-                                        <option selected>Impossible</option>
-                                        <option>Impossible 180</option>
-                                        <option>Impossible 360</option>
-                                        <option>Ollie North</option>
-                                        <option>Ollie North 180</option>
-                                        <option>Ollie North 360</option>
+                                        <option selected>None</option>
+                                        <option>Kickflip</option>
+                                        <option>Heelflip</option>
+                                        <option>Impossible</option>
+                                        <option value='ollieNorth'>Ollie North</option>
                                     </select>
 
                                     <!-- Attempts -->
