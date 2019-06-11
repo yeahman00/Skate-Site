@@ -1,6 +1,8 @@
 (function(){
+
     //global variables - need to find another way?
     let commentDisplay = document.getElementById("comment");
+
     //impossible and ollie north 180/360 boxes
     let impossibleFlip = document.getElementById("impossible");
     let ollieNorthFlip = document.getElementById("ollieNorth");
@@ -8,11 +10,13 @@
     let fullImpossible = document.getElementById("impossibleFull");
     let halfOllieNorth = document.getElementById("ollieNorthHalf");
     let fullOllieNorth = document.getElementById("ollieNorthFull");
+
     //for game of skate mode
     const skate = ["S","K","A","T","E"];
     let playYou = [];
     let playAi = [];
     const questionDisplay = document.getElementById("question");
+
     //for no repeat mode
     let nrCommentDisplay = document.getElementById("thatsAll");
     let nrSeeListDisplay = document.getElementById("seeList");
@@ -22,6 +26,7 @@
     let noRepeatLanded = 0;
     let noRepeatTried = 0;
     let nrList = '';
+
     //for marathon mode
     let marathonStreak = document.getElementById("streak");
     let marathonEnding = document.getElementById("marathonEnd");
@@ -402,6 +407,7 @@
         playYou = [];
         playAi = [];
     }
+
     //clears no repeat mode
     function clearNoRepeatMode(){
       let nrRemainingDisplay = document.getElementById("nrLeft");
@@ -441,6 +447,8 @@
       marathonStreakNum = 0;
       marathonList = '';
     }
+
+    /*
     //clears/resets screen based on mode selected
     function showMode(){
      let yesNoDisplay = document.getElementById("question");
@@ -459,6 +467,7 @@
      clearNoRepeatMode();
      clearMarathonMode();
      }
+
     //checks which mode is selected  
     standardMode.addEventListener("click",function(){
       showMode();
@@ -485,148 +494,20 @@
       fullOllieNorth.disabled = false;
     }
       
-    checkAll.addEventListener("click",function(){
-      selectAll()
-    });
-    //enable/disable 180/360 impossible/ollie north boxes
-      function ableDisableBox(){  
-        if(impossibleFlip.checked){
-          halfImpossible.disabled = false;
-          fullImpossible.disabled = false;
-        }
-        else{
-          halfImpossible.checked = false;
-          fullImpossible.checked = false;
-          halfImpossible.disabled = true;
-          fullImpossible.disabled = true;   
-        } 
-        if(ollieNorthFlip.checked){
-          halfOllieNorth.disabled = false;
-          fullOllieNorth.disabled = false;
-        }
-        else{
-          halfOllieNorth.checked = false;
-          fullOllieNorth.checked = false;
-          halfOllieNorth.disabled = true;
-          fullOllieNorth.disabled = true;
-        }
-      }
-      
-      impossibleFlip.addEventListener("click",function(){
-        ableDisableBox();
-      });
-      
-      ollieNorthFlip.addEventListener("click",function(){
-        ableDisableBox();
-      });
+    */
+
     //rng for anything using length as max number
       function rngLength(length){
         let rand = Math.floor(Math.random() * length);
         return rand;
       }
       
-    //checking which boxes are checked and returning array with each in it
-    //stance
-      function stanceCheck(){
-      let stances = [];
-      if(document.getElementById("regular").checked){
-        stances.push("Regular");
-      }
-      if(document.getElementById("nollie").checked){
-        stances.push("Nollie");
-      }
-      if(document.getElementById("switch").checked){
-        stances.push("Switch");
-      }
-      if(document.getElementById("fakie").checked){
-        stances.push("Fakie");
-      }
-        //if nothing was checked
-      if(stances.length === 0){
-        stances.push("Regular");
-      }
-        return stances;
-      }
-    //fsbs
-      function fsbsCheck(){
-        let fsbss = [];
-      if(document.getElementById("frontside").checked){
-        fsbss.push("Frontside");
-      }
-      if(document.getElementById("backside").checked){
-        fsbss.push("Backside");
-      }
-        //if nothing was checked
-      if(fsbss.length === 0){
-        fsbss.push("nofsbs");
-      }
-        return fsbss;
-      }
-    //board rotation
-      function boardCheck(){
-      let boards = [];
-      if(document.getElementById("noBoard").checked){
-        boards.push("noBoard");
-      }
-      if(document.getElementById("halfBoard").checked){
-        boards.push("halfBoard");
-      }
-      if(document.getElementById("fullBoard").checked){
-        boards.push("fullBoard");
-      }
-        //if nothing was checked
-      if(boards.length === 0){
-        boards.push("noBoard");
-      }
-        return boards;
-      }
-    //body rotation
-      function bodyCheck(){
-      let bodies = [];
-      if(document.getElementById("noBody").checked){
-        bodies.push("noBody");
-      }
-      if(document.getElementById("halfBody").checked){
-        bodies.push("halfBody");
-      }
-      if(document.getElementById("fullBody").checked){
-        bodies.push("fullBody");
-      }
-        //if nothing was checked
-      if(bodies.length === 0){
-        bodies.push("noBody");
-      }
-        return bodies;
-      }
-    //flip
-      function flipCheck(){
-      let flips = [];
-      if(document.getElementById("noflip").checked){
-        flips.push("None");
-      }
-      if(document.getElementById("kickflip").checked){
-        flips.push("Kickflip");
-      }
-      if(document.getElementById("heelflip").checked){
-        flips.push("Heelflip");
-      }
-      if(document.getElementById("impossible").checked){
-         flips.push("Impossible");
-        }
-      if(document.getElementById("ollieNorth").checked){
-         flips.push("ollieNorth");
-       }
-        //if nothing was checked
-      if(flips.length === 0){
-        flips.push("None");
-      }
-        return flips;
-      }
       
+    
     //checks the array input to make sure it can call a trick from trickLib
     //makes changes as needed
       function isItATrick(tricknq){
-      let flipAgain = flipCheck();
+      let flipAgain = $('#flip-select').val();
     //nothing to check for stance
     //board
       if(tricknq[1] === "nofsbs"){
@@ -648,8 +529,8 @@
       }
     //flip
     //cant be impossible or ollie north if body and board are not the same
-      if(tricknq[2][0] !== tricknq[3][0] && tricknq[4] === "Impossible" || tricknq[2][0] !== tricknq[3][0] && tricknq[4] === "ollieNorth"){
-        if(!document.getElementById("noflip").checked){
+      if(tricknq[2] !== tricknq[3] && tricknq[4] === "Impossible" || tricknq[2] !== tricknq[3] && tricknq[4] === "ollieNorth"){
+        if($('#flip-select').val().length === 0){
           tricknq[1] = "nofsbs";
           tricknq[2] = "noBoard";
           tricknq[3] = "noBody";
@@ -681,6 +562,8 @@
         }
       }
       }
+      
+      /*
     //check if impossible/ollie north 180/360 are enabled
       if(tricknq[4] === "Impossible"){
         if(!halfImpossible.checked && tricknq[3] === "halfBody" && tricknq[2] === "halfBoard"|| !fullImpossible.checked && tricknq[3] === "fullBody" && tricknq[2] === "fullBoard"){
@@ -696,6 +579,8 @@
           tricknq[1] = "nofsbs";
         }
       }
+      */
+
       return tricknq;
     }
       
@@ -869,11 +754,12 @@
         landedListDisplay.innerHTML = nrList;
         }
         //gathering all arrays from checked boxes and making one big array
-        let stanceArr = stanceCheck();
-        let fsbsArr = fsbsCheck();
-        let boardArr = boardCheck();
-        let bodyArr = bodyCheck();
-        let flipArr = flipCheck();
+        let stanceArr = $('#stance-select').val();
+        let fsbsArr = $('#orientation-select').val();
+        let boardArr = $('#board-rotation-select').val();
+        let bodyArr = $('#body-rotation-select').val();
+        let flipArr = $('#flip-select').val();
+
         let trickArr = [stanceArr,fsbsArr,boardArr,bodyArr,flipArr];
     //only find trick combos if the trick array is empty
         if(noRepeatTricks.length === 0){
@@ -887,7 +773,9 @@
                 for(let e = 0; e < flipArr.length; e++){
     //initial trick combination
                   let roughTrick = [trickArr[0][a],trickArr[1][b],trickArr[2][c],trickArr[3][d],trickArr[4][e]];
-    //run through a check to make changes if needed            
+                  
+    //run through a check to make changes if needed
+                  
                   let cleanTrick = isItATrick(roughTrick);
     //get trick name to add to the check list            
                   let trickName = trickLib(cleanTrick);
@@ -963,35 +851,59 @@
     function getTrick(){
       //*********************STANCE**************************
       let stanceTag = "";
-      let stanceArray = stanceCheck();
+      let stanceArray = $('#stance-select').val();
+      // check if empty
+      if (stanceArray.length === 0)
+      {
+        stanceArray.push('Regular');
+      }
     //rng for stance
       let stanceNum = rngLength(stanceArray.length);
       stanceTag = stanceArray[stanceNum];
         
       //*******************FS/BS***************************
       let fsbsTag = "";
-      let fsbsArray = fsbsCheck();
+      let fsbsArray = $('#orientation-select').val();
+      // Check if empty
+      if (fsbsArray.length === 0)
+      {
+        fsbsArray.push('nofsbs');
+      }
     //rng for fs or bs
       let fsbsNum = rngLength(fsbsArray.length);
       fsbsTag = fsbsArray[fsbsNum];
         
       //*****************Board Rotation*********************
       let boardTag = "";
-      let boardArray = boardCheck();
+      let boardArray = $('#board-rotation-select').val();
+      // Check if empty
+      if (boardArray.length === 0)
+      {
+        boardArray.push('noBoard');
+      }
     //rng for board rotation
       let boardNum = rngLength(boardArray.length);
       boardTag = boardArray[boardNum];
       
        //******************Body Rotation**********************
       let bodyTag = "";
-      let bodyArray = bodyCheck();
+      let bodyArray = $('#body-rotation-select').val();
+      // Check if empty
+      if (bodyArray.length === 0)
+      {
+        bodyArray.push('noBody');
+      }
     //rng for body rotation
       let bodyNum = rngLength(bodyArray.length);
       bodyTag = bodyArray[bodyNum];
     
       //*********************FLIP******************************
       let flipTag = "";
-      let flipArray = flipCheck();
+      let flipArray = $('#flip-select').val();
+      if (flipArray.length === 0)
+      {
+        flipArray.push('None');
+      }
     //rng for flip
       let flipNum = rngLength(flipArray.length);
       flipTag = flipArray[flipNum];
@@ -1011,9 +923,11 @@
       //**********************TRICK***********************
     //set and display trick
       let theTrick = [stanceTag,fsbsTag,boardTag,bodyTag,flipTag];
+      
       isItATrick(theTrick);
       display(theTrick);
     //run game of skate mode
+    /*
       if(document.getElementById("gos").checked){
         gameOSkate()
       }
@@ -1026,7 +940,9 @@
         marathonTrick = theTrick;
         marathon()
       }
+      */
     }
+
 
     //checks mode and dictates what yes/no buttons will do
     function ynButtonsEvent(){
@@ -1055,7 +971,7 @@
       })
     }
     
-
+/*
     //start game/roll trick/display ynButtons/hide start button
     startButton.addEventListener('click',function(){
       startButtonDisplay('none');
@@ -1063,6 +979,7 @@
       getTrick();
       ynButtonsEvent();
     })
+    */
 
     //run get trick function on click
     run.addEventListener("click",function(){

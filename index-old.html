@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Skate Site</title>
+    <link rel='stylesheet' href='styles.css'>
+</head>
+<body>
+    <p><b>Stance</b></p>
+<input type="checkbox" id="regular" name="cb">Regular</input>
+<input type="checkbox" id="nollie" name="cb">Nollie</input>
+<input type="checkbox" id="switch" name="cb">Switch</input>
+<input type="checkbox" id="fakie" name="cb">Fakie</input>
+
+<p><b>Front/Backside</b></p>
+<input type="checkbox" id="frontside" name="cb">Frontside</input>
+<input type="checkbox" id="backside" name="cb">Backside</input>
+
+<p><b>Body Rotation</b></p>
+<input type="checkbox" id="noBody" name="cb">None</input>
+<input type="checkbox" id="halfBody" name="cb">180</input>
+<input type="checkbox" id="fullBody" name="cb">360</input>
+
+<p><b>Board Rotation</b></p>
+<input type="checkbox" id="noBoard" name="cb">None</input>
+<input type="checkbox" id="halfBoard" name="cb">180</input>
+<input type="checkbox" id="fullBoard" name="cb">360</input>
+
+<p><b>Flip</b></p>
+<input type="checkbox" id="noflip" name="cb">None</input>
+<input type="checkbox" id="kickflip" name="cb">Kickflip</input>
+<input type="checkbox" id="heelflip" name="cb">Heelflip</input>
+<input type="checkbox" id="impossible" name="cb">Impossible (</input>
+<input type="checkbox" id="impossibleHalf" name="cb" disabled>180</input>
+<input type="checkbox" id="impossibleFull" name="cb" disabled>360)</input>
+<input type="checkbox" id="ollieNorth" name="cb">Ollie North (</input>
+<input type="checkbox" id="ollieNorthHalf" name="cb" disabled>180</input>
+<input type="checkbox" id="ollieNorthFull" name="cb" disabled>360)</input>
+
+<div>
+  <button id="selectAll">Select All</button>
+</div>
+<div>
+  <span>Max number of attempts 1-10:</span>
+<input id="attempts" placeholder="optional"></input>
+</div>
+
+<p><b>Mode</b></p>
+<input type="radio" id="standard" name="mode" checked>Standard</input>
+<input type="radio" id="gos" name="mode">Game of Skate</input>
+<input type="radio" id="nrMode" name="mode">No Repeat</input>
+<input type="radio" id="marathon" name="mode">Marathon</input>
+
+<div>
+ <button id="getTrick">Get Trick</button>
+ <button id='startButton' class='hide'>Start</button>
+</div>
+
+<!--game of skate mode-->
+<div id="gosHud"> 
+<div id="youText" class="hide">You:
+  <div id="you" class="displayClass"></div></div>
+<div id="aiText" class="hide">Them:
+  <div id="ai" class="displayClass"></div></div>  
+  <div id="results"></div>
+  <div id="comment"></div>
+</div>
+<!--no repeat mode-->
+<div id="nrHud" class="hide">
+  <div>Remaining:
+    <div id="nrLeft" class="displayClass"></div>
+    <div class="displayClass">&ensp;Landed:
+      <div id="nrLanded" class="displayClass"></div>
+    </div>
+  </div>
+  <div id="thatsAll"></div>
+<div id="seeList"></div>
+</div>
+<!--marathon mode-->
+<div id="marathonHud" class="hide">
+  <div>Current Streak:
+    <div id="streak" class="displayClass"></div>
+    <div class="displayClass">&ensp;Best This Session:
+      <div id="bestStreak" class="displayClass"></div>
+    </div>
+  </div>
+  <div id="marathonEnd"></div>
+  <div id="seeMList"></div>
+</div>
+<!--question and buttons-->
+<div id="question"></div>
+
+<div id="display">
+  <div id="trick"></div>
+  <div><b>Stance:</b>
+    <div id="stance" class="displayClass"></div></div>
+  <div><b>Front/Backside:</b>
+    <div id="fsbs" class="displayClass"></div></div>
+  <div><b>Body Rotation:</b>
+    <div id="body" class="displayClass"></div></div>
+  <div><b>Board Rotation:</b>
+    <div id="board" class="displayClass"></div></div>
+  <div><b>Flip:</b>
+    <div id="flip" class="displayClass"></div></div>
+  <div><b>Attempts:</b>
+    <div id="tries" class="displayClass"></div></div>
+</div> <!--display-->
+<!--tricks tried list-->
+<div id="landedList"></div>
+
+<!--javascript-->
+<script src=javascript.js></script>
+</body>
+</html>
