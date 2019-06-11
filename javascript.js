@@ -139,15 +139,15 @@
               "None": "Nollie Frontside 180"
             },
             "noBody": {
-              "Kickflip": "Nollie Hardflip",
-              "Heelflip": "Nollie Varial Heelflip",
+              "Kickflip": "Nollie Varial Kickflip",
+              "Heelflip": "Nollie Inward Heelflip",
               "None": "Nollie Frontside Shuvit"
             },
           },
           "fullBoard": {
              "halfBody": {
-               "Kickflip": "Nollie Big Hardflip",
-               "Heelflip": "Nollie Big Heelflip",
+               "Kickflip": "Nollie Bigflip",
+               "Heelflip": "Nollie Big Inward Heelflip",
                "None": "Nollie Frontside Bigspin"
              },
              "fullBody": {
@@ -158,8 +158,8 @@
                "None": "Nollie Frontside 360"
              },
              "noBody": {
-               "Kickflip": "Nollie 360 Hardflip",
-               "Heelflip": "Nollie Laserflip",
+               "Kickflip": "Nollie 360 Flip",
+               "Heelflip": "Nollie 360 Inward Heelflip",
                "None": "Nollie Frontside 360 Shuvit"
              },
           },
@@ -174,15 +174,15 @@
               "None": "Nollie Backside 180"
             },
             "noBody": {
-              "Kickflip": "Nollie Varial Kickflip",
-              "Heelflip": "Nollie Inward Heelflip",
+              "Kickflip": "Nollie Hardflip",
+              "Heelflip": "Nollie Varial Heelflip",
               "None": "Nollie Backside Shuvit"
             },
           },
           "fullBoard": {
              "halfBody": {
-               "Kickflip": "Nollie Bigflip",
-               "Heelflip": "Nollie Big Inward Heelflip",
+               "Kickflip": "Nollie Big Hardflip",
+               "Heelflip": "Nollie Big Heelflip",
                "None": "Nollie Backside Bigspin"
              },
              "fullBody": {
@@ -193,8 +193,8 @@
                "None": "Nollie Backside 360"
              },
              "noBody": {
-               "Kickflip": "Nollie 360 Flip",
-               "Heelflip": "Nollie 360 Inward Heelflip",
+               "Kickflip": "Nollie 360 Hardflip",
+               "Heelflip": "Nollie Laserflip",
                "None": "Nollie Backside 360 Shuvit"
              },
           },
@@ -529,58 +529,24 @@
       }
     //flip
     //cant be impossible or ollie north if body and board are not the same
-      if(tricknq[2] !== tricknq[3] && tricknq[4] === "Impossible" || tricknq[2] !== tricknq[3] && tricknq[4] === "ollieNorth"){
-        if($('#flip-select').val().length === 0){
-          tricknq[1] = "nofsbs";
-          tricknq[2] = "noBoard";
-          tricknq[3] = "noBody";
-        }
-        else{
-        if(flipAgain.length === 1){
-          tricknq[4] = "None";
-        }
-        else{
-          let flipNum = rngLength(flipAgain.length);
-          tricknq[4] = flipAgain[flipNum];
-      //run if trick comes up yet again
-          if(tricknq[4] === "Impossible" || tricknq[4] === "ollieNorth"){
-            flipAgain.splice(flipNum,1);
-            flipNum = rngLength(flipAgain.length);
-            tricknq[4] = flipAgain[flipNum];
-      //run one last time if other trick comes up
-            if(tricknq[4] === "Impossible" || tricknq[4] === "ollieNorth"){
-            if(flipAgain.length === 1){
-              tricknq[4] === "None";
-            }
-            else{
-            flipAgain.splice(flipNum,1);
-            flipNum = rngLength(flipAgain.length);
-            tricknq[4] = flipAgain[flipNum];
-            }
-            }
-          }
-        }
+    //comparing first letter
+    if((tricknq[2][0] !== tricknq[3][0] && tricknq[4] === "Impossible") || (tricknq[2][0] !== tricknq[3][0] && tricknq[4] === "ollieNorth")){
+         if(!flipAgain.some(flip => flip === 'None')){
+         tricknq[3] === 'noBody' ? tricknq[2] = 'noBoard' : tricknq[3] === 'halfBody' ? tricknq[2] = 'halfBoard' : tricknq[2] = 'fullBoard';
+         if (tricknq[2] === 'noBoard'){
+           tricknq[1] = 'nofsbs';
+         }
+       }
+       else{
+          let finalArr = flipAgain.filter(flip => flip !== 'Impossible' && flip !== 'ollieNorth');
+       if(finalArr.length === 1){
+         tricknq[4] = "None";
+       }
+       else{
+         tricknq[4] = finalArr[randomNum(finalArr.length)];
+       }
       }
-      }
-      
-      /*
-    //check if impossible/ollie north 180/360 are enabled
-      if(tricknq[4] === "Impossible"){
-        if(!halfImpossible.checked && tricknq[3] === "halfBody" && tricknq[2] === "halfBoard"|| !fullImpossible.checked && tricknq[3] === "fullBody" && tricknq[2] === "fullBoard"){
-          tricknq[3] = "noBody";
-          tricknq[2] = "noBoard";
-          tricknq[1] = "nofsbs";
-        }
-      } 
-      if(tricknq[4] === "ollieNorth"){
-        if(!halfOllieNorth.checked && tricknq[3] === "halfBody" && tricknq[2] === "halfBoard"|| !fullOllieNorth.checked && tricknq[3] === "fullBody" && tricknq[2] === "fullBoard"){
-          tricknq[3] = "noBody";
-          tricknq[2] = "noBoard";
-          tricknq[1] = "nofsbs";
-        }
-      }
-      */
-
+    }
       return tricknq;
     }
       
