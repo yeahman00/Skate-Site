@@ -18,8 +18,7 @@
 
         <!-- Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
-        
+
     </head>
     <body>
 
@@ -66,6 +65,40 @@
             </div>
 
 
+            <!--start button-->
+            <div>
+                
+            </div>
+
+            <!--no repeat mode-->
+            <div id="nrHud" style='display: none'>
+                 <div>Remaining:
+                     <div id="nrLeft" style='display: inline-block'></div>
+                     <div style='display: inline-block'>&ensp;Landed:
+                         <div id="nrLanded" style='display: inline-block'></div>
+                     </div>
+                 </div>
+                 <div id="thatsAll"></div>
+                 <div id="seeList"></div>
+            </div>
+
+            <!--marathon mode-->
+            <div id="marathonHud" style='display: none'>
+                <div>Current Streak:
+                    <div id="streak" style='display: inline-block'></div>
+                    <div style='display: inline-block'>&ensp;Best This Session:
+                        <div id="bestStreak" style='display: inline-block'></div>
+                    </div>
+                </div>
+                <div id="marathonEnd"></div>
+                <div id="seeMList"></div>
+            </div>
+
+            <!--question and buttons-->
+            <div id="question"></div>
+            
+
+
             <div class="row">
                 <div class="col">
 
@@ -73,6 +106,9 @@
                     <div class="row mb-2">
                         <div class="col">
                             <button id="getTrick" class="btn btn-danger w-100">Get Trick</button>
+                            <button id='startButton' style='display: none' class="btn btn-danger w-100">Start</button>
+                           <!-- <button id='byes' style='display: none'>Yes</button> 
+                            <button id='bno' style='display: none'>No</button> -->
                         </div>
                         <div class="col">
                             <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#settings-modal"><i class="fas fa-cog"></i> Tricks</button>
