@@ -2,9 +2,11 @@
 
     //global variables - need to find another way?
     let commentDisplay = document.getElementById("comment");
-   /* let byes = document.getElementById('byes');
-    let bno = document.getElementById('bno'); */
-
+    
+    
+    let yesButton = document.getElementById('yesButton');
+    let noButton = document.getElementById('noButton'); 
+    
     //impossible and ollie north 180/360 boxes
     let impossibleFlip = document.getElementById("impossible");
     let ollieNorthFlip = document.getElementById("ollieNorth");
@@ -387,6 +389,12 @@
     function startButtonDisplay(x){
         startButton.style.display = x;
     }
+
+    function ynButtonDisplay(x){
+      yesButton.style.display = x;
+      noButton.style.display = x;
+  }
+
   /*
     //clears the game of skate mode
     function cleargos(){
@@ -466,10 +474,9 @@
      yesNoDisplay.style.display = 'none';
      nrDisplay.style.display = 'none';
      marathonDisplay.style.display = 'none';
-    /*
-     byes.style.display = 'none';
-     bno.style.display = 'none';
-    */
+     ynButtonDisplay('none');
+     
+    
      //cleargos();
      clearNoRepeatMode();
      clearMarathonMode();
@@ -558,7 +565,7 @@
          tricknq[4] = "None";
        }
        else{
-         tricknq[4] = finalArr[randomNum(finalArr.length)];
+         tricknq[4] = finalArr[rngLength(finalArr.length)];
        }
       }
     }
@@ -695,10 +702,6 @@
         if (!noRepeatTricks.length){
     //hide yes/no buttons and question
         questionDisplay.style.display = "none";
-        /*
-        byes.style.display = 'none';
-        bno.style.display = 'none';
-        */
     //display start button
         startButtonDisplay('block');
     //display no repeat end comment
@@ -760,8 +763,7 @@
     //initial trick combination
                   let roughTrick = [trickArr[0][a],trickArr[1][b],trickArr[2][c],trickArr[3][d],trickArr[4][e]];
                   
-    //run through a check to make changes if needed
-                  
+    //run through a check to make changes if needed 
                   let cleanTrick = isItATrick(roughTrick);
     //get trick name to add to the check list            
                   let trickName = trickLib(cleanTrick);
@@ -806,10 +808,6 @@
       function marathonNo(){
         let marathonBestStreak = document.getElementById("bestStreak");
         questionDisplay.style.display = "none";
-        /*
-        byes.style.display = 'none';
-        bno.style.display = 'none';
-        */
         marathonSeeList.style.display = "block";
         marathonEnding.style.display = "block";
         marathonEnding.innerHTML = "The End";
