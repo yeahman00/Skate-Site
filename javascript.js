@@ -3,9 +3,6 @@
   //global variables - need to find another way?
   let commentDisplay = document.getElementById("comment");
 
-  const yesButton = document.getElementById('yesButton');
-  const noButton = document.getElementById('noButton'); 
-  
   //for game of skate mode
   const skate = ["S","K","A","T","E"];
   let playYou = [];
@@ -376,12 +373,6 @@
   function startButtonDisplay(x){
       startButton.style.display = x;
   }
-  
-
-  function ynButtonDisplay(x){
-    yesButton.style.display = x;
-    noButton.style.display = x;
-}
 
 /*
   //clears the game of skate mode
@@ -462,9 +453,9 @@
    nrDisplay.style.display = 'none';
    marathonDisplay.style.display = 'none';
 
-   ynButtonDisplay('none');
+   $('#bno').remove();
+   $('#byes').remove();
    
-  
    //cleargos();
    clearNoRepeatMode();
    clearMarathonMode();
@@ -608,8 +599,8 @@
     
     buttonYes.id = "byes";
     buttonNo.id = "bno";
-    buttonYes.textContent = "Yes (js)";
-    buttonNo.textContent = "No (js)";
+    buttonYes.textContent = "Yes";
+    buttonNo.textContent = "No";
     buttonYes.className = 'btn btn-success w-50';;
     buttonNo.className = 'btn btn-danger w-50';
   //shows the question div if it was hidden
@@ -693,7 +684,8 @@
       if (!noRepeatTricks.length){
   //hide yes/no buttons and question
       questionDisplay.style.display = "none";
-      ynButtonDisplay('none');
+      $('#bno').remove();
+      $('#byes').remove();
   //display start button
       startButtonDisplay('block');
   //display no repeat end comment
@@ -809,7 +801,8 @@
         marathonBestStreak.innerHTML = marathonBestStreakNum;
         marathonEnding.innerHTML = "New Best Streak!"
       }
-      ynButtonDisplay('none');
+      $('#bno').remove();
+      $('#byes').remove();
       startButtonDisplay('block');
       marathonStreakNum = 0;
       marathonList = '';  
@@ -930,36 +923,7 @@
     }
     */
   }
-/* 
-  //HTML buttons - runs the button click + one every time so once, then twice, then thrice, ect.
-  //checks mode and dictates what yes/no buttons will do
-  function ynButtonsEvent(){
-    let ybutton = document.getElementById('yesButton');
-    let nbutton = document.getElementById('noButton');
-    //yes button
-    ybutton.addEventListener('click',function(){
-      if ($('#mode-select').val() === 'No-Repeat'){
-        nrYes();
-        noRepeatTricks.length ? getTrick() : endNoRepeat();
-      }
-      if ($('#mode-select').val() === 'Marathon'){
-        marathonYes();
-        getTrick();
-      }
-    })
-    //no button
-    nbutton.addEventListener('click',function(){
-      if ($('#mode-select').val() === 'No-Repeat'){
-        nrNo();
-        noRepeatTricks.length ? getTrick() : endNoRepeat();
-      }
-      if ($('#mode-select').val() === 'Marathon'){
-        marathonNo();
-      }
-    })
-  }
-  */
-  //js buttons - functionality works as expected but styling is a little off
+
   //checks mode and dictates what yes/no buttons will do
   function ynButtonsEvent(){
 
