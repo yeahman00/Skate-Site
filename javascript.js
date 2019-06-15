@@ -614,6 +614,7 @@
     buttonNo.className = 'btn btn-danger w-50';
   //shows the question div if it was hidden
     questionDisplay.innerHTML = "Did you land it?" + '<br>';
+    questionDisplay.style.display = "block";
     
     document.getElementById('left-buttons').appendChild(buttonYes);
     document.getElementById('left-buttons').appendChild(buttonNo);
