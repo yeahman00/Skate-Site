@@ -602,7 +602,6 @@
   //********************MODES*****************************
   //creating yes no buttons and question 
     function ynButtons(){
-      ynButtonDisplay('inline-block');
     
     let buttonYes = document.createElement("button");
     let buttonNo = document.createElement("button");
@@ -611,17 +610,14 @@
     buttonNo.id = "bno";
     buttonYes.textContent = "Yes (js)";
     buttonNo.textContent = "No (js)";
-    buttonYes.style.width = '49%';
-    buttonYes.className = 'btn btn-success';
-    buttonNo.style.width = '49%';
-    buttonNo.className = 'btn btn-danger';
+    buttonYes.className = 'btn btn-success w-50';;
+    buttonNo.className = 'btn btn-danger w-50';
   //shows the question div if it was hidden
-    questionDisplay.style.display = "block";
     questionDisplay.innerHTML = "Did you land it?" + '<br>';
     
-    
-    questionDisplay.appendChild(buttonYes);
-    questionDisplay.appendChild(buttonNo);
+    document.getElementById('left-buttons').appendChild(buttonYes);
+    document.getElementById('left-buttons').appendChild(buttonNo);
+
     
     }
 
