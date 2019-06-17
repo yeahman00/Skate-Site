@@ -2,12 +2,16 @@
 
   //global variables - need to find another way?
   let commentDisplay = document.getElementById("comment");
+  const questionDisplay = document.getElementById("question");
 
   //for game of skate mode
+  const gosPlayers = document.getElementById('gosPlayers');
+  const difficulty = document.getElementById('difficulty');
+  const aiLandedComment = document.getElementById('aiLandedComment');
   const skate = ["S","K","A","T","E"];
   let playYou = [];
   let playAi = [];
-  const questionDisplay = document.getElementById("question");
+  
 
   //for no repeat mode
   let nrCommentDisplay = document.getElementById("thatsAll");
@@ -29,6 +33,7 @@
   let checkAll = document.getElementById("selectAll");
   let run = document.getElementById("getTrick");
   let startButton = document.getElementById('startButton');
+  let soloButton = document.getElementById('gosSolo');
 
   //trick library
     function trickLib(trickArr){
@@ -40,7 +45,7 @@
             "Kickflip": "Frontside Flip",
             "Heelflip": "Frontside Heelflip",
             "Impossible": "Frontside 180 Impossible",
-            "ollieNorth": "Fronstide 180 Ollie North",
+            "ollieNorth": "Frontside 180 Ollie North",
             "None": "Frontside 180"
           },
           "noBody": {
@@ -59,7 +64,7 @@
              "Kickflip": "Frontside 360 Kickflip",
              "Heelflip": "Frontside 360 Heelflip",
              "Impossible": "Frontside 360 Impossible",
-             "ollieNorth": "Fronstide 360 Ollie North",
+             "ollieNorth": "Frontside 360 Ollie North",
              "None": "Frontside 360"
            },
            "noBody": {
@@ -123,7 +128,7 @@
             "Kickflip": "Nollie Frontside Flip",
             "Heelflip": "Nollie Frontside Heelflip",
             "Impossible": "Nollie Frontside 180 Impossible",
-            "ollieNorth": "Nollie Fronstide 180 Ollie North",
+            "ollieNorth": "Nollie Frontside 180 Ollie North",
             "None": "Nollie Frontside 180"
           },
           "noBody": {
@@ -142,7 +147,7 @@
              "Kickflip": "Nollie Frontside 360 Kickflip",
              "Heelflip": "Nollie Frontside 360 Heelflip",
              "Impossible": "Nollie Frontside 360 Impossible",
-             "ollieNorth": "Nollie Fronstide 360 Ollie North",
+             "ollieNorth": "Nollie Frontside 360 Ollie North",
              "None": "Nollie Frontside 360"
            },
            "noBody": {
@@ -206,7 +211,7 @@
             "Kickflip": "Switch Frontside Flip",
             "Heelflip": "Switch Frontside Heelflip",
             "Impossible": "Switch Frontside 180 Impossible",
-            "ollieNorth": "Switch Fronstide 180 Ollie North",
+            "ollieNorth": "Switch Frontside 180 Ollie North",
             "None": "Switch Frontside 180"
           },
           "noBody": {
@@ -225,7 +230,7 @@
              "Kickflip": "Switch Frontside 360 Kickflip",
              "Heelflip": "Switch Frontside 360 Heelflip",
              "Impossible": "Switch Frontside 360 Impossible",
-             "ollieNorth": "Switch Fronstide 360 Ollie North",
+             "ollieNorth": "Switch Frontside 360 Ollie North",
              "None": "Switch Frontside 360"
            },
            "noBody": {
@@ -289,7 +294,7 @@
             "Kickflip": "Fakie Frontside Flip",
             "Heelflip": "Fakie Frontside Heelflip",
             "Impossible": "Fakie Frontside 180 Impossible",
-            "ollieNorth": "Fakie Fronstide 180 Ollie North",
+            "ollieNorth": "Fakie Frontside 180 Ollie North",
             "None": "Fakie Frontside 180"
           },
           "noBody": {
@@ -308,7 +313,7 @@
              "Kickflip": "Fakie Frontside 360 Kickflip",
              "Heelflip": "Fakie Frontside 360 Heelflip",
              "Impossible": "Fakie Frontside 360 Impossible",
-             "ollieNorth": "Fakie Fronstide 360 Ollie North",
+             "ollieNorth": "Fakie Frontside 360 Ollie North",
              "None": "Fakie Frontside 360"
            },
            "noBody": {
@@ -368,13 +373,1077 @@
     };
       return trickPick[trickArr[0]][trickArr[1]][trickArr[2]][trickArr[3]][trickArr[4]];
     }
-
+  //set odds of ai landing trick
+    function difficultySettings(arr){
+  //0-99 0 being 1% chance and 99 being 100%
+     const trickOdds = {
+      //regular
+      'Ollie, Seriously?': {
+          'Easy': 99,
+          'Medium': 99,
+          'Hard': 99,
+          'Pro': 99
+      },
+      'Backside Shuvit': {
+          'Easy': 29,
+          'Medium': 59,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Frontside Shuvit': {
+          'Easy': 29,
+          'Medium': 59,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Backside 360 Shuvit': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Frontside 360 Shuvit': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Backside 180': {
+          'Easy': 29,
+          'Medium': 69,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Frontside 180': {
+          'Easy': 29,
+          'Medium': 69,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Backside 360': {
+          'Easy': 0,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Frontside 360': {
+          'Easy': 0,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Backside Bigspin': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Frontside Bigspin': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Kickflip': {
+          'Easy': 29,
+          'Medium': 49,
+          'Hard': 84,
+          'Pro': 94
+      },
+      'Heelflip': {
+          'Easy': 29,
+          'Medium': 49,
+          'Hard': 84,
+          'Pro': 94
+      },
+      'Varial Kickflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Varial Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Hardflip': {
+          'Easy': 4,
+          'Medium': 19,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Inward Heelflip': {
+          'Easy': 4,
+          'Medium': 19,
+          'Hard': 69,
+          'Pro': 89
+      },
+      '360 Flip': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      '360 Hardflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      '360 Inward Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Laserflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 79
+      },
+      'Bigflip': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Big Heelflip': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Big Hardflip': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Big Inward Heelflip': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Backside Flip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Backside Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Frontside Flip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Frontside Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Backside 360 Kickflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Backside 360 Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Frontside 360 Kickflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Frontside 360 Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Ollie North': {
+          'Easy': 29,
+          'Medium': 49,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Backside 180 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Frontside 180 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Backside 360 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Frontside 360 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Impossible': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Backside 180 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Frontside 180 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Backside 360 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Frontside 360 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      //nollie
+      'Nollie, Seriously?': {
+          'Easy': 99,
+          'Medium': 99,
+          'Hard': 99,
+          'Pro': 99
+      },
+      'Nollie Backside Shuvit': {
+          'Easy': 29,
+          'Medium': 59,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Nollie Frontside Shuvit': {
+          'Easy': 29,
+          'Medium': 59,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Nollie Backside 360 Shuvit': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollie Frontside 360 Shuvit': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollie Backside 180': {
+          'Easy': 29,
+          'Medium': 69,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Nollie Frontside 180': {
+          'Easy': 29,
+          'Medium': 69,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Nollie Backside 360': {
+          'Easy': 0,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollie Frontside 360': {
+          'Easy': 0,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollie Backside Bigspin': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollie Frontside Bigspin': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollieflip': {
+          'Easy': 19,
+          'Medium': 29,
+          'Hard': 84,
+          'Pro': 94
+      },
+      'Nollie Heelflip': {
+          'Easy': 19,
+          'Medium': 29,
+          'Hard': 84,
+          'Pro': 94
+      },
+      'Nollie Varial Kickflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollie Varial Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollie Hardflip': {
+          'Easy': 4,
+          'Medium': 19,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Nollie Inward Heelflip': {
+          'Easy': 4,
+          'Medium': 19,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Nollie 360 Flip': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollie 360 Hardflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie 360 Inward Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Laserflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 79
+      },
+      'Nollie Bigflip': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Nollie Big Heelflip': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Nollie Big Hardflip': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Big Inward Heelflip': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Backside Flip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Nollie Backside Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Nollie Frontside Flip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Nollie Frontside Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Nollie Backside 360 Kickflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Backside 360 Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Frontside 360 Kickflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Frontside 360 Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Ollie North': {
+          'Easy': 29,
+          'Medium': 49,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Nollie Backside 180 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Frontside 180 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Backside 360 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Nollie Frontside 360 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Nollie Impossible': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Nollie Backside 180 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Frontside 180 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Nollie Backside 360 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Nollie Frontside 360 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      //switch
+      'Switch Ollie, Seriously?': {
+          'Easy': 99,
+          'Medium': 99,
+          'Hard': 99,
+          'Pro': 99
+      },
+      'Switch Backside Shuvit': {
+          'Easy': 29,
+          'Medium': 59,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Switch Frontside Shuvit': {
+          'Easy': 29,
+          'Medium': 59,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Switch Backside 360 Shuvit': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switch Frontside 360 Shuvit': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switch Backside 180': {
+          'Easy': 29,
+          'Medium': 69,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Switch Frontside 180': {
+          'Easy': 29,
+          'Medium': 69,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Switch Backside 360': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switch Frontside 360': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switch Backside Bigspin': {
+          'Easy': 4,
+          'Medium': 19,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switch Frontside Bigspin': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switchflip': {
+          'Easy': 19,
+          'Medium': 29,
+          'Hard': 84,
+          'Pro': 94
+      },
+      'Switch Heelflip': {
+          'Easy': 19,
+          'Medium': 29,
+          'Hard': 84,
+          'Pro': 94
+      },
+      'Switch Varial Kickflip': {
+          'Easy': 4,
+          'Medium': 9,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switch Varial Heelflip': {
+          'Easy': 4,
+          'Medium': 9,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switch Hardflip': {
+          'Easy': 1,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Switch Inward Heelflip': {
+          'Easy': 1,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Switch 360 Flip': {
+          'Easy': 1,
+          'Medium': 9,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switch 360 Hardflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch 360 Inward Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Laserflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 79
+      },
+      'Switch Bigflip': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Switch Big Heelflip': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Switch Big Hardflip': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Big Inward Heelflip': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Backside Flip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Switch Backside Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Switch Frontside Flip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Switch Frontside Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Switch Backside 360 Kickflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Backside 360 Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Frontside 360 Kickflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Frontside 360 Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Ollie North': {
+          'Easy': 29,
+          'Medium': 49,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Switch Backside 180 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Frontside 180 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Backside 360 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Switch Frontside 360 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Switch Impossible': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Switch Backside 180 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Frontside 180 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Switch Backside 360 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Switch Frontside 360 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      //fakie
+      'Fakie Ollie, Seriously?': {
+          'Easy': 99,
+          'Medium': 99,
+          'Hard': 99,
+          'Pro': 99
+      },
+      'Fakie Backside Shuvit': {
+          'Easy': 29,
+          'Medium': 59,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Fakie Frontside Shuvit': {
+          'Easy': 29,
+          'Medium': 59,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Fakie Backside 360 Shuvit': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakie Frontside 360 Shuvit': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakie Backside 180': {
+          'Easy': 29,
+          'Medium': 69,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Fakie Frontside 180': {
+          'Easy': 29,
+          'Medium': 69,
+          'Hard': 94,
+          'Pro': 98
+      },
+      'Fakie Backside 360': {
+          'Easy': 0,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakie Frontside 360': {
+          'Easy': 0,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakie Backside Bigspin': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakie Frontside Bigspin': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakieflip': {
+          'Easy': 19,
+          'Medium': 29,
+          'Hard': 84,
+          'Pro': 94
+      },
+      'Fakie Heelflip': {
+          'Easy': 19,
+          'Medium': 29,
+          'Hard': 84,
+          'Pro': 94
+      },
+      'Fakie Varial Kickflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakie Varial Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakie Hardflip': {
+          'Easy': 4,
+          'Medium': 19,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Fakie Inward Heelflip': {
+          'Easy': 4,
+          'Medium': 19,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Fakie 360 Flip': {
+          'Easy': 4,
+          'Medium': 29,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakie 360 Hardflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie 360 Inward Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Laserflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 79
+      },
+      'Fakie Bigflip': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Fakie Big Heelflip': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Fakie Big Hardflip': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Big Inward Heelflip': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Backside Flip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Fakie Backside Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Fakie Frontside Flip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Fakie Frontside Heelflip': {
+          'Easy': 9,
+          'Medium': 29,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Fakie Backside 360 Kickflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Backside 360 Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Frontside 360 Kickflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Frontside 360 Heelflip': {
+          'Easy': 0,
+          'Medium': 4,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Ollie North': {
+          'Easy': 29,
+          'Medium': 49,
+          'Hard': 79,
+          'Pro': 89
+      },
+      'Fakie Backside 180 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Frontside 180 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Backside 360 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Fakie Frontside 360 Ollie North': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Fakie Impossible': {
+          'Easy': 0,
+          'Medium': 9,
+          'Hard': 69,
+          'Pro': 89
+      },
+      'Fakie Backside 180 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Frontside 180 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 49,
+          'Pro': 69
+      },
+      'Fakie Backside 360 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+      'Fakie Frontside 360 Impossible': {
+          'Easy': 0,
+          'Medium': 0,
+          'Hard': 9,
+          'Pro': 49
+      },
+  }
+  return trickOdds[arr[0]][arr[1]];
+}
   //displays or hides start button
   function startButtonDisplay(x){
       startButton.style.display = x;
   }
 
-/*
+  function gosPlayersDisplay(x){
+    gosPlayers.style.display = x;
+  }
+
+  function difficultyDisplay(x){
+    difficulty.style.display = x;
+  }
+  
+  soloButton.addEventListener('click',function(){
+    difficultyDisplay('block');
+    gosPlayersDisplay('none');
+    startButtonDisplay('block');
+  })
+
+
+
+
+
+
+
+
+
+
   //clears the game of skate mode
   function cleargos(){
       let gosDisplayYou = document.getElementById("you");
@@ -393,10 +1462,13 @@
       while(gosDisplayAi.firstChild){
         gosDisplayAi.removeChild(gosDisplayAi.firstChild);
       } 
+      while(aiLandedComment.firstChild){
+        aiLandedComment.removeChild(aiLandedComment.firstChild);
+      }
       playYou = [];
       playAi = [];
   }
-*/
+
   //clears no repeat mode
   function clearNoRepeatMode(){
     let nrRemainingDisplay = document.getElementById("nrLeft");
@@ -442,44 +1514,33 @@
   
   //clears/resets screen based on mode selected
   function showMode(){
-   //let gosDisplay = document.getElementById("gosHud");
+   let gosDisplay = document.getElementById("gosHud");
    let nrDisplay = document.getElementById("nrHud");
    let marathonDisplay = document.getElementById("marathonHud");
+   let mode = $('#mode-select').val();
 
    run.style.display = $('#mode-select').val() === 'Standard' ? 'block' : 'none'
-   //gosDisplay.style.display = gosMode.checked ? "block" : "none"; 
-   $('#mode-select').val() === 'Standard' ? startButtonDisplay('none') : startButtonDisplay('block');
+   mode === 'Standard' ? startButtonDisplay('none') : mode === 'Game of Skate' ? startButtonDisplay('none') : startButtonDisplay('block');
+   mode === 'Game of Skate' ? gosPlayersDisplay('block') : gosPlayersDisplay('none');
    questionDisplay.style.display = 'none';
    nrDisplay.style.display = 'none';
    marathonDisplay.style.display = 'none';
+   gosDisplay.style.display = 'none';
 
    $('#bno').remove();
    $('#byes').remove();
    
-   //cleargos();
+   difficultyDisplay('none');
+   cleargos();
    clearNoRepeatMode();
    clearMarathonMode();
    }
 
-   let mode = document.getElementById('mode-select');
-   mode.addEventListener('change',function(){
+   let modeSelect = document.getElementById('mode-select');
+   modeSelect.addEventListener('change',function(){
      showMode();
    })
-/*
-  //checks which mode is selected  
-  standardMode.addEventListener("click",function(){
-    showMode();
-  })
-  gosMode.addEventListener("click",function(){
-    showMode();
-  })
-  noRepeatMode.addEventListener("click",function(){
-    showMode();
-  })
-  marathonMode.addEventListener("click",function(){
-    showMode();
-  })
-*/
+
   /*
   //check all boxes on click
   function selectAll(){
@@ -497,7 +1558,7 @@
   */
   
 
-  //rng for anything using length as max number
+  //rng 
     function rngLength(length){
       let rand = Math.floor(Math.random() * length);
       return rand;
@@ -590,8 +1651,8 @@
    //trick name
       trickDisplay.innerHTML = trickLib(showIt);
     }
-  //********************MODES*****************************
-  //creating yes no buttons and question 
+  //******************** MODES *****************************
+  //creating yes no buttons and displaying question 
     function ynButtons(){
     
     let buttonYes = document.createElement("button");
@@ -603,80 +1664,14 @@
     buttonNo.textContent = "No";
     buttonYes.className = 'btn btn-success w-50';;
     buttonNo.className = 'btn btn-danger w-50';
-  //shows the question div if it was hidden
-    questionDisplay.innerHTML = "Did you land it?" + '<br>';
-    questionDisplay.style.display = "block";
-    
+
     document.getElementById('left-buttons').appendChild(buttonYes);
     document.getElementById('left-buttons').appendChild(buttonNo);
-
-    
+  //shows the question div if it was hidden
+    questionDisplay.style.display = "block";
     }
 
-  //*****************Game Of Skate************************
-  //end game of skate
-  function endgos(){
-  //end game results
-    if(playAi.length === 5 || playYou.length === 5){
-      let resultsDisplay = document.getElementById("results");   
-  //removes question and buttons
-      questionDisplay.style.display = "none";
-  //random win/lose comments - both have same number of comments
-      let winComment = ["Cue fireworks and explosions","Congratulations!","All skill no luck, right?","Nice!","Too easy"];
-      let loseComment = ["Bummer","They got lucky","They probably cheated","Better luck next time","Was the sun in your eyes?"];
-      let randComNum = rngLength(winComment.length);
-  //winner
-      if(playAi.length === 5){
-        resultsDisplay.style.color = "#006400";
-        resultsDisplay.innerHTML = "You Win";
-        commentDisplay.style.color = "#006400";
-        commentDisplay.innerHTML = winComment[randComNum];
-      }
-  //loser
-      else{
-        resultsDisplay.style.color = "#8B0000";
-        resultsDisplay.innerHTML = "You Lose";
-        commentDisplay.style.color = "#8B0000";
-        commentDisplay.innerHTML = loseComment[randComNum];
-      }
-    }   
-  } 
-  //trick landed 
-  function gosYes(){
-  //update and display results
-    let aiDisplay = document.getElementById("ai");
-    playAi.push(skate[playAi.length]);
-    aiDisplay.innerHTML = playAi.join("");
-    endgos();
-  }
-  //trick not landed 
-  function gosNo(){
-    //update and display results
-    let youDisplay = document.getElementById("you");
-    playYou.push(skate[playYou.length]);
-    youDisplay.innerHTML = playYou.join("");
-    endgos();
-  }
-    
-  function gameOSkate(){
-  //unhide you and them
-    let showYou = document.getElementById("youText");
-    let showAi = document.getElementById("aiText");
-    showYou.style.display = "block";
-    showAi.style.display = "block";
-    
-    let gosClickYes = document.getElementById("byes");
-    let gosClickNo = document.getElementById("bno");
-    
-    gosClickYes.addEventListener("click",function(){
-      gosYes()
-    });
-    gosClickNo.addEventListener("click",function(){
-      gosNo()
-    });
-  }
-
-  //*************************No Repeat**************************
+  //************************* No Repeat ***********************************/
   //global variable for no repeat mode* find a better way?
     let nrTrickName = [];
   //end of no repeat mode
@@ -716,17 +1711,9 @@
       let landedNoDisplay = nrList += '<span style="color:#8B0000">'+trickLib(nrTrickName)+'&nbsp - &nbsp </span>';
       landedListDisplay.innerHTML = landedNoDisplay;
     }
-
-    function noRepeat(){
-  //hide end game comments if showing
-      nrCommentDisplay.style.display = "none";
-      nrSeeListDisplay.style.display = "none";
-  //resets displays if a game just ended
-      if(!noRepeatTried){
-      nrLandedDisplay.innerHTML = noRepeatLanded + "/" + noRepeatTried;
-      landedListDisplay.innerHTML = nrList;
-      }
-      //gathering all arrays from checked boxes and making one big array
+  //create nr trick array, select from list, and update array
+    function nrTrickArray(){
+  //gathering all arrays from checked boxes and making one big array
       let stanceArr = $('#stance-select').val();
       let fsbsArr = $('#orientation-select').val();
       let boardArr = $('#board-rotation-select').val();
@@ -762,11 +1749,6 @@
         }  
       }
       }
-
-      let tricksLeftDisplay = document.getElementById("nrLeft");
-      let nrHudDisplay = document.getElementById("nrHud");
-  //unhide display
-      nrHudDisplay.style.display = "block";
   //select and display random trick from array
       let nrNum = rngLength(noRepeatTricks.length);
       let nrRandomTrick = noRepeatTricks[nrNum];
@@ -774,11 +1756,29 @@
       display(nrRandomTrick);
   //remove selected trick from array 
       noRepeatTricks.splice(nrNum,1);
+    }
+
+    function noRepeat(){
+      nrTrickArray();
+  //hide end game comments if showing
+      nrCommentDisplay.style.display = "none";
+      nrSeeListDisplay.style.display = "none";
+  //resets displays if a game just ended
+      if(!noRepeatTried){
+      nrLandedDisplay.innerHTML = noRepeatLanded + "/" + noRepeatTried;
+      landedListDisplay.innerHTML = nrList;
+      }
+      
+      let tricksLeftDisplay = document.getElementById("nrLeft");
+      let nrHudDisplay = document.getElementById("nrHud");
+  //unhide display
+      nrHudDisplay.style.display = "block";
+  
   //display number of remaining tricks    
       tricksLeftDisplay.innerHTML = noRepeatTricks.length;
     }
     
-  //*************************Marathon**************************
+  //************************* Marathon **************************************/
   //global variables for marathon mode
     let marathonTrick = [];
     let marathonBestStreakNum = 0;
@@ -820,8 +1820,88 @@
        landedListDisplay.innerHTML = marathonList;
       } 
     }
-    
-  //*******************get a trick & standard game*********************************
+  /********************************** Game of Skate *************************************/
+    //determines if ai landed it or not and displays it
+    function didTheyLand(){
+      let selectedDifficulty = $('#difficulty-select').val();
+      let num = rngLength(100);
+      let landed = 'They landed it';
+      let missed = 'They missed it';
+      
+      if (selectedDifficulty === 'Insane YouTuber'){
+        aiLandedComment.innerHTML = num > 95 ? missed : landed;
+      }
+      else{
+      let trickDisplay = document.getElementById('trick');
+      let difficultyNum = difficultySettings([trickDisplay.innerHTML,selectedDifficulty]);
+
+      aiLandedComment.innerHTML = num > difficultyNum ? missed : landed;
+      }
+    }
+    //end game of skate
+    function endgos(){
+    //end game results
+      if(playAi.length === 5 || playYou.length === 5){
+        let resultsDisplay = document.getElementById("results");   
+    //removes question, buttons, and comment
+        questionDisplay.style.display = "none";
+        $('#bno').remove();
+        $('#byes').remove();
+        aiLandedComment.innerHTML = '';
+        startButtonDisplay('block');
+    //resets trick array for new game
+        noRepeatTricks = [];
+    //random win/lose comments - both have same number of comments
+        let winComment = ["Cue fireworks and explosions","Congratulations!","All skill no luck, right?","Nice!","Too easy"];
+        let loseComment = ["Bummer","They got lucky","They probably cheated","Better luck next time","Was the sun in your eyes?"];
+        let randComNum = rngLength(winComment.length);
+    //winner
+        if(playAi.length === 5){
+          resultsDisplay.style.color = "#006400";
+          resultsDisplay.innerHTML = "You Win";
+          commentDisplay.style.color = "#006400";
+          commentDisplay.innerHTML = winComment[randComNum];
+        }
+    //loser
+        else{
+          resultsDisplay.style.color = "#8B0000";
+          resultsDisplay.innerHTML = "You Lose";
+          commentDisplay.style.color = "#8B0000";
+          commentDisplay.innerHTML = loseComment[randComNum];
+        }
+      }   
+      
+    } 
+    //trick landed 
+    function gosYes(){
+    //update and display results
+      let aiDisplay = document.getElementById("ai");
+      if (aiLandedComment.innerHTML === 'They missed it'){
+        playAi.push(skate[playAi.length]);
+        aiDisplay.innerHTML = playAi.join("");
+        endgos();
+      }
+    }
+    //trick not landed 
+    function gosNo(){
+      //update and display results
+      let youDisplay = document.getElementById("you");
+      if (aiLandedComment.innerHTML === 'They landed it'){
+        playYou.push(skate[playYou.length]);
+        youDisplay.innerHTML = playYou.join("");
+        endgos();
+      }
+    }
+      
+    function gameOfSkate(){
+    //display game of skate hud
+      let gosHud = document.getElementById('gosHud');
+      gosHud.style.display = 'block';
+      nrTrickArray();
+      didTheyLand();
+    }
+
+  //******************* Get a Trick and Standard Game *********************************
   function getTrick(){
     //*********************STANCE**************************
     let stanceTag = "";
@@ -907,21 +1987,9 @@
       marathonTrick = theTrick;
       marathon();
     }
-  //run game of skate mode
-  /*
-    if(document.getElementById("gos").checked){
-      gameOSkate()
+    if ($('#mode-select').val() === 'Game of Skate'){
+      gameOfSkate();
     }
-  //run no repeat mode
-    if(document.getElementById("nrMode").checked){
-      noRepeat()
-    } 
-  //run marathon mode
-    if(document.getElementById("marathon").checked){
-      marathonTrick = theTrick;
-      marathon()
-    }
-    */
   }
 
   //checks mode and dictates what yes/no buttons will do
@@ -940,6 +2008,12 @@
         marathonYes();
         getTrick();
       }
+      if ($('#mode-select').val() === 'Game of Skate'){
+        gosYes();
+        if (playAi.length !== 5){
+          getTrick();
+        }
+      }
     })
     //no button
     bno.addEventListener('click',function(){
@@ -950,24 +2024,28 @@
       if ($('#mode-select').val() === 'Marathon'){
         marathonNo();
       }
+      if ($('#mode-select').val() === 'Game of Skate'){
+        gosNo();
+        if (playYou.length !== 5){
+          getTrick();
+        }
+      }
     })
   }
   
   //start game/roll trick/display ynButtons/hide start button
   startButton.addEventListener('click',function(){
     startButtonDisplay('none');
+    difficultyDisplay('none');
     ynButtons();
     ynButtonsEvent();
+    cleargos();
     getTrick();
   })
   
   //run get trick function on click
   run.addEventListener("click",function(){
     getTrick();
-  //clears game of skate score and results  
-    if(playYou.length === 5 || playAi.length === 5){
-      cleargos();
-    }
   });
     
   })();//the end
