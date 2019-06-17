@@ -87,10 +87,33 @@
                 </div>
                 <div id="marathonEnd"></div>
                 <div id="seeMList"></div>
-                <!--question-->
-                <div id="question"></div>
             </div>
             
+            <!--game of skate mode-->
+            <div id="gosHud" style='display: none'> 
+                <div id="youText">You:
+                    <div id="you" style='display: inline-block'></div></div>
+                <div id="aiText">Them:
+                    <div id="ai" style='display: inline-block'></div></div>  
+                <div id="results"></div>
+                <div id="comment"></div>
+            </div>
+
+            <!--question-->
+            <div id='aiLandedComment'></div>
+            <div id="question" style='display: none'>Did you land it?</div>
+            
+            <div id='difficulty' style='display: none'>
+            <label for="difficulty-select">Difficulty</label>
+                    <select id="difficulty-select" class="selectpicker w-50">
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                        <option>Pro</option>
+                        <option>Insane YouTuber</option>
+                    </select>
+            </div>
+
 
 
             <div class="row">
@@ -101,13 +124,14 @@
                 <div class="col">
                     <div class="row mb-2">
 
-
                         <div id="left-buttons" class="col">
 
                             <button id="getTrick" class="btn btn-success w-100">Get Trick</button>
                             <button id='startButton' style='display: none' class='btn btn-success w-100'>Start</button>
-                            
-
+                            <div id='gosPlayers' style='display: none'>
+                            <button id='gosSolo' style='width: 49%' class='btn btn-success'>Solo</button>
+                            <button id='gosMultiplayer' style='width: 49%' class='btn btn-danger'>Multiplayer</button>
+                            </div>
                         </div>
                         <div class="col">
 
