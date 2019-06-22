@@ -5,13 +5,35 @@
   const questionDisplay = document.getElementById("question");
 
   //for game of skate mode
+  const numPlayersSelect = document.getElementById('numPlayersSelect');
   const gosPlayers = document.getElementById('gosPlayers');
   const difficulty = document.getElementById('difficulty');
   const aiLandedComment = document.getElementById('aiLandedComment');
+  const okButton = document.getElementById('okButton');
+  const numPlayers = document.getElementById('numPlayers')
+  let soloGame = true;
+  let playerNamesArr = [];
   const skate = ["S","K","A","T","E"];
   let playYou = [];
   let playAi = [];
-  
+  let p1 = [];
+  let p2 = [];
+  let p3 = [];
+  let p4 = [];
+  let p5 = [];
+  let p6 = [];
+  const player1Score = document.getElementById('player1Score');
+  const player2Score= document.getElementById('player2Score');
+  const player3Score = document.getElementById('player3Score');
+  const player4Score = document.getElementById('player4Score');
+  const player5Score = document.getElementById('player5Score');
+  const player6Score = document.getElementById('player6Score');
+  const player1Button = document.getElementById('player1Button');
+  const player2Button = document.getElementById('player2Button');
+  const player3Button = document.getElementById('player3Button');
+  const player4Button = document.getElementById('player4Button');
+  const player5Button = document.getElementById('player5Button');
+  const player6Button = document.getElementById('player6Button');
 
   //for no repeat mode
   let nrCommentDisplay = document.getElementById("thatsAll");
@@ -34,6 +56,7 @@
   let run = document.getElementById("getTrick");
   let startButton = document.getElementById('startButton');
   let soloButton = document.getElementById('gosSolo');
+  let multiPlayer = document.getElementById('gosMultiplayer');
 
   //trick library
     function trickLib(trickArr){
@@ -1415,34 +1438,33 @@
       },
   }
   return trickOdds[arr[0]][arr[1]];
-}
-  //displays or hides start button
+    }
+
+  //display/hide functions
   function startButtonDisplay(x){
       startButton.style.display = x;
   }
 
   function gosPlayersDisplay(x){
     gosPlayers.style.display = x;
-  }
-
+  };
+  
   function difficultyDisplay(x){
     difficulty.style.display = x;
+  };
+
+//reset gos multiplayer scores
+function resetgosMultiScores(){
+  for (let a = 1; a <= 6; a++){
+    $('#player' + a + 'Score').text('-');
   }
-  
-  soloButton.addEventListener('click',function(){
-    difficultyDisplay('block');
-    gosPlayersDisplay('none');
-    startButtonDisplay('block');
-  })
-
-
-
-
-
-
-
-
-
+   p1 = [];
+   p2 = [];
+   p3 = [];
+   p4 = [];
+   p5 = [];
+   p6 = [];
+}
 
   //clears the game of skate mode
   function cleargos(){
@@ -1467,6 +1489,8 @@
       }
       playYou = [];
       playAi = [];
+
+      resetgosMultiScores();
   }
 
   //clears no repeat mode
@@ -1511,6 +1535,15 @@
     marathonList = '';
   }
 
+  //clears/resets gos multiplayer inputs and buttons
+  function clearMultigos(){
+    for (let a = 1; a < 7; a++){
+      $('#player' + a + 'Input').val('Player ' + a + ':')
+      $('#player' + a).hide();
+      $('#player' + a + 'Button').hide();
+      $('#player' + a + 'Score').hide();
+    }
+  }
   
   //clears/resets screen based on mode selected
   function showMode(){
@@ -1526,11 +1559,15 @@
    nrDisplay.style.display = 'none';
    marathonDisplay.style.display = 'none';
    gosDisplay.style.display = 'none';
+   $('#numPlayersSelect').hide();
+   $('#okButton').hide();
+   $('#endMultigos').hide();
 
    $('#bno').remove();
    $('#byes').remove();
    
    difficultyDisplay('none');
+   clearMultigos();
    cleargos();
    clearNoRepeatMode();
    clearMarathonMode();
@@ -1655,20 +1692,22 @@
   //creating yes no buttons and displaying question 
     function ynButtons(){
     
-    let buttonYes = document.createElement("button");
-    let buttonNo = document.createElement("button");
+      let buttonYes = document.createElement("button");
+      let buttonNo = document.createElement("button");
     
-    buttonYes.id = "byes";
-    buttonNo.id = "bno";
-    buttonYes.textContent = "Yes";
-    buttonNo.textContent = "No";
-    buttonYes.className = 'btn btn-success w-50';;
-    buttonNo.className = 'btn btn-danger w-50';
+      buttonYes.id = "byes";
+      buttonNo.id = "bno";
+      buttonYes.textContent = "Yes";
+      buttonNo.textContent = "No";
+      buttonYes.className = 'btn btn-success w-50';;
+      buttonNo.className = 'btn btn-danger w-50';
 
-    document.getElementById('left-buttons').appendChild(buttonYes);
-    document.getElementById('left-buttons').appendChild(buttonNo);
+      document.getElementById('left-buttons').appendChild(buttonYes);
+      document.getElementById('left-buttons').appendChild(buttonNo);
   //shows the question div if it was hidden
-    questionDisplay.style.display = "block";
+      if ($('#mode-select').val() !== 'Game of Skate' && soloGame !== false){
+        questionDisplay.style.display = "block";
+      }
     }
 
   //************************* No Repeat ***********************************/
@@ -1821,6 +1860,123 @@
       } 
     }
   /********************************** Game of Skate *************************************/
+  
+  /////////// MULTIPLAYER ////////////
+
+  multiPlayer.addEventListener('click',function(){
+    gosPlayersDisplay('none');
+    numPlayersSelect.style.display = 'block';
+    okButton.style.display = 'block';
+    soloGame = false;
+  });
+
+  //disables OK button unless an accepeted number is entered
+  numPlayers.addEventListener('change',function(){
+    if ($('#numPlayers').val() > 1 && $('#numPlayers').val() < 7){
+      okButton.disabled = false;
+    }
+    else{ okButton.disabled = true; }
+  });
+
+  okButton.addEventListener('click',function(){
+    for (let a = 1; a <= $('#numPlayers').val(); a++){
+      $('#player' + a).show();
+    }
+    playersLeft = $('#numPlayers').val();;
+    numPlayersSelect.style.display = 'none';
+    okButton.style.display = 'none';
+    startButtonDisplay('block');
+  });
+
+  //set player names onto buttons and create array of player names
+  function playerNames(){
+    //reset arr if any names were in it
+    playerNamesArr = [];
+    for (let a = 1; a <= $('#numPlayers').val(); a++){
+      //display player buttons and scores
+      $('#player' + a + 'Button').show();
+      $('#player' + a + 'Score').show();
+      //default name given if left blank
+      if (!$('#player' + a + 'Input').val()){
+        $('#player' + a + 'Button').text('Player ' + a + ':');
+        playerNamesArr.push('Player ' + a + ':');
+      }
+      //players name put in button
+      else{
+        $('#player' + a + 'Button').text($('#player' + a + 'Input').val());
+        playerNamesArr.push($('#player' + a + 'Input').val());
+      }
+      //hide name input
+      $('#player' + a).hide();
+    }
+  };
+
+//enables gos multiplayer buttons if disabled
+function enableMultigosButtons(){
+  let arr = [p1,p2,p3,p4,p5,p6];
+  for (let a = 1; a <= 6; a++){
+    if (arr[a-1].length < 5){
+      $('#player' + a + 'Button').prop('disabled',false);
+    }
+  }
+}
+
+//removes players and checks for a winner
+function remainingPlayers(p,text){
+  if (p.length === 5){
+    let n = playerNamesArr.indexOf(playerNamesArr.find((a) => a === text));
+    playerNamesArr.splice(n,1);
+  }
+  if (playerNamesArr.length === 1){
+    $('#endMultigos').show();
+    $('#endMultigos').text(playerNamesArr[0] + ' Wins!');
+    $('#startButton').show();
+    run.style.display = 'none';
+  }
+}
+
+//click events for player buttons in multiplayer gos
+function playerButtonClickEvents(p_,pScore,pnum,text){
+  p_.push(skate[p_.length]);
+  pScore.innerHTML = p_.join('');
+  $('#player' + pnum + 'Button').prop('disabled',true);
+  remainingPlayers(p_,text);
+}
+  
+//multiplayer gos buttons 
+player1Button.addEventListener('click',function(){
+  playerButtonClickEvents(p1,player1Score,1,this.textContent);
+});
+
+player2Button.addEventListener('click',function(){
+  playerButtonClickEvents(p2,player2Score,2,this.textContent);
+});
+
+player3Button.addEventListener('click',function(){
+  playerButtonClickEvents(p3,player3Score,3,this.textContent);
+});
+
+player4Button.addEventListener('click',function(){
+  playerButtonClickEvents(p4,player4Score,4,this.textContent);
+});
+
+player5Button.addEventListener('click',function(){
+  playerButtonClickEvents(p5,player5Score,5,this.textContent);
+});
+
+player6Button.addEventListener('click',function(){
+  playerButtonClickEvents(p6,player6Score,6,this.textContent);
+});
+
+///////////////// SOLO ////////////////////
+
+soloButton.addEventListener('click',function(){
+  difficultyDisplay('block');
+  gosPlayersDisplay('none');
+  startButtonDisplay('block');
+  soloGame = true;
+});
+
     //determines if ai landed it or not and displays it
     function didTheyLand(){
       let selectedDifficulty = $('#difficulty-select').val();
@@ -1892,13 +2048,19 @@
         endgos();
       }
     }
-      
+
+    //gos function  
     function gameOfSkate(){
-    //display game of skate hud
-      let gosHud = document.getElementById('gosHud');
-      gosHud.style.display = 'block';
-      nrTrickArray();
-      didTheyLand();
+      //display game of skate hud
+      if (soloGame){
+        let gosHud = document.getElementById('gosHud');
+        gosHud.style.display = 'block';
+        nrTrickArray();
+        didTheyLand();
+      }
+      else{
+        nrTrickArray();
+      }
     }
 
   //******************* Get a Trick and Standard Game *********************************
@@ -2035,17 +2197,27 @@
   
   //start game/roll trick/display ynButtons/hide start button
   startButton.addEventListener('click',function(){
+    if ($('#mode-select').val() === 'Game of Skate' && soloGame === false){
+      playerNames();
+      resetgosMultiScores();
+      enableMultigosButtons();
+      $('#endMultigos').hide();
+      run.style.display = 'block';
+    }
+    else{
+      difficultyDisplay('none');
+      cleargos();
+      ynButtons();
+      ynButtonsEvent();
+    }
     startButtonDisplay('none');
-    difficultyDisplay('none');
-    ynButtons();
-    ynButtonsEvent();
-    cleargos();
     getTrick();
   })
   
   //run get trick function on click
   run.addEventListener("click",function(){
     getTrick();
+    enableMultigosButtons();
   });
     
   })();//the end
