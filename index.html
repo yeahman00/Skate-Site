@@ -65,6 +65,8 @@
                 
             </div>
 
+            
+
             <!--no repeat mode-->
             <div id="nrHud" style='display: none'>
                  <div>Remaining:
@@ -89,7 +91,7 @@
                 <div id="seeMList"></div>
             </div>
             
-            <!--game of skate mode-->
+            <!--game of skate mode - solo -->
             <div id="gosHud" style='display: none'> 
                 <div id="youText">You:
                     <div id="you" style='display: inline-block'></div></div>
@@ -98,7 +100,54 @@
                 <div id="results"></div>
                 <div id="comment"></div>
             </div>
+            <!--game of skate mode - multiplayer -->
+            <div class='gosHudMultiplayer'>
+                <div id='endMultigos' style='display: none'></div>
+                <div id='numPlayersSelect' style='display: none'>
+                    Select number of players 2-6:
+                    <input id='numPlayers' type='number' min='2' max='6'>
+                </div>
 
+                <div id='player1' style='display: none'><input id='player1Input'value='Player 1:' maxlength='8'></div>
+                <div id='player2' style='display: none'><input id='player2Input'value='Player 2:' maxlength='8'></div>
+                <div id='player3' style='display: none'><input id='player3Input'value='Player 3:' maxlength='8'></div>
+                <div id='player4' style='display: none'><input id='player4Input'value='Player 4:' maxlength='8'></div>
+                <div id='player5' style='display: none'><input id='player5Input'value='Player 5:' maxlength='8'></div>                        
+                <div id='player6' style='display: none'><input id='player6Input'value='Player 6:' maxlength='8'></div>
+
+                <div class='row mb-2'>
+                    <div class='col'>
+                        <div><button id='player1Button' style='display: none' class='btn btn-danger'></button></div>
+                        <div><button id='player2Button' style='display: none' class='btn btn-danger'></button></div>
+                        <div><button id='player3Button' style='display: none' class='btn btn-danger'></button></div>
+                        <div><button id='player4Button' style='display: none' class='btn btn-danger'></button></div>
+                        <div><button id='player5Button' style='display: none' class='btn btn-danger'></button></div>
+                        <div><button id='player6Button' style='display: none' class='btn btn-danger'></button></div>
+                    </div>
+                    <div class='col'>
+                        <div style='display: none' id='player1Score'>-</div>
+                        <div style='display: none' id='player2Score'>-</div>
+                        <div style='display: none' id='player3Score'>-</div>
+                        <div style='display: none' id='player4Score'>-</div>
+                        <div style='display: none' id='player5Score'>-</div>
+                        <div style='display: none' id='player6Score'>-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+                <div class='row mb-3'>
+                    <div class='col'>
+                        <button style='display: none'>Testing</button>
+                    </div>
+                    <div class='col'>
+                        <button>Testing</button>
+                    </div>
+                    <div class='col'>
+                        <button style='display: none'>Testing</button>
+                    </div>
+                </div>
+            -->
             <!--question-->
             <div id='aiLandedComment'></div>
             <div id="question" style='display: none'>Did you land it?</div>
@@ -129,9 +178,10 @@
                             <button id="getTrick" class="btn btn-success w-100">Get Trick</button>
                             <button id='startButton' style='display: none' class='btn btn-success w-100'>Start</button>
                             <div id='gosPlayers' style='display: none'>
-                            <button id='gosSolo' style='width: 49%' class='btn btn-success'>Solo</button>
-                            <button id='gosMultiplayer' style='width: 49%' class='btn btn-danger'>Multiplayer</button>
+                                <button id='gosSolo' style='width: 48%' class='btn btn-success'>Solo</button>
+                                <button id='gosMultiplayer' style='width: 48%' class='btn btn-danger'>Multiplayer</button>
                             </div>
+                            <button id='okButton' style='display: none' class='btn btn-success w-75' disabled>OK</button>
                         </div>
                         <div class="col">
 
