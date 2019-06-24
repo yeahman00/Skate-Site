@@ -1,7 +1,7 @@
 <html>
     <head>
 
-        <title>CSkate</title>
+        <title>GetaTrick</title>
 
         <!-- Javascript -->
         <script type="text/javascript" src="Assets/js/jquery-3.4.1.min.js"></script>
@@ -12,7 +12,7 @@
         <script type="text/javascript" src="Assets/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="Assets/bootstrap-4.0.0/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="Assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.min.css">
-
+        
         <!-- Font Awesome -->
         <link rel="stylesheet" href="Assets/fontawesome-free-5.8.2-web/css/all.min.css">
 
@@ -20,11 +20,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     </head>
-    <body>
+    <!-- Disables double tap zoom in ios-->
+    <body style='touch-action: manipulation'>
 
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-3">
-            <a class="navbar-brand" href="#">CSkate</a>
+            <a class="navbar-brand" href="#">GetaTrick</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -135,19 +136,6 @@
                 </div>
             </div>
 
-            <!--
-                <div class='row mb-3'>
-                    <div class='col'>
-                        <button style='display: none'>Testing</button>
-                    </div>
-                    <div class='col'>
-                        <button>Testing</button>
-                    </div>
-                    <div class='col'>
-                        <button style='display: none'>Testing</button>
-                    </div>
-                </div>
-            -->
             <!--question-->
             <div id='aiLandedComment'></div>
             <div id="question" style='display: none'>Did you land it?</div>
@@ -175,7 +163,7 @@
 
                         <div id="left-buttons" class="col">
 
-                            <button id="getTrick" class="btn btn-success w-100">Get Trick</button>
+                            <button id="getTrick" class="btn btn-success w-100 click">Get Trick</button>
                             <button id='startButton' style='display: none' class='btn btn-success w-100'>Start</button>
                             <div id='gosPlayers' style='display: none'>
                                 <button id='gosSolo' style='width: 48%' class='btn btn-success'>Solo</button>
@@ -199,7 +187,6 @@
                         <option>Marathon</option>
                     </select>
 
-                    
                     <!-- Modal -->
                     <div class="modal fade" id="settings-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -265,7 +252,8 @@
 
                             </div>
                             <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to game</button>
+                                <button type='button' id='selectAll' class='btn btn-success'>Select All</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to game</button>
                             </div>
                         </div>
                         </div>
