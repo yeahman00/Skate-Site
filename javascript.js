@@ -3,7 +3,8 @@
   //global variables - need to find another way?
   let commentDisplay = document.getElementById("comment");
   const questionDisplay = document.getElementById("question");
-
+  let modeSelect = document.getElementById('mode-select');
+  
   //for game of skate mode
   const numPlayersSelect = document.getElementById('numPlayersSelect');
   const gosPlayers = document.getElementById('gosPlayers');
@@ -1573,27 +1574,21 @@ function resetgosMultiScores(){
    clearMarathonMode();
    }
 
-   let modeSelect = document.getElementById('mode-select');
+   
    modeSelect.addEventListener('change',function(){
      showMode();
    })
 
-  /*
-  //check all boxes on click
-  function selectAll(){
-    let box = document.getElementsByName("cb");
-    for(let a = 0; a < box.length; a++){
-      box[a].checked = true;
-    }
-  //enables impossible/ollie north 180/360 boxes
-    halfImpossible.disabled = false;
-    fullImpossible.disabled = false;
-    halfOllieNorth.disabled = false;
-    fullOllieNorth.disabled = false;
-    
-  }
-  */
-  
+   //select all
+   $('#selectAll').click(function(){
+     let arr = ['stance','orientation','body-rotation','board-rotation','flip'];
+     for (let a of arr){
+       $('#' + a + '-select option').prop('selected', true);
+     }
+     //refresh selectpicker so it updates the text field with the newly selected options
+     $('.selectpicker').selectpicker('refresh');
+   })
+
 
   //rng 
     function rngLength(length){
@@ -1602,7 +1597,6 @@ function resetgosMultiScores(){
     }
     
     
-  
   //checks the array input to make sure it can call a trick from trickLib
   //makes changes as needed
     function isItATrick(tricknq){
