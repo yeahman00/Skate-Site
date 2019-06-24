@@ -20,7 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     </head>
-    <!-- Disables double tap zoom in ios-->
+    <!-- Fixes double tap zoom in issue with ios-->
     <body style='touch-action: manipulation'>
 
         <!-- Navigation -->
@@ -44,23 +44,13 @@
 
         <!-- MAIN -->
         
-        <div class="container" style="max-height: 100%;">
+        <div class="container" style="max-height: 100%">
 
-            <div class="row h-75 align-content-center">
+            <div style='height: 40%'class="row align-content-center">
                 <div class="col">
 
                     <h1 id="trick" class="text-center">Press Get Trick</h1>
-                    <div id="display">
-                        
-                        Stance: <div id="stance" style="display: inline;"></div><br>
-                        FS/BS: <div id="fsbs" style="display: inline;"></div><br>
-                        Body Rotation: <div id="body" style="display: inline;"></div><br>
-                        Board Rotation: <div id="board" style="display: inline;"></div><br>
-                        Flip: <div id="flip" style="display: inline;"></div><br>
-                        Attempts: <div id="tries" style="display: inline;"></div>
-                    </div> <!--display-->
-                    <!--tricks tried list-->
-                    <div id="landedList"></div>
+                    
 
                 </div>
                 
@@ -82,7 +72,7 @@
 
             <!--marathon mode-->
             <div id="marathonHud" style='display: none'>
-                <div>Current Streak:
+                <div>Streak:
                     <div id="streak" style='display: inline-block'></div>
                     <div style='display: inline-block'>&ensp;Best This Session:
                         <div id="bestStreak" style='display: inline-block'></div>
@@ -178,6 +168,17 @@
                         </div>
                     </div>
 
+                    <div id="display">
+                        
+                        <b>Stance:</b> <div id="stance" style="display: inline"></div><br>
+                        <b>FS/BS:</b> <div id="fsbs" style="display: inline"></div><br>
+                        <b>Body Rotation:</b> <div id="body" style="display: inline"></div><br>
+                        <b>Board Rotation:</b> <div id="board" style="display: inline"></div><br>
+                        <b>Flip:</b> <div id="flip" style="display: inline"></div><br>
+                        <b>Attempts:</b> <div id="tries" style="display: inline"></div>
+                        <div></div><br>
+                    </div> <!--display-->
+
 
                     <label for="mode-select">Mode</label>
                     <select id="mode-select" class="selectpicker w-100">
@@ -239,8 +240,8 @@
                                     <label for="flip-select">Flip</label>
                                     <select id="flip-select" class="selectpicker w-100 mb-3" multiple>
                                         <option selected>None</option>
-                                        <option>Kickflip</option>
-                                        <option>Heelflip</option>
+                                        <option selected>Kickflip</option>
+                                        <option selected>Heelflip</option>
                                         <option>Impossible</option>
                                         <option value='ollieNorth'>Ollie North</option>
                                     </select>
@@ -261,14 +262,10 @@
 
                 </div><!--/col-->
             </div><!--/row-->
+            <!-- landed list -->
+            <div id="landedList"></div>
         </div><!--/container-->
               
-
-
-
-
-
-
 
     </body>
 
