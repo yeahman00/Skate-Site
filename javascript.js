@@ -1,9 +1,9 @@
 (function(){
 
   //global variables - need to find another way?
-  let commentDisplay = document.getElementById("comment");
+  const commentDisplay = document.getElementById("comment");
   const questionDisplay = document.getElementById("question");
-  let modeSelect = document.getElementById('mode-select');
+  const modeSelect = document.getElementById('mode-select');
   
   //for game of skate mode
   const numPlayersSelect = document.getElementById('numPlayersSelect');
@@ -53,7 +53,6 @@
   let marathonStreakNum = 0;
   let marathonList = '';
 
-  let checkAll = document.getElementById("selectAll");
   let run = document.getElementById("getTrick");
   let startButton = document.getElementById('startButton');
   let soloButton = document.getElementById('gosSolo');
@@ -140,7 +139,7 @@
             "Heelflip": "Heelflip",
             "Impossible": "Impossible",
             "ollieNorth": "Ollie North",
-            "None": "Ollie, Seriously?"
+            "None": "Ollie"
           },
         },
       },
@@ -223,7 +222,7 @@
             "Heelflip": "Nollie Heelflip",
             "Impossible": "Nollie Impossible",
             "ollieNorth": "Nollie Ollie North",
-            "None": "Nollie, Seriously?"
+            "None": "Nollie"
           },
         },
     },
@@ -306,7 +305,7 @@
             "Heelflip": "Switch Heelflip",
             "Impossible": "Switch Impossible",
             "ollieNorth": "Switch Ollie North",
-            "None": "Switch Ollie, Seriously?"
+            "None": "Switch Ollie"
           },
         },
       },
@@ -389,7 +388,7 @@
             "Heelflip": "Fakie Heelflip",
             "Impossible": "Fakie Impossible",
             "ollieNorth": "Fakie Ollie North",
-            "None": "Fakie Ollie, Seriously?"
+            "None": "Fakie Ollie"
           },
         },
       },
@@ -1579,6 +1578,11 @@ function resetgosMultiScores(){
      showMode();
    })
 
+   //closes settings modal when remove modal is closed
+   $('#removeTricks-modal').on('hide.bs.modal', function(){
+     $('#settings-modal').modal('hide');
+  })
+
    //select all
    $('#selectAll').click(function(){
      let arr = ['stance','orientation','body-rotation','board-rotation','flip'];
@@ -1589,6 +1593,22 @@ function resetgosMultiScores(){
      $('.selectpicker').selectpicker('refresh');
    })
 
+   //select all common picks
+   $('#commonPicks').click(function(){
+     $('#commonPicks-select option').prop('selected', true);
+     $('.selectpicker').selectpicker('refresh');
+   });
+
+   //checks if a trick is on the removed list or not
+   function removedOrNot(trickName){
+      let arr = ['noFlip','kickflip','heelflip','impossible','ollieNorth','commonPicks'];
+      for (let a of arr){
+        if ($('#' + a + '-select').val().some((trick) => trick === trickName)){
+          return true;
+        }
+      }  
+      return false;
+   }
 
   //rng 
     function rngLength(length){
@@ -1680,7 +1700,21 @@ function resetgosMultiScores(){
       }
       else{flipDisplay.innerHTML = showIt[4]}
    //trick name
-      trickDisplay.innerHTML = trickLib(showIt);
+      if (trickLib(showIt) === 'Ollie'){
+        trickDisplay.innerHTML = 'Ollie, Seriously?'
+      }
+      else if (trickLib(showIt) === 'Nollie'){
+        trickDisplay.innerHTML = 'Nollie, Seriously?'
+      }
+      else if (trickLib(showIt) === 'Fakie Ollie'){
+        trickDisplay.innerHTML = 'Fakie Ollie, Seriously?'
+      }
+      else if (trickLib(showIt) === 'Switch Ollie'){
+        trickDisplay.innerHTML = 'Switch Ollie, Seriously?'
+      }
+      else{
+        trickDisplay.innerHTML = trickLib(showIt);
+      }
     }
   //******************** MODES *****************************
   //creating yes no buttons and displaying question 
@@ -1706,6 +1740,7 @@ function resetgosMultiScores(){
 
   //************************* No Repeat ***********************************/
   //global variable for no repeat mode* find a better way?
+    let testArr = [];
     let nrTrickName = [];
   //end of no repeat mode
     function endNoRepeat(){
@@ -1771,11 +1806,16 @@ function resetgosMultiScores(){
                 let cleanTrick = isItATrick(roughTrick);
   //get trick name to add to the check list            
                 let trickName = trickLib(cleanTrick);
+                
+  //check if the trick is on the removed trick list              
+               // if (!$('#kickflip-select').val().some((trick) => trick === trickName)){
+              if (!removedOrNot(trickName)){ 
   //check if the trick is a repeat or not          
                 if(!trickNameArr.length || trickNameArr.every(x => x !== trickName)){
                   trickNameArr.push(trickName);
                   noRepeatTricks.push(cleanTrick);
                 }
+               }
               }
             }
           }
@@ -1819,7 +1859,8 @@ function resetgosMultiScores(){
     function marathonYes(){
       marathonStreakNum++;
       marathonStreak.innerHTML = marathonStreakNum;
-      landedListDisplay.innerHTML = marathonList += '<span>'+trickLib(marathonTrick)+'&nbsp - &nbsp </span>'; 
+      if (!$('#kickflip-select').val().some((trick) => trick === trickLib(marathonTrick))){
+      landedListDisplay.innerHTML = marathonList += '<span>'+trickLib(marathonTrick)+'&nbsp - &nbsp </span>';} 
     }
     
     function marathonNo(){
@@ -2059,6 +2100,8 @@ soloButton.addEventListener('click',function(){
 
   //******************* Get a Trick and Standard Game *********************************
   function getTrick(){
+    //check if standard or marathon
+    if ($('#mode-select').val() === 'Standard' || $('#mode-select').val() === 'Marathon'){
     //*********************STANCE**************************
     let stanceTag = "";
     let stanceArray = $('#stance-select').val();
@@ -2135,13 +2178,22 @@ soloButton.addEventListener('click',function(){
     let theTrick = [stanceTag,fsbsTag,boardTag,bodyTag,flipTag];
     
     isItATrick(theTrick);
+
+
+    //if ($('#kickflip-select').val().some((a) => a === trickLib(theTrick))){
+    if (removedOrNot(trickLib(theTrick))){
+      getTrick();
+    }
+    else{
     display(theTrick);
+      if ($('#mode-select').val() === 'Marathon'){
+        marathonTrick = theTrick;
+        marathon();
+      }
+    }
+  }
     if ($('#mode-select').val() === 'No-Repeat'){
       noRepeat();
-    }
-    if ($('#mode-select').val() === 'Marathon'){
-      marathonTrick = theTrick;
-      marathon();
     }
     if ($('#mode-select').val() === 'Game of Skate'){
       gameOfSkate();

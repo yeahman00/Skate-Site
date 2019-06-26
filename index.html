@@ -249,11 +249,307 @@
                                     <!-- Attempts -->
                                     <label>Max number of attempts</label>
                                     <input id="attempts" type="number" class="form-control" placeholder="optional"></input>
-
+                                    
 
                             </div>
                             <div class="modal-footer">
+                                <button type='button' id='removeTricks' class='btn btn-danger' data-toggle='modal' data-target='#removeTricks-modal'>Remove</button>
                                 <button type='button' id='selectAll' class='btn btn-success'>Select All</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to game</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div><!--/modal-->
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="removeTricks-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tricks Sorted by Flip</h5>
+                                
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <p class="text-danger">Select the tricks you would like to remove from the game</p>
+                        
+
+                                    <!-- No Flip -->
+                                    <label for="noFlip-select">No Flip</label>
+                                    <select id="noFlip-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>Ollie</option>
+                                        <option>Nollie</option>
+                                        <option>Switch Ollie</option>
+                                        <option>Fakie Ollie</option>
+                                        <option>Frontside 180</option>
+                                        <option>Backside 180</option>
+                                        <option>Nollie Frontside 180</option>
+                                        <option>Nollie Backside 180</option>
+                                        <option>Switch Frontside 180</option>
+                                        <option>Switch Backside 180</option>
+                                        <option>Fakie Frontside 180</option>
+                                        <option>Fakie Backside 180</option>
+                                        <option>Frontside 360</option>
+                                        <option>Backside 360</option>
+                                        <option>Nollie Frontside 360</option>
+                                        <option>Nollie Backside 360</option>
+                                        <option>Switch Frontside 360</option>
+                                        <option>Switch Backside 360</option>
+                                        <option>Fakie Frontside 360</option>
+                                        <option>Fakie Backside 360</option>
+                                        <option>Frontside Shuvit</option>
+                                        <option>Backside Shuvit</option>
+                                        <option>Nollie Frontside Shuvit</option>
+                                        <option>Nollie Backside Shuvit</option>
+                                        <option>Switch Frontside Shuvit</option>
+                                        <option>Switch Backside Shuvit</option>
+                                        <option>Fakie Frontside Shuvit</option>
+                                        <option>Fakie Backside Shuvit</option>
+                                        <option>Frontside 360 Shuvit</option>
+                                        <option>Backside 360 Shuvit</option>
+                                        <option>Nollie Frontside 360 Shuvit</option>
+                                        <option>Nollie Backside 360 Shuvit</option>
+                                        <option>Switch Frontside 360 Shuvit</option>
+                                        <option>Switch Backside 360 Shuvit</option>
+                                        <option>Fakie Frontside 360 Shuvit</option>
+                                        <option>Fakie Backside 360 Shuvit</option>
+                                        <option>Frontside Bigspin</option>
+                                        <option>Backside Bigspin</option>
+                                        <option>Nollie Frontside Bigspin</option>
+                                        <option>Nollie Backside Bigspin</option>
+                                        <option>Fakie Frontside Bigspin</option>
+                                        <option>Fakie Backside Bigspin</option>
+                                    </select>
+
+                                    <!-- Kickflip -->
+                                    <label for="kickflip-select">Kickflip</label>
+                                    <select id="kickflip-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>Kickflip</option>
+                                        <option>Nollieflip</option>
+                                        <option>Switchflip</option>
+                                        <option>Fakieflip</option>
+                                        <option>Frontside Flip</option>
+                                        <option>Backside Flip</option>
+                                        <option>Nollie Frontside Flip</option>
+                                        <option>Nollie Backside Flip</option>
+                                        <option>Switch Frontside Flip</option>
+                                        <option>Switch Backside Flip</option>
+                                        <option>Fakie Frontside Flip</option>
+                                        <option>Fakie Backside Flip</option>
+                                        <option>Frontside 360 Kickflip</option>
+                                        <option>Backside 360 Kickflip</option>
+                                        <option>Nollie Frontside 360 Kickflip</option>
+                                        <option>Nollie Backside 360 Kickflip</option>
+                                        <option>Switch Frontside 360 Kickflip</option>
+                                        <option>Switch Backside 360 Kickflip</option>
+                                        <option>Fakie Frontside 360 Kickflip</option>
+                                        <option>Fakie Backside 360 Kickflip</option>
+                                        <option>Hardflip</option>
+                                        <option>Varial Kickflip</option>
+                                        <option>Nollie Hardflip</option>
+                                        <option>Nollie Varial Kickflip</option>
+                                        <option>Switch Hardflip</option>
+                                        <option>Switch Varial Kickflip</option>
+                                        <option>Fakie Hardflip</option>
+                                        <option>Fakie Varial Kickflip</option>
+                                        <option>360 Hardflip</option>
+                                        <option>360 Flip</option>
+                                        <option>Nollie 360 Hardflip</option>
+                                        <option>Nollie 360 Flip</option>
+                                        <option>Switch 360 Hardflip</option>
+                                        <option>Switch 360 Flip</option>
+                                        <option>Fakie 360 Hardflip</option>
+                                        <option>Fakie 360 Flip</option>
+                                        <option>Big Hardflip</option>
+                                        <option>Bigflip</option>
+                                        <option>Nollie Big Hardflip</option>
+                                        <option>Nollie Bigflip</option>
+                                        <option>Switch Big Hardflip</option>
+                                        <option>Switch Bigflip</option>
+                                        <option>Fakie Big Hardflip</option>
+                                        <option>Fakie Bigflip</option>
+                                    </select>
+
+                                    <!-- Heelflip -->
+                                    <label for="heelflip-select">Heelflip</label>
+                                    <select id="heelflip-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>Heelflip</option>
+                                        <option>Nollie Heelflip</option>
+                                        <option>Switch Heelflip</option>
+                                        <option>Fakie Heelflip</option>
+                                        <option>Frontside Heelflip</option>
+                                        <option>Backside Heelflip</option>
+                                        <option>Nollie Frontside Heelflip</option>
+                                        <option>Nollie Backside Heelflip</option>
+                                        <option>Switch Frontside Heelflip</option>
+                                        <option>Switch Backside Heelflip</option>
+                                        <option>Fakie Frontside Heelflip</option>
+                                        <option>Fakie Backside Heelflip</option>
+                                        <option>Frontside 360 Heelflip</option>
+                                        <option>Backside 360 Heelflip</option>
+                                        <option>Nollie Frontside 360 Heelflip</option>
+                                        <option>Nollie Backside 360 Heelflip</option>
+                                        <option>Switch Frontside 360 Heelflip</option>
+                                        <option>Switch Backside 360 Heelflip</option>
+                                        <option>Fakie Frontside 360 Heelflip</option>
+                                        <option>Fakie Backside 360 Heelflip</option>
+                                        <option>Varial Heelflip</option>
+                                        <option>Inward Heelflip</option>
+                                        <option>Nollie Varial Heelflip</option>
+                                        <option>Nollie Inward Heelflip</option>
+                                        <option>Switch Varial Heelflip</option>
+                                        <option>Switch Inward Heelflip</option>
+                                        <option>Fakie Varial Heelflip</option>
+                                        <option>Fakie Inward Heelflip</option>
+                                        <option>Laserflip</option>
+                                        <option>360 Inward Heelflip</option>
+                                        <option>Nollie Laserflip</option>
+                                        <option>Nollie 360 Inward Heelflip</option>
+                                        <option>Switch Laserflip</option>
+                                        <option>Switch 360 Inward Heelflip</option>
+                                        <option>Fakie Laserflip</option>
+                                        <option>Fakie 360 Inward Heelflip</option>
+                                        <option>Big Heelflip</option>
+                                        <option>Big Inward Heelflip</option>
+                                        <option>Nollie Big Heelflip</option>
+                                        <option>Nollie Big Inward Heelflip</option>
+                                        <option>Switch Big Heelflip</option>
+                                        <option>Switch Big Inward Heelflip</option>
+                                        <option>Fakie Big Heelflip</option>
+                                        <option>Fakie Big Inward Heelflip</option>
+                                    </select>
+
+                                    <!-- Impossible -->
+                                    <label for="impossible-select">Impossible</label>
+                                    <select id="impossible-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>Impossible</option>
+                                        <option>Nollie Impossible</option>
+                                        <option>Switch Impossible</option>
+                                        <option>Fakie Impossible</option>
+                                        <option>Frontside 180 Impossible</option>
+                                        <option>Backside 180 Impossible</option>
+                                        <option>Nollie Frontside 180 Impossible</option>
+                                        <option>Nollie Backside 180 Impossible</option>
+                                        <option>Switch Frontside 180 Impossible</option>
+                                        <option>Switch Backside 180 Impossible</option>
+                                        <option>Fakie Frontside 180 Impossible</option>
+                                        <option>Fakie Backside 180 Impossible</option>
+                                        <option>Frontside 360 Impossible</option>
+                                        <option>Backside 360 Impossible</option>
+                                        <option>Nollie Frontside 360 Impossible</option>
+                                        <option>Nollie Backside 360 Impossible</option>
+                                        <option>Switch Frontside 360 Impossible</option>
+                                        <option>Switch Backside 360 Impossible</option>
+                                        <option>Fakie Frontside 360 Impossible</option>
+                                        <option>Fakie Backside 360 Impossible</option>
+                                    </select>
+
+                                    <!-- Ollie North -->
+                                    <label for="ollieNorth-select">Ollie North</label>
+                                    <select id="ollieNorth-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>Ollie North</option>
+                                        <option>Nollie Ollie North</option>
+                                        <option>Switch Ollie North</option>
+                                        <option>Fakie Ollie North</option>
+                                        <option>Frontside 180 Ollie North</option>
+                                        <option>Backside 180 Ollie North</option>
+                                        <option>Nollie Frontside 180 Ollie North</option>
+                                        <option>Nollie Backside 180 Ollie North</option>
+                                        <option>Switch Frontside 180 Ollie North</option>
+                                        <option>Switch Backside 180 Ollie North</option>
+                                        <option>Fakie Frontside 180 Ollie North</option>
+                                        <option>Fakie Backside 180 Ollie North</option>
+                                        <option>Frontside 360 Ollie North</option>
+                                        <option>Backside 360 Ollie North</option>
+                                        <option>Nollie Frontside 360 Ollie North</option>
+                                        <option>Nollie Backside 360 Ollie North</option>
+                                        <option>Switch Frontside 360 Ollie North</option>
+                                        <option>Switch Backside 360 Ollie North</option>
+                                        <option>Fakie Frontside 360 Ollie North</option>
+                                        <option>Fakie Backside 360 Ollie North</option>
+                                    </select>
+
+                                    <!-- Common Picks -->
+                                    <label for="commonPicks-select">Common Picks</label>
+                                    <select id="commonPicks-select" class="selectpicker w-100 mb-3" multiple>
+                                        <option>Ollie</option>
+                                        <option>Nollie</option>
+                                        <option>Switch Ollie</option>
+                                        <option>Fakie Ollie</option>
+                                        <option>Frontside 360 Kickflip</option>
+                                        <option>Backside 360 Kickflip</option>
+                                        <option>Nollie Frontside 360 Kickflip</option>
+                                        <option>Nollie Backside 360 Kickflip</option>
+                                        <option>Switch Frontside 360 Kickflip</option>
+                                        <option>Switch Backside 360 Kickflip</option>
+                                        <option>Fakie Frontside 360 Kickflip</option>
+                                        <option>Fakie Backside 360 Kickflip</option>
+                                        <option>360 Hardflip</option>
+                                        <option>Nollie 360 Hardflip</option>
+                                        <option>Switch 360 Hardflip</option>
+                                        <option>Fakie 360 Hardflip</option>
+                                        <option>Big Hardflip</option>
+                                        <option>Nollie Big Hardflip</option>
+                                        <option>Switch Big Hardflip</option>
+                                        <option>Fakie Big Hardflip</option>
+                                        <option>Frontside 360 Heelflip</option>
+                                        <option>Backside 360 Heelflip</option>
+                                        <option>Nollie Frontside 360 Heelflip</option>
+                                        <option>Nollie Backside 360 Heelflip</option>
+                                        <option>Switch Frontside 360 Heelflip</option>
+                                        <option>Switch Backside 360 Heelflip</option>
+                                        <option>Fakie Frontside 360 Heelflip</option>
+                                        <option>Fakie Backside 360 Heelflip</option>
+                                        <option>360 Inward Heelflip</option>
+                                        <option>Nollie 360 Inward Heelflip</option>
+                                        <option>Switch 360 Inward Heelflip</option>
+                                        <option>Fakie 360 Inward Heelflip</option>
+                                        <option>Big Inward Heelflip</option>
+                                        <option>Nollie Big Inward Heelflip</option>
+                                        <option>Switch Big Inward Heelflip</option>
+                                        <option>Fakie Big Inward Heelflip</option>
+                                        <option>Frontside 180 Impossible</option>
+                                        <option>Backside 180 Impossible</option>
+                                        <option>Nollie Frontside 180 Impossible</option>
+                                        <option>Nollie Backside 180 Impossible</option>
+                                        <option>Switch Frontside 180 Impossible</option>
+                                        <option>Switch Backside 180 Impossible</option>
+                                        <option>Fakie Frontside 180 Impossible</option>
+                                        <option>Fakie Backside 180 Impossible</option>
+                                        <option>Frontside 360 Impossible</option>
+                                        <option>Backside 360 Impossible</option>
+                                        <option>Nollie Frontside 360 Impossible</option>
+                                        <option>Nollie Backside 360 Impossible</option>
+                                        <option>Switch Frontside 360 Impossible</option>
+                                        <option>Switch Backside 360 Impossible</option>
+                                        <option>Fakie Frontside 360 Impossible</option>
+                                        <option>Fakie Backside 360 Impossible</option>
+                                        <option>Frontside 180 Ollie North</option>
+                                        <option>Backside 180 Ollie North</option>
+                                        <option>Nollie Frontside 180 Ollie North</option>
+                                        <option>Nollie Backside 180 Ollie North</option>
+                                        <option>Switch Frontside 180 Ollie North</option>
+                                        <option>Switch Backside 180 Ollie North</option>
+                                        <option>Fakie Frontside 180 Ollie North</option>
+                                        <option>Fakie Backside 180 Ollie North</option>
+                                        <option>Frontside 360 Ollie North</option>
+                                        <option>Backside 360 Ollie North</option>
+                                        <option>Nollie Frontside 360 Ollie North</option>
+                                        <option>Nollie Backside 360 Ollie North</option>
+                                        <option>Switch Frontside 360 Ollie North</option>
+                                        <option>Switch Backside 360 Ollie North</option>
+                                        <option>Fakie Frontside 360 Ollie North</option>
+                                        <option>Fakie Backside 360 Ollie North</option>
+                                    </select>
+   
+
+                            </div>
+                            <div class="modal-footer">
+                                    <button id='commonPicks' type="button" class="btn btn-success">Select All Common Picks</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to game</button>
                             </div>
                         </div>
