@@ -1562,6 +1562,7 @@ function resetgosMultiScores(){
    $('#numPlayersSelect').hide();
    $('#okButton').hide();
    $('#endMultigos').hide();
+   $('#gosMultiNote').hide();
 
    $('#bno').remove();
    $('#byes').remove();
@@ -1727,8 +1728,10 @@ function resetgosMultiScores(){
       buttonNo.id = "bno";
       buttonYes.textContent = "Yes";
       buttonNo.textContent = "No";
-      buttonYes.className = 'btn btn-success w-50';;
-      buttonNo.className = 'btn btn-danger w-50';
+      buttonYes.className = 'btn btn-success mr-2';;
+      buttonNo.className = 'btn btn-danger';
+      buttonYes.style.width = '45%';
+      buttonNo.style.width = '45%';
 
       document.getElementById('left-buttons').appendChild(buttonYes);
       document.getElementById('left-buttons').appendChild(buttonNo);
@@ -1967,6 +1970,7 @@ function remainingPlayers(p,text){
     $('#endMultigos').text(playerNamesArr[0] + ' Wins!');
     $('#startButton').show();
     run.style.display = 'none';
+    $('#gosMultiNote').hide();
   }
 }
 
@@ -2014,6 +2018,7 @@ soloButton.addEventListener('click',function(){
 
     //determines if ai landed it or not and displays it
     function didTheyLand(){
+      questionDisplay.style.display = 'block';
       let selectedDifficulty = $('#difficulty-select').val();
       let num = rngLength(100);
       let landed = 'They landed it';
@@ -2249,6 +2254,7 @@ soloButton.addEventListener('click',function(){
       enableMultigosButtons();
       $('#endMultigos').hide();
       run.style.display = 'block';
+      $('#gosMultiNote').show();
     }
     else{
       difficultyDisplay('none');

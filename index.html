@@ -108,12 +108,12 @@
 
                 <div class='row mb-2'>
                     <div class='col'>
-                        <div><button id='player1Button' style='display: none' class='btn btn-danger'></button></div>
-                        <div><button id='player2Button' style='display: none' class='btn btn-danger'></button></div>
-                        <div><button id='player3Button' style='display: none' class='btn btn-danger'></button></div>
-                        <div><button id='player4Button' style='display: none' class='btn btn-danger'></button></div>
-                        <div><button id='player5Button' style='display: none' class='btn btn-danger'></button></div>
-                        <div><button id='player6Button' style='display: none' class='btn btn-danger'></button></div>
+                        <div><button id='player1Button' style='display: none' class='btn btn-danger w-75 mt-1'></button></div>
+                        <div><button id='player2Button' style='display: none' class='btn btn-danger w-75 mt-1'></button></div>
+                        <div><button id='player3Button' style='display: none' class='btn btn-danger w-75 mt-1'></button></div>
+                        <div><button id='player4Button' style='display: none' class='btn btn-danger w-75 mt-1'></button></div>
+                        <div><button id='player5Button' style='display: none' class='btn btn-danger w-75 mt-1'></button></div>
+                        <div><button id='player6Button' style='display: none' class='btn btn-danger w-75 mt-1'></button></div>
                     </div>
                     <div class='col'>
                         <div style='display: none' id='player1Score'>-</div>
@@ -157,7 +157,7 @@
                             <button id='startButton' style='display: none' class='btn btn-success w-100'>Start</button>
                             <div id='gosPlayers' style='display: none'>
                                 <button id='gosSolo' style='width: 48%' class='btn btn-success'>Solo</button>
-                                <button id='gosMultiplayer' style='width: 48%' class='btn btn-danger'>Multiplayer</button>
+                                <button id='gosMultiplayer' style='width: 48%' class='btn btn-danger'>Multi</button>
                             </div>
                             <button id='okButton' style='display: none' class='btn btn-success w-75' disabled>OK</button>
                         </div>
@@ -167,6 +167,8 @@
 
                         </div>
                     </div>
+
+                    <div id='gosMultiNote' style='display: none; color: red'><p>Click a name to add a letter</p></div>
 
                     <div id="display">
                         
@@ -253,9 +255,15 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type='button' id='removeTricks' class='btn btn-danger' data-toggle='modal' data-target='#removeTricks-modal'>Remove</button>
-                                <button type='button' id='selectAll' class='btn btn-success'>Select All</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to game</button>
+                                <div class='col'>
+                                    <div class='row'>
+                                        <button type='button' id='selectAll' class='btn btn-success' style='width: 47%'>Select All</button>
+                                        <button type='button' id='removeTricks' class='btn btn-danger mx-2' style='width: 47%' data-toggle='modal' data-target='#removeTricks-modal'>Remove Tricks</button>
+                                    </div>
+                                    <div class='row mt-2'>
+                                        <button type="button" class="btn btn-secondary" style='width: 47%' data-dismiss="modal">Back to game</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         </div>
@@ -549,8 +557,14 @@
 
                             </div>
                             <div class="modal-footer">
-                                    <button id='commonPicks' type="button" class="btn btn-success">Select All Common Picks</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to game</button>
+                                <div class='col'>
+                                    <div class= 'row'>
+                                        <button id='commonPicks' type="button" class="btn btn-success w-75">Select All Common Picks</button>
+                                    </div>
+                                    <div class='row'>
+                                        <button type="button" class="btn btn-secondary w-75 mt-2" data-dismiss="modal">Back to game</button>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
                         </div>
