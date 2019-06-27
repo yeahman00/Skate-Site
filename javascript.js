@@ -1969,8 +1969,8 @@ function remainingPlayers(p,text){
     $('#endMultigos').show();
     $('#endMultigos').text(playerNamesArr[0] + ' Wins!');
     $('#startButton').show();
-    run.style.display = 'none';
     $('#gosMultiNote').hide();
+    run.style.display = 'none';
   }
 }
 
