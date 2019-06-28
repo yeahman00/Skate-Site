@@ -151,7 +151,7 @@
             "Kickflip": "Nollie Frontside Flip",
             "Heelflip": "Nollie Frontside Heelflip",
             "Impossible": "Nollie Frontside 180 Impossible",
-            "ollieNorth": "Nollie Frontside 180 Ollie North",
+            "ollieNorth": "Nollie Frontside 180 Nollie North",
             "None": "Nollie Frontside 180"
           },
           "noBody": {
@@ -170,7 +170,7 @@
              "Kickflip": "Nollie Frontside 360 Kickflip",
              "Heelflip": "Nollie Frontside 360 Heelflip",
              "Impossible": "Nollie Frontside 360 Impossible",
-             "ollieNorth": "Nollie Frontside 360 Ollie North",
+             "ollieNorth": "Nollie Frontside 360 Nollie North",
              "None": "Nollie Frontside 360"
            },
            "noBody": {
@@ -186,7 +186,7 @@
             "Kickflip": "Nollie Backside Flip",
             "Heelflip": "Nollie Backside Heelflip",
             "Impossible": "Nollie Backside 180 Impossible",
-            "ollieNorth": "Nollie Backside 180 Ollie North",
+            "ollieNorth": "Nollie Backside 180 Nollie North",
             "None": "Nollie Backside 180"
           },
           "noBody": {
@@ -205,7 +205,7 @@
              "Kickflip": "Nollie Backside 360 Kickflip",
              "Heelflip": "Nollie Backside 360 Heelflip",
              "Impossible": "Nollie Backside 360 Impossible",
-             "ollieNorth": "Nollie Backside 360 Ollie North",
+             "ollieNorth": "Nollie Backside 360 Nollie North",
              "None": "Nollie Backside 360"
            },
            "noBody": {
@@ -221,7 +221,7 @@
             "Kickflip": "Nollieflip",
             "Heelflip": "Nollie Heelflip",
             "Impossible": "Nollie Impossible",
-            "ollieNorth": "Nollie Ollie North",
+            "ollieNorth": "Nollie North",
             "None": "Nollie"
           },
         },
@@ -405,1036 +405,1208 @@
           'Easy': 99,
           'Medium': 99,
           'Hard': 99,
-          'Pro': 99
+          'Pro': 99,
+          'Insane YouTuber': 99
       },
       'Backside Shuvit': {
           'Easy': 29,
           'Medium': 59,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Frontside Shuvit': {
           'Easy': 29,
           'Medium': 59,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Backside 360 Shuvit': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Frontside 360 Shuvit': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Backside 180': {
           'Easy': 29,
           'Medium': 69,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Frontside 180': {
           'Easy': 29,
           'Medium': 69,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Backside 360': {
           'Easy': 0,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Frontside 360': {
           'Easy': 0,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Backside Bigspin': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Frontside Bigspin': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Kickflip': {
           'Easy': 29,
           'Medium': 49,
           'Hard': 84,
-          'Pro': 94
+          'Pro': 94,
+          'Insane YouTuber': 98
       },
       'Heelflip': {
           'Easy': 29,
           'Medium': 49,
           'Hard': 84,
-          'Pro': 94
+          'Pro': 94,
+          'Insane YouTuber': 98
       },
       'Varial Kickflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Varial Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Hardflip': {
           'Easy': 4,
           'Medium': 19,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Inward Heelflip': {
           'Easy': 4,
           'Medium': 19,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       '360 Flip': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       '360 Hardflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       '360 Inward Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Laserflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 79
+          'Pro': 79,
+          'Insane YouTuber': 94
       },
       'Bigflip': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Big Heelflip': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Big Hardflip': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Big Inward Heelflip': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Backside Flip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Backside Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Frontside Flip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Frontside Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Backside 360 Kickflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Backside 360 Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Frontside 360 Kickflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Frontside 360 Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Ollie North': {
           'Easy': 29,
           'Medium': 49,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 98
       },
       'Backside 180 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Frontside 180 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Backside 360 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Frontside 360 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Impossible': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Backside 180 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Frontside 180 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Backside 360 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Frontside 360 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       //nollie
       'Nollie, Seriously?': {
           'Easy': 99,
           'Medium': 99,
           'Hard': 99,
-          'Pro': 99
+          'Pro': 99,
+          'Insane YouTuber': 99
       },
       'Nollie Backside Shuvit': {
           'Easy': 29,
           'Medium': 59,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Nollie Frontside Shuvit': {
           'Easy': 29,
           'Medium': 59,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Nollie Backside 360 Shuvit': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 98
       },
       'Nollie Frontside 360 Shuvit': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Backside 180': {
           'Easy': 29,
           'Medium': 69,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Nollie Frontside 180': {
           'Easy': 29,
           'Medium': 69,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Nollie Backside 360': {
           'Easy': 0,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Frontside 360': {
           'Easy': 0,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Backside Bigspin': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Frontside Bigspin': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollieflip': {
           'Easy': 19,
           'Medium': 29,
           'Hard': 84,
-          'Pro': 94
+          'Pro': 94,
+          'Insane YouTuber': 98
       },
       'Nollie Heelflip': {
           'Easy': 19,
           'Medium': 29,
           'Hard': 84,
-          'Pro': 94
+          'Pro': 94,
+          'Insane YouTuber': 98
       },
       'Nollie Varial Kickflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Varial Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Hardflip': {
           'Easy': 4,
           'Medium': 19,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Inward Heelflip': {
           'Easy': 4,
           'Medium': 19,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie 360 Flip': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie 360 Hardflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Nollie 360 Inward Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Nollie Laserflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 79
+          'Pro': 79,
+          'Insane YouTuber': 94
       },
       'Nollie Bigflip': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Big Heelflip': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Big Hardflip': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Nollie Big Inward Heelflip': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Nollie Backside Flip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Backside Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Frontside Flip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Frontside Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Backside 360 Kickflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Nollie Backside 360 Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Nollie Frontside 360 Kickflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Nollie Frontside 360 Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
-      'Nollie Ollie North': {
+      'Nollie North': {
           'Easy': 29,
           'Medium': 49,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 98
       },
-      'Nollie Backside 180 Ollie North': {
+      'Nollie Backside 180 Nollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
-      'Nollie Frontside 180 Ollie North': {
+      'Nollie Frontside 180 Nollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
-      'Nollie Backside 360 Ollie North': {
+      'Nollie Backside 360 Nollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
-      'Nollie Frontside 360 Ollie North': {
+      'Nollie Frontside 360 Nollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Nollie Impossible': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Nollie Backside 180 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Nollie Frontside 180 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Nollie Backside 360 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Nollie Frontside 360 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       //switch
       'Switch Ollie, Seriously?': {
           'Easy': 99,
           'Medium': 99,
           'Hard': 99,
-          'Pro': 99
+          'Pro': 99,
+          'Insane YouTuber': 99
       },
       'Switch Backside Shuvit': {
           'Easy': 29,
           'Medium': 59,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Switch Frontside Shuvit': {
           'Easy': 29,
           'Medium': 59,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Switch Backside 360 Shuvit': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Frontside 360 Shuvit': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Backside 180': {
           'Easy': 29,
           'Medium': 69,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Switch Frontside 180': {
           'Easy': 29,
           'Medium': 69,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Switch Backside 360': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Frontside 360': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Backside Bigspin': {
           'Easy': 4,
           'Medium': 19,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Frontside Bigspin': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switchflip': {
           'Easy': 19,
           'Medium': 29,
           'Hard': 84,
-          'Pro': 94
+          'Pro': 94,
+          'Insane YouTuber': 98
       },
       'Switch Heelflip': {
           'Easy': 19,
           'Medium': 29,
           'Hard': 84,
-          'Pro': 94
+          'Pro': 94,
+          'Insane YouTuber': 98
       },
       'Switch Varial Kickflip': {
           'Easy': 4,
           'Medium': 9,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Varial Heelflip': {
           'Easy': 4,
           'Medium': 9,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Hardflip': {
           'Easy': 1,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Inward Heelflip': {
           'Easy': 1,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch 360 Flip': {
           'Easy': 1,
           'Medium': 9,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch 360 Hardflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Switch 360 Inward Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Switch Laserflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 79
+          'Pro': 79,
+          'Insane YouTuber': 94
       },
       'Switch Bigflip': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Big Heelflip': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Big Hardflip': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Switch Big Inward Heelflip': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Switch Backside Flip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Backside Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Frontside Flip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Frontside Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Backside 360 Kickflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Switch Backside 360 Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Switch Frontside 360 Kickflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Switch Frontside 360 Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Switch Ollie North': {
           'Easy': 29,
           'Medium': 49,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 98
       },
       'Switch Backside 180 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Switch Frontside 180 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Switch Backside 360 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Switch Frontside 360 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Switch Impossible': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Switch Backside 180 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Switch Frontside 180 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Switch Backside 360 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Switch Frontside 360 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       //fakie
       'Fakie Ollie, Seriously?': {
           'Easy': 99,
           'Medium': 99,
           'Hard': 99,
-          'Pro': 99
+          'Pro': 99,
+          'Insane YouTuber': 99
       },
       'Fakie Backside Shuvit': {
           'Easy': 29,
           'Medium': 59,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Fakie Frontside Shuvit': {
           'Easy': 29,
           'Medium': 59,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Fakie Backside 360 Shuvit': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Frontside 360 Shuvit': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Backside 180': {
           'Easy': 29,
           'Medium': 69,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Fakie Frontside 180': {
           'Easy': 29,
           'Medium': 69,
           'Hard': 94,
-          'Pro': 98
+          'Pro': 98,
+          'Insane YouTuber': 98
       },
       'Fakie Backside 360': {
           'Easy': 0,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Frontside 360': {
           'Easy': 0,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Backside Bigspin': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Frontside Bigspin': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakieflip': {
           'Easy': 19,
           'Medium': 29,
           'Hard': 84,
-          'Pro': 94
+          'Pro': 94,
+          'Insane YouTuber': 98
       },
       'Fakie Heelflip': {
           'Easy': 19,
           'Medium': 29,
           'Hard': 84,
-          'Pro': 94
+          'Pro': 94,
+          'Insane YouTuber': 98
       },
       'Fakie Varial Kickflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Varial Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Hardflip': {
           'Easy': 4,
           'Medium': 19,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Inward Heelflip': {
           'Easy': 4,
           'Medium': 19,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie 360 Flip': {
           'Easy': 4,
           'Medium': 29,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie 360 Hardflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Fakie 360 Inward Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Fakie Laserflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 79
+          'Pro': 79,
+          'Insane YouTuber': 94
       },
       'Fakie Bigflip': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Big Heelflip': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Big Hardflip': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Fakie Big Inward Heelflip': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Fakie Backside Flip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Backside Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Frontside Flip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Frontside Heelflip': {
           'Easy': 9,
           'Medium': 29,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Backside 360 Kickflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Fakie Backside 360 Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Fakie Frontside 360 Kickflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Fakie Frontside 360 Heelflip': {
           'Easy': 0,
           'Medium': 4,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 89
       },
       'Fakie Ollie North': {
           'Easy': 29,
           'Medium': 49,
           'Hard': 79,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 98
       },
       'Fakie Backside 180 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Fakie Frontside 180 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Fakie Backside 360 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Fakie Frontside 360 Ollie North': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Fakie Impossible': {
           'Easy': 0,
           'Medium': 9,
           'Hard': 69,
-          'Pro': 89
+          'Pro': 89,
+          'Insane YouTuber': 94
       },
       'Fakie Backside 180 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Fakie Frontside 180 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 49,
-          'Pro': 69
+          'Pro': 69,
+          'Insane YouTuber': 94
       },
       'Fakie Backside 360 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
       'Fakie Frontside 360 Impossible': {
           'Easy': 0,
           'Medium': 0,
           'Hard': 9,
-          'Pro': 49
+          'Pro': 49,
+          'Insane YouTuber': 89
       },
   }
   return trickOdds[arr[0]][arr[1]];
@@ -2024,15 +2196,10 @@ soloButton.addEventListener('click',function(){
       let landed = 'They landed it';
       let missed = 'They missed it';
       
-      if (selectedDifficulty === 'Insane YouTuber'){
-        aiLandedComment.innerHTML = num > 95 ? missed : landed;
-      }
-      else{
       let trickDisplay = document.getElementById('trick');
       let difficultyNum = difficultySettings([trickDisplay.innerHTML,selectedDifficulty]);
 
       aiLandedComment.innerHTML = num > difficultyNum ? missed : landed;
-      }
     }
     //end game of skate
     function endgos(){
@@ -2066,7 +2233,6 @@ soloButton.addEventListener('click',function(){
           commentDisplay.innerHTML = loseComment[randComNum];
         }
       }   
-      
     } 
     //trick landed 
     function gosYes(){
