@@ -23,6 +23,7 @@
   let p4 = [];
   let p5 = [];
   let p6 = [];
+  let soloMissedList = '';
   const player1Score = document.getElementById('player1Score');
   const player2Score= document.getElementById('player2Score');
   const player3Score = document.getElementById('player3Score');
@@ -1629,6 +1630,7 @@
 function resetgosMultiScores(){
   for (let a = 1; a <= 6; a++){
     $('#player' + a + 'Score').text('-');
+    $('#player' + a + 'Missed').text('');
   }
    p1 = [];
    p2 = [];
@@ -1636,6 +1638,14 @@ function resetgosMultiScores(){
    p4 = [];
    p5 = [];
    p6 = [];
+}
+
+//clear gos multiplayer missed list
+function cleargosMultiMissedList(){
+  for (let a = 1; a <= 6; a++){
+    $('#player' + a + 'Name').text('');
+    $('#player' + a + 'Missed').text('');
+  }
 }
 
   //clears the game of skate mode
@@ -1661,8 +1671,15 @@ function resetgosMultiScores(){
       }
       playYou = [];
       playAi = [];
+      soloMissedList = '';
+
+      $('#youMissed').text('');
+    
+      $('#gosMultiMissedList').hide();
+      $('#gosSoloMissedList').hide();
 
       resetgosMultiScores();
+      cleargosMultiMissedList();
   }
 
   //clears no repeat mode
@@ -1735,6 +1752,7 @@ function resetgosMultiScores(){
    $('#okButton').hide();
    $('#endMultigos').hide();
    $('#gosMultiNote').hide();
+   $('#landedList').hide();
 
    $('#bno').remove();
    $('#byes').remove();
@@ -1915,7 +1933,6 @@ function resetgosMultiScores(){
 
   //************************* No Repeat ***********************************/
   //global variable for no repeat mode* find a better way?
-    let testArr = [];
     let nrTrickName = [];
   //end of no repeat mode
     function endNoRepeat(){
@@ -2008,6 +2025,7 @@ function resetgosMultiScores(){
 
     function noRepeat(){
       nrTrickArray();
+      $('#landedList').show();
   //hide end game comments if showing
       nrCommentDisplay.style.display = "none";
       nrSeeListDisplay.style.display = "none";
@@ -2059,6 +2077,7 @@ function resetgosMultiScores(){
     
     function marathon(){
   //display marthon hud
+      $('#landedList').show();
       let marathonDisplay = document.getElementById("marathonHud");
       marathonDisplay.style.display = 'block';
   //hide ending if it's showing
@@ -2102,19 +2121,23 @@ function resetgosMultiScores(){
   function playerNames(){
     //reset arr if any names were in it
     playerNamesArr = [];
+    $('#gosMultiMissedList').show();
     for (let a = 1; a <= $('#numPlayers').val(); a++){
       //display player buttons and scores
       $('#player' + a + 'Button').show();
       $('#player' + a + 'Score').show();
-      //default name given if left blank
+      $('#player' + a + 'Scroll').show();
+      //default name given and put in button if left blank
       if (!$('#player' + a + 'Input').val()){
         $('#player' + a + 'Button').text('Player ' + a + ':');
         playerNamesArr.push('Player ' + a + ':');
+        $('#player' + a + 'Name').text('Player ' + a + ': Missed: ');
       }
       //players name put in button
       else{
         $('#player' + a + 'Button').text($('#player' + a + 'Input').val());
         playerNamesArr.push($('#player' + a + 'Input').val());
+        $('#player' + a + 'Name').text($('#player' + a + 'Input').val() + ' Missed: ');
       }
       //hide name input
       $('#player' + a).hide();
@@ -2148,11 +2171,15 @@ function remainingPlayers(p,text){
 
 //click events for player buttons in multiplayer gos
 function playerButtonClickEvents(p_,pScore,pnum,text){
+  let missedTrick = $('#trick').text();
   p_.push(skate[p_.length]);
   pScore.innerHTML = p_.join('');
   $('#player' + pnum + 'Button').prop('disabled',true);
   remainingPlayers(p_,text);
+  $('#player' + pnum + 'Missed').text($('#player' + pnum + 'Missed').text() + ' ' + missedTrick + ' - ');
 }
+
+
   
 //multiplayer gos buttons 
 player1Button.addEventListener('click',function(){
@@ -2244,14 +2271,24 @@ soloButton.addEventListener('click',function(){
         endgos();
       }
     }
+    
     //trick not landed 
     function gosNo(){
       //update and display results
+      let youMissed = document.getElementById('youMissed');
+      //let missedList = '';
       let youDisplay = document.getElementById("you");
       if (aiLandedComment.innerHTML === 'They landed it'){
         playYou.push(skate[playYou.length]);
         youDisplay.innerHTML = playYou.join("");
+      //displays missed trick in red so you can see which ones were letters
+        youMissed.innerHTML = soloMissedList += '<span style="color: #8B0000">'+$('#trick').text()+'&nbsp - &nbsp </span>'; 
+        
         endgos();
+      }
+      //displays missed trick in black
+      else{
+        youMissed.innerHTML = soloMissedList += $('#trick').text() + '&nbsp - &nbsp';
       }
     }
 
@@ -2261,6 +2298,7 @@ soloButton.addEventListener('click',function(){
       if (soloGame){
         let gosHud = document.getElementById('gosHud');
         gosHud.style.display = 'block';
+        $('#gosSoloMissedList').show();
         nrTrickArray();
         didTheyLand();
       }
