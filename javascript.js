@@ -2048,26 +2048,24 @@ function cleargosMultiMissedList(){
   //************************* Marathon **************************************/
   //global variables for marathon mode
     let marathonTrick = [];
-    let marathonBestStreakNum = 0;
+    //let marathonBestStreakNum = localStorage.marathonHighScore;
 
     function marathonYes(){
       marathonStreakNum++;
       marathonStreak.innerHTML = marathonStreakNum;
       if (!$('#kickflip-select').val().some((trick) => trick === trickLib(marathonTrick))){
-      landedListDisplay.innerHTML = marathonList += '<span>'+trickLib(marathonTrick)+'&nbsp - &nbsp </span>';} 
+        landedListDisplay.innerHTML = marathonList += '<span>'+trickLib(marathonTrick)+'&nbsp - &nbsp </span>';} 
     }
     
     function marathonNo(){
-      let marathonBestStreak = document.getElementById("bestStreak");
       questionDisplay.style.display = "none";
       marathonSeeList.style.display = "block";
       marathonEnding.style.display = "block";
       marathonEnding.className = 'endText';
       marathonEnding.innerHTML = "The End";
       marathonSeeList.innerHTML = "See list below";
-      if (marathonStreakNum > marathonBestStreakNum){
-        marathonBestStreakNum = marathonStreakNum;
-        marathonBestStreak.innerHTML = marathonBestStreakNum;
+      if (marathonStreakNum > localStorage.marathonHighScore){
+        localStorage.marathonHighScore = marathonStreakNum;
         marathonEnding.className = 'winText';
         marathonEnding.innerHTML = 'New Best Streak!';
       }
@@ -2090,6 +2088,11 @@ function cleargosMultiMissedList(){
        marathonStreak.innerHTML = marathonStreakNum;
        landedListDisplay.innerHTML = marathonList;
       } 
+  //set up local storage for highscore if it doesn't already exist
+      if (!localStorage.marathonHighScore){
+        localStorage.marathonHighScore = 0;
+      }
+      $('#bestStreak').text(localStorage.marathonHighScore);
     }
   /********************************** Game of Skate *************************************/
   
