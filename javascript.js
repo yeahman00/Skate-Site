@@ -1946,6 +1946,7 @@ function cleargosMultiMissedList(){
   //display no repeat end comment
       nrCommentDisplay.style.display = "block";
       nrSeeListDisplay.style.display = "block";
+      nrCommentDisplay.className = 'endText';
       nrCommentDisplay.innerHTML = "That's all of them";
       nrSeeListDisplay.innerHTML = "See list below";
   //reset everything
@@ -2061,12 +2062,14 @@ function cleargosMultiMissedList(){
       questionDisplay.style.display = "none";
       marathonSeeList.style.display = "block";
       marathonEnding.style.display = "block";
+      marathonEnding.className = 'endText';
       marathonEnding.innerHTML = "The End";
       marathonSeeList.innerHTML = "See list below";
       if (marathonStreakNum > marathonBestStreakNum){
         marathonBestStreakNum = marathonStreakNum;
         marathonBestStreak.innerHTML = marathonBestStreakNum;
-        marathonEnding.innerHTML = "New Best Streak!"
+        marathonEnding.className = 'winText';
+        marathonEnding.innerHTML = 'New Best Streak!';
       }
       $('#bno').remove();
       $('#byes').remove();
@@ -2162,7 +2165,7 @@ function remainingPlayers(p,text){
   }
   if (playerNamesArr.length === 1){
     $('#endMultigos').show();
-    $('#endMultigos').text(playerNamesArr[0] + ' Wins!');
+    $('#endMultigos').text(playerNamesArr[0] + ' Wins!').addClass('winText');
     $('#startButton').show();
     $('#gosMultiNote').hide();
     run.style.display = 'none';
@@ -2207,6 +2210,7 @@ player6Button.addEventListener('click',function(){
 });
 
 ///////////////// SOLO ////////////////////
+let gosSoloLanded = true;
 
 soloButton.addEventListener('click',function(){
   difficultyDisplay('block');
@@ -2220,12 +2224,14 @@ soloButton.addEventListener('click',function(){
       questionDisplay.style.display = 'block';
       let selectedDifficulty = $('#difficulty-select').val();
       let num = rngLength(100);
-      let landed = 'They landed it';
-      let missed = 'They missed it';
+      let thumbsUp = '<i class="fas fa-thumbs-up" style="color: green"></i>';
+      let thumbsDown = '<i class="fas fa-thumbs-down" style="color: red"></i>'
+      let landed = 'They landed it  ' + thumbsUp;
+      let missed = 'They missed it  ' + thumbsDown;
       
       let trickDisplay = document.getElementById('trick');
       let difficultyNum = difficultySettings([trickDisplay.innerHTML,selectedDifficulty]);
-
+      num > difficultyNum ? gosSoloLanded = false : gosSoloLanded = true;
       aiLandedComment.innerHTML = num > difficultyNum ? missed : landed;
     }
     //end game of skate
@@ -2245,10 +2251,12 @@ soloButton.addEventListener('click',function(){
         let winComment = ["Cue fireworks and explosions","Congratulations!","All skill no luck, right?","Nice!","Too easy"];
         let loseComment = ["Bummer","They got lucky","They probably cheated","Better luck next time","Was the sun in your eyes?"];
         let randComNum = rngLength(winComment.length);
+    //adjust text style for you win/lose
+        resultsDisplay.className = 'winText';
     //winner
         if(playAi.length === 5){
           resultsDisplay.style.color = "#006400";
-          resultsDisplay.innerHTML = "You Win";
+          resultsDisplay.innerHTML = "You Win!";
           commentDisplay.style.color = "#006400";
           commentDisplay.innerHTML = winComment[randComNum];
         }
@@ -2265,7 +2273,7 @@ soloButton.addEventListener('click',function(){
     function gosYes(){
     //update and display results
       let aiDisplay = document.getElementById("ai");
-      if (aiLandedComment.innerHTML === 'They missed it'){
+      if (gosSoloLanded === false){
         playAi.push(skate[playAi.length]);
         aiDisplay.innerHTML = playAi.join("");
         endgos();
@@ -2276,14 +2284,12 @@ soloButton.addEventListener('click',function(){
     function gosNo(){
       //update and display results
       let youMissed = document.getElementById('youMissed');
-      //let missedList = '';
       let youDisplay = document.getElementById("you");
-      if (aiLandedComment.innerHTML === 'They landed it'){
+      if (gosSoloLanded === true){
         playYou.push(skate[playYou.length]);
         youDisplay.innerHTML = playYou.join("");
       //displays missed trick in red so you can see which ones were letters
         youMissed.innerHTML = soloMissedList += '<span style="color: #8B0000">'+$('#trick').text()+'&nbsp - &nbsp </span>'; 
-        
         endgos();
       }
       //displays missed trick in black
