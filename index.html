@@ -37,7 +37,7 @@
                     <a class="nav-link" href="#">Play <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a id='aboutLink' class="nav-link" href="#" data-toggle='modal' data-target='#about-modal'>About</a>
                 </li>
             </div>
         </nav>
@@ -198,7 +198,71 @@
                         <option>Marathon</option>
                     </select>
 
-                    <!-- Modal -->
+                    <!-- about-modal -->
+                    <div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">How It Works</h5>
+                            
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Select the types of tricks you would like to include by using the “Tricks” button.<br>
+                                   Remove any tricks you’d like using the “Remove Tricks” button located at the bottom of the Trick Settings.
+
+                                <h6><b>Stance</b></h6>
+                                <p>Determines which stance(s) are available.</p>
+
+                                <h6><b>Orientation</b></h6>
+                                <p>Determines which way the board and your body can turn.<br>
+                                <i>Note: Nollie frontside and backside are the opposite of fakie. So a nollie front 180 will turn in front of you and a nollie back 180 will turn behind you.</i></p>
+
+                                <h6><b>Body Rotation</b></h6>
+                                <p>Determines if your body will rotate and if so how much.<br>
+                                <i>*For now body can’t rotate more than the board.</i></p>
+
+                                <h6><b>Board Rotation</b></h6>
+                                <p>Determines if your board will rotate and if so how much.<br>
+                                <i>*While impossibles do rotate they will be displayed as “no rotation” (unless it’s a 180/360 variation)  since the rotation of the impossible is part of the trick and without it it’s not an impossible. It’d be like trying to do a kickflip without flipping the board.</i></p>
+
+                                <h6><b>Flip</b></h6>
+                                <p>Determines what “flips” are available. Obviously an ollie north does not flip (at least it’s not supposed to) but it’s still included in the flip section for simplicity.</p> 
+
+                                <h6><b>Attempts</b></h6>
+                                <p>Determines how many attempts you get at a given trick. Will pick a random number between 1 and the number you choose (max is 10). This can be left blank if you don’t want to use it.</p><br>
+
+                                <h5><i>Modes</i></h5><br>
+                                <h6><b>Standard</b></h6>
+                                <p>Will give you random tricks to try based on the available tricks.</p>
+
+                                <h6><b>Game of Skate</b></h6>
+                                <p>Similar to a standard game of skate except tricks are chosen at random based on the available tricks.<br>
+
+                                <b>Solo</b><i> aka The No Friends Skate Companion</i><br>
+                                Adjusting the difficulty will increase or decrease the AIs chance to land tricks.<br>
+
+                                <b>Multi</b><br>
+                                The only difference here, other than the way the trick is selected, is that if everyone misses it then you can choose to not give anyone a letter. You could also set number of attempts to make things even more interesting. But it’s up to you on how you’d like to play.</p>
+
+                                <h6><b>No Repeat</b></h6>
+                                <p>This will create a list of all the available tricks and randomly choose them. After a trick has been drawn it will be removed from the list. When you’ve completed the list the game is over. You can view what tricks you’ve landed and missed at any time at the bottom of the screen.</p> 
+
+                                <h6><b>Marathon</b></h6>
+                                <p>Try to land as many tricks in a row as possible. Your best streak will be saved. This will randomly choose tricks for you from the available tricks. When you miss a trick the game is over. You can see the list of landed tricks at the bottom of the screen.</p> 
+                                <button id='resetBestStreak' type='button' class='btn btn-danger'>Reset Best Streak</button>
+                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" style='width: 47%' data-dismiss="modal">Back to game</button>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+                    <!-- settings-modal -->
                     <div class="modal fade" id="settings-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -278,7 +342,7 @@
                     </div><!--/modal-->
 
 
-                    <!-- Modal -->
+                    <!-- removeTricks-modal -->
                     <div class="modal fade" id="removeTricks-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">

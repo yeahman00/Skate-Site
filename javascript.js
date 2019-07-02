@@ -1764,10 +1764,16 @@ function cleargosMultiMissedList(){
    clearMarathonMode();
    }
 
-   
    modeSelect.addEventListener('change',function(){
      showMode();
    })
+
+   //resets marathon best streak
+   $('#resetBestStreak').on('click',function(){
+    if (confirm('Are you sure you want to reset Marathon Best Streak to 0?')){
+      localStorage.marathonHighScore = 0;
+    }
+  })
 
    //closes settings modal when remove modal is closed
    $('#removeTricks-modal').on('hide.bs.modal', function(){
