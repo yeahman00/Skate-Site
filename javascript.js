@@ -1807,6 +1807,152 @@ function cleargosMultiMissedList(){
       return false;
    }
 
+   //tracks number of games played for each mode
+   function gamesPlayed(gameMode){
+    if (gameMode === 'Game of Skate'){
+      if (soloGame){
+        !localStorage.gosSoloPlayed ? localStorage.gosSoloPlayed = 1 : localStorage.gosSoloPlayed++;
+      }
+      else{
+        !localStorage.gosMultiPlayed ? localStorage.gosMultiPlayed = 1 : localStorage.gosMultiPlayed++;
+      }
+    }
+    if (gameMode === 'No-Repeat'){
+      !localStorage.nrPlayed ? localStorage.nrPlayed = 1 : localStorage.nrPlayed++;
+    }
+    if (gameMode === 'Marathon'){
+      !localStorage.marathonPlayed ? localStorage.marathonPlayed = 1 : localStorage.marathonPlayed++;
+    }
+   }
+
+   //updates all stats on stats page
+   function updateStats(){
+    if (localStorage.gosMultiPlayed){
+      $('#gosMultiPlayed').text(localStorage.gosMultiPlayed);
+    }
+    if (localStorage.gosSoloPlayed){
+     $('#gosSoloPlayed').text(localStorage.gosSoloPlayed);
+    }
+
+    
+    if (localStorage.easyWins){
+      $('#easyWins').text(localStorage.easyWins);
+    }
+    if (localStorage.easyLosses){
+      $('#easyLosses').text(localStorage.easyLosses);
+    }
+    if (localStorage.easyActiveWinStreak){
+      $('#easyActiveWinStreak').text(localStorage.easyActiveWinStreak);
+    }
+    if (localStorage.easyWinStreak){
+      $('#easyWinStreak').text(localStorage.easyWinStreak);
+    }
+
+    if (localStorage.mediumWins){
+      $('#mediumWins').text(localStorage.mediumWins);
+    }
+    if (localStorage.mediumLosses){
+      $('#mediumLosses').text(localStorage.mediumLosses);
+    }
+    if (localStorage.mediumActiveWinStreak){
+      $('#mediumActiveWinStreak').text(localStorage.mediumActiveWinStreak);
+    }
+    if (localStorage.mediumWinStreak){
+      $('#mediumWinStreak').text(localStorage.mediumWinStreak);
+    }
+
+    if (localStorage.hardWins){
+      $('#hardWins').text(localStorage.hardWins);
+    }
+    if (localStorage.hardLosses){
+      $('#hardLosses').text(localStorage.hardLosses);
+    }
+    if (localStorage.hardActiveWinStreak){
+      $('#hardActiveWinStreak').text(localStorage.hardActiveWinStreak);
+    }
+    if (localStorage.hardWinStreak){
+      $('#hardWinStreak').text(localStorage.hardWinStreak);
+    }
+
+    if (localStorage.proWins){
+      $('#proWins').text(localStorage.proWins);
+    }
+    if (localStorage.proLosses){
+      $('#proLosses').text(localStorage.proLosses);
+    }
+    if (localStorage.proActiveWinStreak){
+      $('#proActiveWinStreak').text(localStorage.proActiveWinStreak);
+    }
+    if (localStorage.proWinStreak){
+      $('#proWinStreak').text(localStorage.proWinStreak);
+    }
+
+    if (localStorage.insaneYouTuberWins){
+      $('#insaneYouTuberWins').text(localStorage.insaneYouTuberWins);
+    }
+    if (localStorage.insaneYouTuberLosses){
+      $('#insaneYouTuberLosses').text(localStorage.insaneYouTuberLosses);
+    }
+    if (localStorage.insaneYouTuberActiveWinStreak){
+      $('#insaneYouTuberActiveWinStreak').text(localStorage.insaneYouTuberActiveWinStreak);
+    }
+    if (localStorage.insaneYouTuberWinStreak){
+      $('#insaneYouTuberWinStreak').text(localStorage.insaneYouTuberWinStreak);
+    }
+    
+
+    if (localStorage.nrPlayed){
+      $('#nrPlayed').text(localStorage.nrPlayed);
+    }
+    if (localStorage.nrMostTricksLanded){
+      $('#nrMostTricksLanded').text(localStorage.nrMostTricksLanded);
+    }
+    if (localStorage.marathonPlayed){
+     $('#marathonPlayed').text(localStorage.marathonPlayed);
+    }
+    if (localStorage.marathonHighScore){
+     $('#marathonStreak').text(localStorage.marathonHighScore);
+    }
+   }
+
+   //updates stats when stats page is opened
+   $('#statsLink').click(function(){
+    updateStats();
+  });
+
+  //resets all stats
+  $('#resetAllStats').click(function(){
+    if (confirm('Are you sure you want to reset ALL stats to 0?')){
+      localStorage.nrPlayed = 0;
+      localStorage.nrMostTricksLanded = 0;
+      localStorage.marathonPlayed = 0;
+      localStorage.marathonHighScore = 0;
+      localStorage.gosMultiPlayed = 0;
+      localStorage.gosSoloPlayed = 0;
+      localStorage.easyWins = 0;
+      localStorage.easyActiveWinStreak = 0;
+      localStorage.easyWinStreak = 0;
+      localStorage.easyLosses = 0;
+      localStorage.mediumWins = 0;
+      localStorage.mediumActiveWinStreak = 0;
+      localStorage.mediumWinStreak = 0;
+      localStorage.mediumLosses = 0;
+      localStorage.hardWins = 0;
+      localStorage.hardActiveWinStreak = 0;
+      localStorage.hardWinStreak = 0;
+      localStorage.hardLosses = 0;
+      localStorage.proWins = 0;
+      localStorage.proActiveWinStreak = 0;
+      localStorage.proWinStreak = 0;
+      localStorage.proLosses = 0;
+      localStorage.insaneYouTuberWins = 0;
+      localStorage.insaneYouTuberActiveWinStreak = 0;
+      localStorage.insaneYouTuberWinStreak = 0;
+      localStorage.insaneYouTuberLosses = 0;
+      updateStats();
+    }
+  })
+
   //rng 
     function rngLength(length){
       let rand = Math.floor(Math.random() * length);
@@ -1955,6 +2101,14 @@ function cleargosMultiMissedList(){
       nrCommentDisplay.className = 'endText';
       nrCommentDisplay.innerHTML = "That's all of them";
       nrSeeListDisplay.innerHTML = "See list below";
+  //tracking nrMostTricksLanded stat
+      if (!localStorage.nrMostTricksLanded){
+        localStorage.nrMostTricksLanded = noRepeatLanded;
+      }
+      else{
+        if (noRepeatLanded > localStorage.nrMostTricksLanded)
+          localStorage.nrMostTricksLanded = noRepeatLanded;
+      }
   //reset everything
       noRepeatLanded = 0;
       noRepeatTried = 0;
@@ -2054,7 +2208,6 @@ function cleargosMultiMissedList(){
   //************************* Marathon **************************************/
   //global variables for marathon mode
     let marathonTrick = [];
-    //let marathonBestStreakNum = localStorage.marathonHighScore;
 
     function marathonYes(){
       marathonStreakNum++;
@@ -2075,6 +2228,7 @@ function cleargosMultiMissedList(){
         marathonEnding.className = 'winText';
         marathonEnding.innerHTML = 'New Best Streak!';
       }
+     
       $('#bno').remove();
       $('#byes').remove();
       startButtonDisplay('block');
@@ -2243,6 +2397,114 @@ soloButton.addEventListener('click',function(){
       num > difficultyNum ? gosSoloLanded = false : gosSoloLanded = true;
       aiLandedComment.innerHTML = num > difficultyNum ? missed : landed;
     }
+
+    //updating stats for wins, current win streak, and longest win streak
+    function gosSoloWinStats(soloDifficulty){
+      if (soloDifficulty === 'Easy'){
+        !localStorage.easyWins ? localStorage.easyWins = 1 : localStorage.easyWins++;
+        !localStorage.easyActiveWinStreak ? localStorage.easyActiveWinStreak = 1 : localStorage.easyActiveWinStreak++;
+        if (!localStorage.easyWinStreak){
+          localStorage.easyWinStreak = 1;
+        }
+        else{
+          if (localStorage.easyActiveWinStreak > localStorage.easyWinStreak){
+            localStorage.easyWinStreak = localStorage.easyActiveWinStreak;
+          }
+        }
+      }
+
+      if (soloDifficulty === 'Medium'){
+        !localStorage.mediumWins ? localStorage.mediumWins = 1 : localStorage.mediumWins++;
+        !localStorage.mediumActiveWinStreak ? localStorage.mediumActiveWinStreak = 1 : localStorage.mediumActiveWinStreak++;
+        if (!localStorage.mediumWinStreak){
+          localStorage.mediumWinStreak = 1;
+        }
+        else{
+          if (localStorage.mediumActiveWinStreak > localStorage.mediumWinStreak){
+            localStorage.mediumWinStreak = localStorage.mediumActiveWinStreak;
+          }
+        }
+      }
+
+      if (soloDifficulty === 'Hard'){
+        !localStorage.hardWins ? localStorage.hardWins = 1 : localStorage.hardWins++;
+        !localStorage.hardActiveWinStreak ? localStorage.hardActiveWinStreak = 1 : localStorage.hardActiveWinStreak++;
+        if (!localStorage.hardWinStreak){
+          localStorage.hardWinStreak = 1;
+        }
+        else{
+          if (localStorage.hardActiveWinStreak > localStorage.hardWinStreak){
+            localStorage.hardWinStreak = localStorage.hardActiveWinStreak;
+          }
+        }
+      }
+
+      if (soloDifficulty === 'Pro'){
+        !localStorage.proWins ? localStorage.proWins = 1 : localStorage.proWins++;
+        !localStorage.proActiveWinStreak ? localStorage.proActiveWinStreak = 1 : localStorage.proActiveWinStreak++;
+        if (!localStorage.proWinStreak){
+          localStorage.proWinStreak = 1;
+        }
+        else{
+          if (localStorage.proActiveWinStreak > localStorage.proWinStreak){
+            localStorage.proWinStreak = localStorage.proActiveWinStreak;
+          }
+        }
+      }
+
+      if (soloDifficulty === 'Insane YouTuber'){
+        !localStorage.insaneYouTuberWins ? localStorage.insaneYouTuberWins = 1 : localStorage.insaneYouTuberWins++;
+        !localStorage.insaneYouTuberActiveWinStreak ? localStorage.insaneYouTuberActiveWinStreak = 1 : localStorage.insaneYouTuberActiveWinStreak++;
+        if (!localStorage.insaneYouTuberWinStreak){
+          localStorage.insaneYouTuberWinStreak = 1;
+        }
+        else{
+          if (localStorage.insaneYouTuberActiveWinStreak > localStorage.insaneYouTuberWinStreak){
+            localStorage.insaneYouTuberWinStreak = localStorage.insaneYouTuberActiveWinStreak;
+          }
+        }
+      }
+    }
+
+    //updating stats for losses and ends current win streak
+    function gosSoloLoseStats(soloDifficulty){
+      if (soloDifficulty === 'Easy'){
+        !localStorage.easyLosses ? localStorage.easyLosses = 1 : localStorage.easyLosses++;
+        if (localStorage.easyActiveWinStreak){
+          localStorage.easyActiveWinStreak = 0;
+        }
+      }
+
+      if (soloDifficulty === 'Medium'){
+        !localStorage.mediumLosses ? localStorage.mediumLosses = 1 : localStorage.mediumLosses++;
+        if (localStorage.mediumActiveWinStreak){
+          localStorage.mediumActiveWinStreak = 0;
+        }
+      }
+
+      if (soloDifficulty === 'Hard'){
+        !localStorage.hardLosses ? localStorage.hardLosses = 1 : localStorage.hardLosses++;
+        if (localStorage.hardActiveWinStreak){
+          localStorage.hardActiveWinStreak = 0;
+        }
+      }
+
+      if (soloDifficulty === 'Pro'){
+        !localStorage.proLosses ? localStorage.proLosses = 1 : localStorage.proLosses++;
+        if (localStorage.proActiveWinStreak){
+          localStorage.proActiveWinStreak = 0;
+        }
+      }
+
+      if (soloDifficulty === 'Insane YouTuber'){
+        !localStorage.insaneYouTuberLosses ? localStorage.insaneYouTuberLosses = 1 : localStorage.insaneYouTuberLosses++;
+        if (localStorage.insaneYouTuberActiveWinStreak){
+          localStorage.insaneYouTuberActiveWinStreak = 0;
+        }
+      }
+    }
+
+
     //end game of skate
     function endgos(){
     //end game results
@@ -2268,16 +2530,20 @@ soloButton.addEventListener('click',function(){
           resultsDisplay.innerHTML = "You Win!";
           commentDisplay.style.color = "#006400";
           commentDisplay.innerHTML = winComment[randComNum];
+          gosSoloWinStats($('#difficulty-select').val());  
         }
+
     //loser
         else{
           resultsDisplay.style.color = "#8B0000";
           resultsDisplay.innerHTML = "You Lose";
           commentDisplay.style.color = "#8B0000";
           commentDisplay.innerHTML = loseComment[randComNum];
+          gosSoloLoseStats($('#difficulty-select').val());
         }
       }   
     } 
+
     //trick landed 
     function gosYes(){
     //update and display results
@@ -2481,6 +2747,7 @@ soloButton.addEventListener('click',function(){
       ynButtons();
       ynButtonsEvent();
     }
+    gamesPlayed($('#mode-select').val());
     startButtonDisplay('none');
     getTrick();
   })

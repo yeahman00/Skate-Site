@@ -38,6 +38,7 @@
                 </li>
                 <li class="nav-item">
                     <a id='aboutLink' class="nav-link" href="#" data-toggle='modal' data-target='#about-modal'>About</a>
+                    <a id='statsLink' class="nav-link" href="#" data-toggle='modal' data-target='#stats-modal'>Stats</a>
                 </li>
             </div>
         </nav>
@@ -197,6 +198,88 @@
                         <option>No-Repeat</option>
                         <option>Marathon</option>
                     </select>
+
+                    <!-- stats-modal -->
+                    <div class="modal fade" id="stats-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Stats</h5>
+                            
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6><b>Game of Skate - Multi</b></h6>
+                                <p class='sameLine'>Games Played:</p>&ensp;
+                                <div id='gosMultiPlayed' class='sameLine'> 0</div>
+                                <h6><b>Game of Skate - Solo</b></h6>
+                                <p class='sameLine'>Games Played:</p>&ensp;
+                                <div id='gosSoloPlayed' class='sameLine'> 0</div>
+                                <p><b><i>Easy</i></b></p>
+                                <p class='sameLine'>Wins:</p>&ensp;
+                                <div id='easyWins' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Losses:</p>&ensp;
+                                <div id='easyLosses' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Current Winning Streak:</p>&ensp;
+                                <div id='easyActiveWinStreak' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Longest Winning Streak:</p>&ensp;
+                                <div id='easyWinStreak' class='sameLine'>0</div>
+                                <p><b><i>Medium</i></b></p>
+                                <p class='sameLine'>Wins:</p>&ensp;
+                                <div id='mediumWins' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Losses:</p>&ensp;
+                                <div id='mediumLosses' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Current Winning Streak:</p>&ensp;
+                                <div id='mediumActiveWinStreak' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Longest Winning Streak:</p>&ensp;
+                                <div id='mediumWinStreak' class='sameLine'>0</div>
+                                <p><b><i>Hard</i></b></p>
+                                <p class='sameLine'>Wins:</p>&ensp;
+                                <div id='hardWins' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Losses:</p>&ensp;
+                                <div id='hardLosses' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Current Winning Streak:</p>&ensp;
+                                <div id='hardActiveWinStreak' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Longest Winning Streak:</p>&ensp;
+                                <div id='hardWinStreak' class='sameLine'>0</div>
+                                <p><b><i>Pro</i></b></p>
+                                <p class='sameLine'>Wins:</p>&ensp;
+                                <div id='proWins' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Losses:</p>&ensp;
+                                <div id='proLosses' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Current Winning Streak:</p>&ensp;
+                                <div id='proActiveWinStreak' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Longest Winning Streak:</p>&ensp;
+                                <div id='proWinStreak' class='sameLine'>0</div>
+                                <p><b><i>Insane YouTuber</i></b></p>
+                                <p class='sameLine'>Wins:</p>&ensp;
+                                <div id='insaneYouTuberWins' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Losses:</p>&ensp;
+                                <div id='insaneYouTuberLosses' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Current Winning Streak:</p>&ensp;
+                                <div id='insaneYouTuberActiveWinStreak' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Longest Winning Streak:</p>&ensp;
+                                <div id='insaneYouTuberWinStreak' class='sameLine'>0</div>
+                                <h6><b>No Repeat</b></h6>
+                                <p class='sameLine'>Games Played:</p>&ensp;
+                                <div id='nrPlayed' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Most Tricks Landed</p>&ensp;
+                                <div id='nrMostTricksLanded' class='sameLine'>0</div>
+                                <h6><b>Marathon</b></h6>
+                                <p class='sameLine'>Games Played</p>&ensp;
+                                <div id='marathonPlayed' class='sameLine'>0</div><br>
+                                <p class='sameLine'>Best Streak</p>&ensp;
+                                <div id='marathonStreak' class='sameLine'>0</div>
+                            </div>
+                        <div class="modal-footer">
+                            <button id='resetAllStats' type='button' class='btn btn-danger mr-5'>Reset ALL Stats</button>
+                            <button type="button" class="btn btn-secondary w-50" data-dismiss="modal">Back to game</button>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
 
                     <!-- about-modal -->
                     <div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
