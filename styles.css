@@ -4,8 +4,13 @@
   font-style: italic;
   font-size: 150%;
 }
+
 .endText{
     font-weight: bold;
     font-style: italic;
     font-size: 150%;
+}
+
+.shrink{
+  height: 6%;
 }

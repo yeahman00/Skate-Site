@@ -1,5 +1,5 @@
 (function(){
-
+  
   //global variables - need to find another way?
   const commentDisplay = document.getElementById("comment");
   const questionDisplay = document.getElementById("question");

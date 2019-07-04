@@ -2,7 +2,6 @@
     <head>
 
         <title>GetaTrick</title>
-
         <!-- Javascript -->
         <script type="text/javascript" src="Assets/js/jquery-3.4.1.min.js"></script>
         <script src="Assets/js/popper.min.js"></script>
@@ -46,7 +45,7 @@
 
         <!-- MAIN -->
         
-        <div class="container" style="max-height: 100%">
+        <div class="container mb-5">
 
             <div style='height: 40%'class="row align-content-center">
                 <div class="col">
@@ -138,9 +137,13 @@
             <!--question-->
             <div id='aiLandedComment'></div>
             <div id="question" style='display: none'>Did you land it?</div>
-            
+
             <div id='difficulty' style='display: none'>
-            <label for="difficulty-select">Difficulty</label>
+
+                <div style='height: 10%'>
+
+                <div style='height: 75%'>
+                    <label for="difficulty-select">Difficulty</label>
                     <select id="difficulty-select" class="selectpicker w-50">
                         <option>Easy</option>
                         <option>Medium</option>
@@ -148,6 +151,9 @@
                         <option>Pro</option>
                         <option>Insane YouTuber</option>
                     </select>
+                </div>
+            </div>
+
             </div>
 
 
@@ -190,14 +196,9 @@
                         <div></div><br>
                     </div> <!--display-->
 
-
-                    <label for="mode-select">Mode</label>
-                    <select id="mode-select" class="selectpicker w-100 mb-2">
-                        <option>Standard</option>
-                        <option>Game of Skate</option>
-                        <option>No-Repeat</option>
-                        <option>Marathon</option>
-                    </select>
+                    
+                    
+                    
 
                     <!-- stats-modal -->
                     <div class="modal fade" id="stats-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -363,38 +364,47 @@
 
                                     <!-- Stance -->
                                     <label for="stance-select">Stance</label>
+                                    <div class='shrink'>
                                     <select id="stance-select" class="selectpicker w-100 mb-3" multiple>
                                         <option selected>Regular</option>
                                         <option>Nollie</option>
                                         <option>Switch</option>
                                         <option>Fakie</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Orientation -->
                                     <label for="orientation-select">Orientation</label>
+                                    <div class='shrink'>
                                     <select id="orientation-select" class="selectpicker w-100 mb-3" multiple>
                                         <option selected>Frontside</option>
                                         <option selected>Backside</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Body Rotation -->
                                     <label for="body-rotation-select">Body Rotation</label>
+                                    <div class='shrink'>
                                     <select id="body-rotation-select" class="selectpicker w-100 mb-3" multiple>
                                         <option value='noBody' selected>None</option>
                                         <option value="halfBody">180</option>
                                         <option value="fullBody">360</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Board Rotation -->
                                     <label for="board-rotation-select">Board Rotation</label>
+                                    <div class='shrink'>
                                     <select id="board-rotation-select" class="selectpicker w-100 mb-3" multiple>
                                         <option value='noBoard' selected>None</option>
                                         <option value="halfBoard">180</option>
                                         <option value="fullBoard">360</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Flip -->
                                     <label for="flip-select">Flip</label>
+                                    <div class='shrink'>
                                     <select id="flip-select" class="selectpicker w-100 mb-3" multiple>
                                         <option selected>None</option>
                                         <option selected>Kickflip</option>
@@ -402,6 +412,7 @@
                                         <option>Impossible</option>
                                         <option value='ollieNorth'>Ollie North</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Attempts -->
                                     <label>Max number of attempts</label>
@@ -443,6 +454,7 @@
 
                                     <!-- No Flip -->
                                     <label for="noFlip-select">No Flip</label>
+                                    <div class='shrink'>
                                     <select id="noFlip-select" class="selectpicker w-100 mb-3" multiple>
                                         <option>Ollie</option>
                                         <option>Nollie</option>
@@ -487,9 +499,11 @@
                                         <option>Fakie Frontside Bigspin</option>
                                         <option>Fakie Backside Bigspin</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Kickflip -->
                                     <label for="kickflip-select">Kickflip</label>
+                                    <div class='shrink'>
                                     <select id="kickflip-select" class="selectpicker w-100 mb-3" multiple>
                                         <option>Kickflip</option>
                                         <option>Nollieflip</option>
@@ -536,9 +550,11 @@
                                         <option>Fakie Big Hardflip</option>
                                         <option>Fakie Bigflip</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Heelflip -->
                                     <label for="heelflip-select">Heelflip</label>
+                                    <div class='shrink'>
                                     <select id="heelflip-select" class="selectpicker w-100 mb-3" multiple>
                                         <option>Heelflip</option>
                                         <option>Nollie Heelflip</option>
@@ -585,9 +601,11 @@
                                         <option>Fakie Big Heelflip</option>
                                         <option>Fakie Big Inward Heelflip</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Impossible -->
                                     <label for="impossible-select">Impossible</label>
+                                    <div class='shrink'>
                                     <select id="impossible-select" class="selectpicker w-100 mb-3" multiple>
                                         <option>Impossible</option>
                                         <option>Nollie Impossible</option>
@@ -610,9 +628,11 @@
                                         <option>Fakie Frontside 360 Impossible</option>
                                         <option>Fakie Backside 360 Impossible</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Ollie North -->
                                     <label for="ollieNorth-select">Ollie North</label>
+                                    <div class='shrink'>
                                     <select id="ollieNorth-select" class="selectpicker w-100 mb-3" multiple>
                                         <option>Ollie North</option>
                                         <option>Nollie North</option>
@@ -635,9 +655,11 @@
                                         <option>Fakie Frontside 360 Ollie North</option>
                                         <option>Fakie Backside 360 Ollie North</option>
                                     </select>
+                                    </div><br>
 
                                     <!-- Common Picks -->
                                     <label for="commonPicks-select">Common Picks</label>
+                                    <div class='shrink'>
                                     <select id="commonPicks-select" class="selectpicker w-100 mb-3" multiple>
                                         <option>Ollie</option>
                                         <option>Nollie</option>
@@ -708,6 +730,7 @@
                                         <option>Fakie Frontside 360 Ollie North</option>
                                         <option>Fakie Backside 360 Ollie North</option>
                                     </select>
+                                    </div>
    
 
                             </div>
@@ -732,11 +755,11 @@
 
             <!-- missed tricks list -->
             <!-- solo -->
-            <div id='gosSoloMissedList' style='display: none'>Below are the tricks you missed:
+            <div id='gosSoloMissedList' style='overflow: scroll; display: none' class='h-50'>Below are the tricks you missed:
                 <div id='youMissed'></div>
             </div>
             <!-- multi -->
-            <div id='gosMultiMissedList' style='display: none'>
+            <div id='gosMultiMissedList' style='display: none' class='mb-2'>
                 <div class='col'>
                     <div id='player1Scroll' class='row mt-2'>
                         <div id='player1Name' class='mr-1'></div>
@@ -764,6 +787,18 @@
                     </div>
                 </div>
             </div>
+
+           
+            <label for="mode-select">Mode</label>
+            <div class='shrink'>
+                    <select id="mode-select" class="selectpicker w-100 mb-2">
+                        <option>Standard</option>
+                        <option>Game of Skate</option>
+                        <option>No-Repeat</option>
+                        <option>Marathon</option>
+                    </select>
+            </div>
+
         </div><!--/container-->
               
 
