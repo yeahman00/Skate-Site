@@ -193,7 +193,7 @@
                         <b>Board Rotation:</b> <div id="board" style="display: inline"></div><br>
                         <b>Flip:</b> <div id="flip" style="display: inline"></div><br>
                         <b>Attempts:</b> <div id="tries" style="display: inline"></div>
-                        <div></div><br>
+                        <div></div>
                     </div> <!--display-->
 
                     
@@ -451,11 +451,12 @@
 
                                     <p class="text-danger">Select the tricks you would like to remove from the game</p>
                         
-
+                                    
                                     <!-- No Flip -->
                                     <label for="noFlip-select">No Flip</label>
                                     <div class='shrink'>
-                                    <select id="noFlip-select" class="selectpicker w-100 mb-3" multiple>
+                                    <select id="noFlip-select" class="selectpicker w-100 mb-3" data-size='8' multiple>
+                                        <div>
                                         <option>Ollie</option>
                                         <option>Nollie</option>
                                         <option>Switch Ollie</option>
@@ -498,13 +499,14 @@
                                         <option>Nollie Backside Bigspin</option>
                                         <option>Fakie Frontside Bigspin</option>
                                         <option>Fakie Backside Bigspin</option>
+                                        </div>
                                     </select>
                                     </div><br>
 
                                     <!-- Kickflip -->
                                     <label for="kickflip-select">Kickflip</label>
                                     <div class='shrink'>
-                                    <select id="kickflip-select" class="selectpicker w-100 mb-3" multiple>
+                                    <select id="kickflip-select" class="selectpicker w-100 mb-3" data-size='8' multiple>
                                         <option>Kickflip</option>
                                         <option>Nollieflip</option>
                                         <option>Switchflip</option>
@@ -555,7 +557,7 @@
                                     <!-- Heelflip -->
                                     <label for="heelflip-select">Heelflip</label>
                                     <div class='shrink'>
-                                    <select id="heelflip-select" class="selectpicker w-100 mb-3" multiple>
+                                    <select id="heelflip-select" class="selectpicker w-100 mb-3" data-size='8' multiple>
                                         <option>Heelflip</option>
                                         <option>Nollie Heelflip</option>
                                         <option>Switch Heelflip</option>
@@ -606,7 +608,7 @@
                                     <!-- Impossible -->
                                     <label for="impossible-select">Impossible</label>
                                     <div class='shrink'>
-                                    <select id="impossible-select" class="selectpicker w-100 mb-3" multiple>
+                                    <select id="impossible-select" class="selectpicker w-100 mb-3" data-size='8' multiple>
                                         <option>Impossible</option>
                                         <option>Nollie Impossible</option>
                                         <option>Switch Impossible</option>
@@ -633,7 +635,7 @@
                                     <!-- Ollie North -->
                                     <label for="ollieNorth-select">Ollie North</label>
                                     <div class='shrink'>
-                                    <select id="ollieNorth-select" class="selectpicker w-100 mb-3" multiple>
+                                    <select id="ollieNorth-select" class="selectpicker w-100 mb-3" data-size='8' multiple>
                                         <option>Ollie North</option>
                                         <option>Nollie North</option>
                                         <option>Switch Ollie North</option>
@@ -660,7 +662,7 @@
                                     <!-- Common Picks -->
                                     <label for="commonPicks-select">Common Picks</label>
                                     <div class='shrink'>
-                                    <select id="commonPicks-select" class="selectpicker w-100 mb-3" multiple>
+                                    <select id="commonPicks-select" class="selectpicker w-100 mb-3" data-size='8' multiple>
                                         <option>Ollie</option>
                                         <option>Nollie</option>
                                         <option>Switch Ollie</option>
@@ -789,7 +791,7 @@
             </div>
 
            
-            <label for="mode-select">Mode</label>
+            <label for="mode-select" class='mt-2'>Mode</label>
             <div class='shrink'>
                     <select id="mode-select" class="selectpicker w-100 mb-2">
                         <option>Standard</option>

@@ -1,5 +1,5 @@
 (function(){
-  
+
   //global variables - need to find another way?
   const commentDisplay = document.getElementById("comment");
   const questionDisplay = document.getElementById("question");
@@ -1953,6 +1953,20 @@ function cleargosMultiMissedList(){
     }
   })
 
+  //sets attempts number 
+  function getAttempts(){
+    let attemptsMax = document.getElementById("attempts").value;
+    let attemptsDisplay = document.getElementById("tries");
+    if(!/[^0-9]/.test(attemptsMax)){
+      if(attemptsMax > 10){
+        attemptsDisplay.innerHTML = "Max attempts is limited to 1-10";
+      }
+      else if(attemptsMax < 1){attemptsDisplay.innerHTML = "---"}
+      else{attemptsDisplay.innerHTML = Math.floor(Math.random() * attemptsMax) + 1;}
+    }
+    else{attemptsDisplay.innerHTML = "---";}
+  }
+
   //rng 
     function rngLength(length){
       let rand = Math.floor(Math.random() * length);
@@ -2185,6 +2199,7 @@ function cleargosMultiMissedList(){
     }
 
     function noRepeat(){
+      getAttempts();
       nrTrickArray();
       $('#landedList').show();
   //hide end game comments if showing
@@ -2237,6 +2252,7 @@ function cleargosMultiMissedList(){
     }
     
     function marathon(){
+      getAttempts();
   //display marthon hud
       $('#landedList').show();
       let marathonDisplay = document.getElementById("marathonHud");
@@ -2575,6 +2591,7 @@ soloButton.addEventListener('click',function(){
 
     //gos function  
     function gameOfSkate(){
+      getAttempts();
       //display game of skate hud
       if (soloGame){
         let gosHud = document.getElementById('gosHud');
@@ -2590,6 +2607,7 @@ soloButton.addEventListener('click',function(){
 
   //******************* Get a Trick and Standard Game *********************************
   function getTrick(){
+    getAttempts();
     //check if standard or marathon
     if ($('#mode-select').val() === 'Standard' || $('#mode-select').val() === 'Marathon'){
     //*********************STANCE**************************
@@ -2651,26 +2669,12 @@ soloButton.addEventListener('click',function(){
     let flipNum = rngLength(flipArray.length);
     flipTag = flipArray[flipNum];
    
-    //****************Attempts************************
-    let attemptsMax = document.getElementById("attempts").value;
-    let attemptsDisplay = document.getElementById("tries");
-    if(!/[^0-9]/.test(attemptsMax)){
-      if(attemptsMax > 10){
-        attemptsDisplay.innerHTML = "Max attempts is limited to 1-10";
-      }
-      else if(attemptsMax < 1){attemptsDisplay.innerHTML = "---"}
-      else{attemptsDisplay.innerHTML = Math.floor(Math.random() * attemptsMax) + 1;}
-      }
-    else{attemptsDisplay.innerHTML = "---";}
-    
     //**********************TRICK***********************
   //set and display trick
     let theTrick = [stanceTag,fsbsTag,boardTag,bodyTag,flipTag];
     
     isItATrick(theTrick);
 
-
-    //if ($('#kickflip-select').val().some((a) => a === trickLib(theTrick))){
     if (removedOrNot(trickLib(theTrick))){
       getTrick();
     }
