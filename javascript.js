@@ -1,5 +1,4 @@
 (function(){
-
   //global variables - need to find another way?
   const commentDisplay = document.getElementById("comment");
   const questionDisplay = document.getElementById("question");
@@ -1612,6 +1611,189 @@
   }
   return trickOdds[arr[0]][arr[1]];
     }
+  //array containing every trick from trick library
+    const allTricksArr = [
+    "Ollie, Seriously?",
+    "Frontside 180",
+    "Backside 180",
+    "Frontside Shuvit",
+    "Backside Shuvit",
+    "Kickflip",
+    "Heelflip",
+    "Hardflip",
+    "Varial Kickflip",
+    "Varial Heelflip",
+    "Inward Heelflip",
+    "Frontside Flip",
+    "Backside Flip",
+    "Frontside Heelflip",
+    "Backside Heelflip",
+    "Frontside 360 Shuvit",
+    "Backside 360 Shuvit",
+    "Frontside Bigspin",
+    "Backside Bigspin",
+    "360 Flip",
+    "360 Hardflip",
+    "Laserflip",
+    "360 Inward Heelflip",
+    "Big Hardflip",
+    "Bigflip",
+    "Big Heelflip",
+    "Big Inward Heelflip",
+    "Frontside 360",
+    "Backside 360",
+    "Frontside 360 Kickflip",
+    "Backside 360 Kickflip",
+    "Frontside 360 Heelflip",
+    "Backside 360 Heelflip",
+    "Impossible",
+    "Ollie North",
+    "Frontside 180 Impossible",
+    "Frontside 180 Ollie North",
+    "Backside 180 Impossible",
+    "Backside 180 Ollie North",
+    "Frontside 360 Impossible",
+    "Frontside 360 Ollie North",
+    "Backside 360 Impossible",
+    "Backside 360 Ollie North",
+    "Nollie, Seriously?",
+    "Nollie Frontside 180",
+    "Nollie Backside 180",
+    "Nollie Frontside Shuvit",
+    "Nollie Backside Shuvit",
+    "Nollieflip",
+    "Nollie Heelflip",
+    "Nollie Hardflip",
+    "Nollie Varial Kickflip",
+    "Nollie Varial Heelflip",
+    "Nollie Inward Heelflip",
+    "Nollie Frontside Flip",
+    "Nollie Backside Flip",
+    "Nollie Frontside Heelflip",
+    "Nollie Backside Heelflip",
+    "Nollie Frontside 360 Shuvit",
+    "Nollie Backside 360 Shuvit",
+    "Nollie Frontside Bigspin",
+    "Nollie Backside Bigspin",
+    "Nollie 360 Flip",
+    "Nollie 360 Hardflip",
+    "Nollie Laserflip",
+    "Nollie 360 Inward Heelflip",
+    "Nollie Big Hardflip",
+    "Nollie Bigflip",
+    "Nollie Big Heelflip",
+    "Nollie Big Inward Heelflip",
+    "Nollie Frontside 360",
+    "Nollie Backside 360",
+    "Nollie Frontside 360 Kickflip",
+    "Nollie Backside 360 Kickflip",
+    "Nollie Frontside 360 Heelflip",
+    "Nollie Backside 360 Heelflip",
+    "Nollie Impossible",
+    "Nollie North",
+    "Nollie Frontside 180 Impossible",
+    "Nollie Frontside 180 Nollie North",
+    "Nollie Backside 180 Impossible",
+    "Nollie Backside 180 Nollie North",
+    "Nollie Frontside 360 Impossible",
+    "Nollie Frontside 360 Nollie North",
+    "Nollie Backside 360 Impossible",
+    "Nollie Backside 360 Nollie North",
+    "Switch Ollie, Seriously?",
+    "Switch Frontside 180",
+    "Switch Backside 180",
+    "Switch Frontside Shuvit",
+    "Switch Backside Shuvit",
+    "Switchflip",
+    "Switch Heelflip",
+    "Switch Hardflip",
+    "Switch Varial Kickflip",
+    "Switch Varial Heelflip",
+    "Switch Inward Heelflip",
+    "Switch Frontside Flip",
+    "Switch Backside Flip",
+    "Switch Frontside Heelflip",
+    "Switch Backside Heelflip",
+    "Switch Frontside 360 Shuvit",
+    "Switch Backside 360 Shuvit",
+    "Switch Frontside Bigspin",
+    "Switch Backside Bigspin",
+    "Switch 360 Flip",
+    "Switch 360 Hardflip",
+    "Switch Laserflip",
+    "Switch 360 Inward Heelflip",
+    "Switch Big Hardflip",
+    "Switch Bigflip",
+    "Switch Big Heelflip",
+    "Switch Big Inward Heelflip",
+    "Switch Frontside 360",
+    "Switch Backside 360",
+    "Switch Frontside 360 Kickflip",
+    "Switch Backside 360 Kickflip",
+    "Switch Frontside 360 Heelflip",
+    "Switch Backside 360 Heelflip",
+    "Switch Impossible",
+    "Switch Ollie North",
+    "Switch Frontside 180 Impossible",
+    "Switch Frontside 180 Ollie North",
+    "Switch Backside 180 Impossible",
+    "Switch Backside 180 Ollie North",
+    "Switch Frontside 360 Impossible",
+    "Switch Frontside 360 Ollie North",
+    "Switch Backside 360 Impossible",
+    "Switch Backside 360 Ollie North",
+    "Fakie Ollie, Seriously?",
+    "Fakie Frontside 180",
+    "Fakie Backside 180",
+    "Fakie Frontside Shuvit",
+    "Fakie Backside Shuvit",
+    "Fakieflip",
+    "Fakie Heelflip",
+    "Fakie Hardflip",
+    "Fakie Varial Kickflip",
+    "Fakie Varial Heelflip",
+    "Fakie Inward Heelflip",
+    "Fakie Frontside Flip",
+    "Fakie Backside Flip",
+    "Fakie Frontside Heelflip",
+    "Fakie Backside Heelflip",
+    "Fakie Frontside 360 Shuvit",
+    "Fakie Backside 360 Shuvit",
+    "Fakie Frontside Bigspin",
+    "Fakie Backside Bigspin",
+    "Fakie 360 Flip",
+    "Fakie 360 Hardflip",
+    "Fakie Laserflip",
+    "Fakie 360 Inward Heelflip",
+    "Fakie Big Hardflip",
+    "Fakie Bigflip",
+    "Fakie Big Heelflip",
+    "Fakie Big Inward Heelflip",
+    "Fakie Frontside 360",
+    "Fakie Backside 360",
+    "Fakie Frontside 360 Kickflip",
+    "Fakie Backside 360 Kickflip",
+    "Fakie Frontside 360 Heelflip",
+    "Fakie Backside 360 Heelflip",
+    "Fakie Impossible",
+    "Fakie Ollie North",
+    "Fakie Frontside 180 Impossible",
+    "Fakie Frontside 180 Ollie North",
+    "Fakie Backside 180 Impossible",
+    "Fakie Backside 180 Ollie North",
+    "Fakie Frontside 360 Impossible",
+    "Fakie Frontside 360 Ollie North",
+    "Fakie Backside 360 Impossible",
+    "Fakie Backside 360 Ollie North"
+    ];
+  
+  //array of non trick specific stats *includes most landed/missed/rolled
+    const nonTrickArr = [
+      'nrPlayed','nrMostTricksLanded','marathonPlayed','marathonHighScore','gosMultiPlayed','gosSoloPlayed',
+      'easyWins','easyActiveWinStreak','easyWinStreak','easyLosses','mediumWins','mediumActiveWinStreak','mediumWinStreak','mediumLosses',
+      'hardWins','hardActiveWinStreak','hardWinStreak','hardLosses','proWins','proActiveWinStreak','proWinStreak','proLosses','insaneYouTuberWins',
+      'insaneYouTuberActiveWinStreak','insaneYouTuberWinStreak','insaneYouTuberLosses','rolledMostNum','missedMostNum','landedMostNum'
+    ];
 
   //display/hide functions
   function startButtonDisplay(x){
@@ -1727,7 +1909,7 @@ function cleargosMultiMissedList(){
   //clears/resets gos multiplayer inputs and buttons
   function clearMultigos(){
     for (let a = 1; a < 7; a++){
-      $('#player' + a + 'Input').val('Player ' + a + ':')
+      $('#player' + a + 'Input').val('Player ' + a)
       $('#player' + a).hide();
       $('#player' + a + 'Button').hide();
       $('#player' + a + 'Score').hide();
@@ -1780,6 +1962,11 @@ function cleargosMultiMissedList(){
      $('#settings-modal').modal('hide');
   })
 
+  //closes stats modal when trickStats modal is closed
+   $('#trickStats-modal').on('hide.bs.modal', function(){
+     $('#stats-modal').modal('hide');
+   })
+
    //select all
    $('#selectAll').click(function(){
      let arr = ['stance','orientation','body-rotation','board-rotation','flip'];
@@ -1827,91 +2014,40 @@ function cleargosMultiMissedList(){
 
    //updates all stats on stats page
    function updateStats(){
-    if (localStorage.gosMultiPlayed){
-      $('#gosMultiPlayed').text(localStorage.gosMultiPlayed);
+    if (localStorage.rolledMostTrick === 'Ollie, Seriously?'){
+      $('#mostRolledDisplay').text('Ollie');
     }
-    if (localStorage.gosSoloPlayed){
-     $('#gosSoloPlayed').text(localStorage.gosSoloPlayed);
+    else if (localStorage.rolledMostTrick === 'Nollie, Seriously?'){
+      $('#mostRolledDisplay').text('Nollie');
     }
+    else if (localStorage.rolledMostTrick === 'Switch Ollie, Seriously?'){
+      $('#mostRolledDisplay').text('Switch Ollie');
+    }
+    else if (localStorage.rolledMostTrick === 'Fakie Ollie, Seriously?'){
+      $('#mostRolledDisplay').text('Fakie Ollie');
+    }
+    else{ $('#mostRolledDisplay').text(localStorage.rolledMostTrick); }
 
+    if (localStorage.landedMostTrick === 'Ollie, Seriously?'){
+      $('#mostLandedDisplay').text('Ollie');
+    }
+    else if (localStorage.landedMostTrick === 'Nollie, Seriously?'){
+      $('#mostLandedDisplay').text('Nollie');
+    }
+    else if (localStorage.landedMostTrick === 'Switch Ollie, Seriously?'){
+      $('#mostLandedDisplay').text('Switch Ollie');
+    }
+    else if (localStorage.landedMostTrick === 'Fakie Ollie, Seriously?'){
+      $('#mostLandedDisplay').text('Fakie Ollie');
+    }
+    else{ $('#mostLandedDisplay').text(localStorage.landedMostTrick); }
     
-    if (localStorage.easyWins){
-      $('#easyWins').text(localStorage.easyWins);
-    }
-    if (localStorage.easyLosses){
-      $('#easyLosses').text(localStorage.easyLosses);
-    }
-    if (localStorage.easyActiveWinStreak){
-      $('#easyActiveWinStreak').text(localStorage.easyActiveWinStreak);
-    }
-    if (localStorage.easyWinStreak){
-      $('#easyWinStreak').text(localStorage.easyWinStreak);
-    }
+    $('#mostMissedDisplay').text(localStorage.missedMostTrick);
 
-    if (localStorage.mediumWins){
-      $('#mediumWins').text(localStorage.mediumWins);
-    }
-    if (localStorage.mediumLosses){
-      $('#mediumLosses').text(localStorage.mediumLosses);
-    }
-    if (localStorage.mediumActiveWinStreak){
-      $('#mediumActiveWinStreak').text(localStorage.mediumActiveWinStreak);
-    }
-    if (localStorage.mediumWinStreak){
-      $('#mediumWinStreak').text(localStorage.mediumWinStreak);
-    }
-
-    if (localStorage.hardWins){
-      $('#hardWins').text(localStorage.hardWins);
-    }
-    if (localStorage.hardLosses){
-      $('#hardLosses').text(localStorage.hardLosses);
-    }
-    if (localStorage.hardActiveWinStreak){
-      $('#hardActiveWinStreak').text(localStorage.hardActiveWinStreak);
-    }
-    if (localStorage.hardWinStreak){
-      $('#hardWinStreak').text(localStorage.hardWinStreak);
-    }
-
-    if (localStorage.proWins){
-      $('#proWins').text(localStorage.proWins);
-    }
-    if (localStorage.proLosses){
-      $('#proLosses').text(localStorage.proLosses);
-    }
-    if (localStorage.proActiveWinStreak){
-      $('#proActiveWinStreak').text(localStorage.proActiveWinStreak);
-    }
-    if (localStorage.proWinStreak){
-      $('#proWinStreak').text(localStorage.proWinStreak);
-    }
-
-    if (localStorage.insaneYouTuberWins){
-      $('#insaneYouTuberWins').text(localStorage.insaneYouTuberWins);
-    }
-    if (localStorage.insaneYouTuberLosses){
-      $('#insaneYouTuberLosses').text(localStorage.insaneYouTuberLosses);
-    }
-    if (localStorage.insaneYouTuberActiveWinStreak){
-      $('#insaneYouTuberActiveWinStreak').text(localStorage.insaneYouTuberActiveWinStreak);
-    }
-    if (localStorage.insaneYouTuberWinStreak){
-      $('#insaneYouTuberWinStreak').text(localStorage.insaneYouTuberWinStreak);
-    }
-    
-
-    if (localStorage.nrPlayed){
-      $('#nrPlayed').text(localStorage.nrPlayed);
-    }
-    if (localStorage.nrMostTricksLanded){
-      $('#nrMostTricksLanded').text(localStorage.nrMostTricksLanded);
-    }
-    if (localStorage.marathonPlayed){
-     $('#marathonPlayed').text(localStorage.marathonPlayed);
-    }
-    if (localStorage.marathonHighScore){
-     $('#marathonStreak').text(localStorage.marathonHighScore);
+    for (let a of nonTrickArr){
+      if (localStorage[a]){
+        $('#' + a).text(localStorage[a]);
+      }
     }
    }
 
@@ -1920,35 +2056,91 @@ function cleargosMultiMissedList(){
     updateStats();
   });
 
+
+  //updates stats on every trick that comes up with yes and no buttons present
+  function trickStats(landed){
+    let trick = $('#trick').text();
+
+    localStorage['rolled' + trick] ? localStorage['rolled' + trick]++ : localStorage['rolled' + trick] = 1;
+    if (!localStorage.rolledMostNum || parseInt(localStorage['rolled' + trick],10) > parseInt(localStorage.rolledMostNum,10)){
+      localStorage.rolledMostNum = localStorage['rolled' + trick];
+      localStorage.rolledMostTrick = trick;
+    }
+
+    if (landed === 'yes'){
+      localStorage['landed' + trick] ? localStorage['landed' + trick]++ : localStorage['landed' + trick] = 1;
+    if (!localStorage.landedMostNum || parseInt(localStorage['landed' + trick],10) > parseInt(localStorage.landedMostNum,10)){
+      localStorage.landedMostNum = localStorage['landed' + trick];
+      localStorage.landedMostTrick = trick;
+    }
+    }
+    
+    if (landed === 'no'){
+      localStorage['missed' + trick] ? localStorage['missed' + trick]++ : localStorage['missed' + trick] = 1;
+    if (!localStorage.missedMostNum || parseInt(localStorage['missed' + trick],10) > parseInt(localStorage.missedMostNum,10)){
+      localStorage.missedMostNum = localStorage['missed' + trick];
+      localStorage.missedMostTrick = trick;
+    }
+    }
+  }
+
+  //displays trick stats on trickStats page
+  function displayTrickStats(){
+    for (let trick of allTricksArr){
+      if (localStorage['rolled' + trick]){
+        if (trick === 'Ollie, Seriously?'){
+          $('#OllieRolledDisplay').text(localStorage['rolled' + trick]);
+          $('#OllieLandedDisplay').text(localStorage['landed' + trick]);
+        }
+        else if (trick === 'Nollie, Seriously?'){
+          $('#NollieRolledDisplay').text(localStorage['rolled' + trick]);
+          $('#NollieLandedDisplay').text(localStorage['landed' + trick]);
+          }
+        else if (trick === 'Fakie Ollie, Seriously?'){
+          $('#FakieOllieRolledDisplay').text(localStorage['rolled' + trick]);
+          $('#FakieOllieLandedDisplay').text(localStorage['landed' + trick]);
+        }
+        else if (trick === 'Switch Ollie, Seriously?'){
+          $('#SwitchOllieRolledDisplay').text(localStorage['rolled' + trick]);
+          $('#SwitchOllieLandedDisplay').text(localStorage['landed' + trick]);
+        }
+        else{
+          let trickJoined = trick.split(' ').join('');
+          $('#' + trickJoined + 'RolledDisplay').text(localStorage['rolled' + trick]);
+          $('#' + trickJoined + 'LandedDisplay').text(localStorage['landed' + trick]);
+        }
+      }
+    }
+  }
+
+  $('#viewTrickStats').click(function(){
+    displayTrickStats();
+  })
+
   //resets all stats
   $('#resetAllStats').click(function(){
-    if (confirm('Are you sure you want to reset ALL stats to 0?')){
-      localStorage.nrPlayed = 0;
-      localStorage.nrMostTricksLanded = 0;
-      localStorage.marathonPlayed = 0;
-      localStorage.marathonHighScore = 0;
-      localStorage.gosMultiPlayed = 0;
-      localStorage.gosSoloPlayed = 0;
-      localStorage.easyWins = 0;
-      localStorage.easyActiveWinStreak = 0;
-      localStorage.easyWinStreak = 0;
-      localStorage.easyLosses = 0;
-      localStorage.mediumWins = 0;
-      localStorage.mediumActiveWinStreak = 0;
-      localStorage.mediumWinStreak = 0;
-      localStorage.mediumLosses = 0;
-      localStorage.hardWins = 0;
-      localStorage.hardActiveWinStreak = 0;
-      localStorage.hardWinStreak = 0;
-      localStorage.hardLosses = 0;
-      localStorage.proWins = 0;
-      localStorage.proActiveWinStreak = 0;
-      localStorage.proWinStreak = 0;
-      localStorage.proLosses = 0;
-      localStorage.insaneYouTuberWins = 0;
-      localStorage.insaneYouTuberActiveWinStreak = 0;
-      localStorage.insaneYouTuberWinStreak = 0;
-      localStorage.insaneYouTuberLosses = 0;
+
+    let postedTricks = ['rolledMostTrick','missedMostTrick','landedMostTrick'];
+
+    let arr = ['rolled','missed','landed']
+    if (confirm('Are you sure you want to reset ALL stats to 0? This includes Marathon Mode and ALL individual trick stats')){
+      for (let nonTrick of nonTrickArr){
+        if (localStorage[nonTrick]){
+          localStorage[nonTrick] = 0;
+        }
+      }
+      for (let posted of postedTricks){
+        if (localStorage[posted]){
+          localStorage[posted] = '-';
+        }
+      }
+      for (let trick of allTricksArr){
+        for (let a of arr){
+          if (localStorage[a + trick]){
+            localStorage[a + trick] = 0;
+          }
+        }
+      }
       updateStats();
     }
   })
@@ -2000,25 +2192,25 @@ function cleargosMultiMissedList(){
   //flip
   //cant be impossible or ollie north if body and board are not the same
   //comparing first letter
-  if((tricknq[2][0] !== tricknq[3][0] && tricknq[4] === "Impossible") || (tricknq[2][0] !== tricknq[3][0] && tricknq[4] === "ollieNorth")){
-       if(!flipAgain.some(flip => flip === 'None')){
-       tricknq[3] === 'noBody' ? tricknq[2] = 'noBoard' : tricknq[3] === 'halfBody' ? tricknq[2] = 'halfBoard' : tricknq[2] = 'fullBoard';
-       if (tricknq[2] === 'noBoard'){
-         tricknq[1] = 'nofsbs';
-       }
-     }
-     else{
+    if((tricknq[2][0] !== tricknq[3][0] && tricknq[4] === "Impossible") || (tricknq[2][0] !== tricknq[3][0] && tricknq[4] === "ollieNorth")){
+      if(!flipAgain.some(flip => flip === 'None')){
+        tricknq[3] === 'noBody' ? tricknq[2] = 'noBoard' : tricknq[3] === 'halfBody' ? tricknq[2] = 'halfBoard' : tricknq[2] = 'fullBoard';
+        if (tricknq[2] === 'noBoard'){
+          tricknq[1] = 'nofsbs';
+        }
+      }
+      else{
         let finalArr = flipAgain.filter(flip => flip !== 'Impossible' && flip !== 'ollieNorth');
-     if(finalArr.length === 1){
-       tricknq[4] = "None";
-     }
-     else{
-       tricknq[4] = finalArr[rngLength(finalArr.length)];
-     }
+        if(finalArr.length === 1){
+          tricknq[4] = "None";
+        }
+        else{
+        tricknq[4] = finalArr[rngLength(finalArr.length)];
+        }
+      }
     }
-  }
     return tricknq;
-  }
+    }
     
   //display for trick descriptions and trick name
     function display(showIt){
@@ -2311,9 +2503,9 @@ function cleargosMultiMissedList(){
       $('#player' + a + 'Scroll').show();
       //default name given and put in button if left blank
       if (!$('#player' + a + 'Input').val()){
-        $('#player' + a + 'Button').text('Player ' + a + ':');
-        playerNamesArr.push('Player ' + a + ':');
-        $('#player' + a + 'Name').text('Player ' + a + ': Missed: ');
+        $('#player' + a + 'Button').text('Player ' + a);
+        playerNamesArr.push('Player ' + a);
+        $('#player' + a + 'Name').text('Player ' + a + ' Missed: ');
       }
       //players name put in button
       else{
@@ -2423,7 +2615,7 @@ soloButton.addEventListener('click',function(){
           localStorage.easyWinStreak = 1;
         }
         else{
-          if (localStorage.easyActiveWinStreak > localStorage.easyWinStreak){
+          if (parseInt(localStorage.easyActiveWinStreak,10) > parseInt(localStorage.easyWinStreak,10)){
             localStorage.easyWinStreak = localStorage.easyActiveWinStreak;
           }
         }
@@ -2436,7 +2628,7 @@ soloButton.addEventListener('click',function(){
           localStorage.mediumWinStreak = 1;
         }
         else{
-          if (localStorage.mediumActiveWinStreak > localStorage.mediumWinStreak){
+          if (parseInt(localStorage.mediumActiveWinStreak,10) > parseInt(localStorage.mediumWinStreak,10)){
             localStorage.mediumWinStreak = localStorage.mediumActiveWinStreak;
           }
         }
@@ -2449,7 +2641,7 @@ soloButton.addEventListener('click',function(){
           localStorage.hardWinStreak = 1;
         }
         else{
-          if (localStorage.hardActiveWinStreak > localStorage.hardWinStreak){
+          if (parseInt(localStorage.hardActiveWinStreak,10) > parseInt(localStorage.hardWinStreak,10)){
             localStorage.hardWinStreak = localStorage.hardActiveWinStreak;
           }
         }
@@ -2462,7 +2654,7 @@ soloButton.addEventListener('click',function(){
           localStorage.proWinStreak = 1;
         }
         else{
-          if (localStorage.proActiveWinStreak > localStorage.proWinStreak){
+          if (parseInt(localStorage.proActiveWinStreak,10) > parseInt(localStorage.proWinStreak,10)){
             localStorage.proWinStreak = localStorage.proActiveWinStreak;
           }
         }
@@ -2475,7 +2667,7 @@ soloButton.addEventListener('click',function(){
           localStorage.insaneYouTuberWinStreak = 1;
         }
         else{
-          if (localStorage.insaneYouTuberActiveWinStreak > localStorage.insaneYouTuberWinStreak){
+          if (parseInt(localStorage.insaneYouTuberActiveWinStreak,10) > parseInt(localStorage.insaneYouTuberWinStreak,10)){
             localStorage.insaneYouTuberWinStreak = localStorage.insaneYouTuberActiveWinStreak;
           }
         }
@@ -2694,6 +2886,80 @@ soloButton.addEventListener('click',function(){
     }
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   //checks mode and dictates what yes/no buttons will do
   function ynButtonsEvent(){
 
@@ -2702,6 +2968,7 @@ soloButton.addEventListener('click',function(){
 
     //yes button
     byes.addEventListener('click',function(){
+      trickStats('yes');
       if ($('#mode-select').val() === 'No-Repeat'){
         nrYes();
         noRepeatTricks.length ? getTrick() : endNoRepeat();
@@ -2716,9 +2983,12 @@ soloButton.addEventListener('click',function(){
           getTrick();
         }
       }
+
+    
     })
     //no button
     bno.addEventListener('click',function(){
+      trickStats('no');
       if ($('#mode-select').val() === 'No-Repeat'){
         nrNo();
         noRepeatTricks.length ? getTrick() : endNoRepeat();
@@ -2763,7 +3033,5 @@ soloButton.addEventListener('click',function(){
   });
     
   })();//the end
-  
-  
   
   

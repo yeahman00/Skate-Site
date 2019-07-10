@@ -7,6 +7,15 @@
         <script src="Assets/js/popper.min.js"></script>
         <script src="Assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.min.js"></script>
 
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143537835-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-143537835-1');
+        </script>
+
         <!-- Bootstrap css & js -->
         <script type="text/javascript" src="Assets/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="Assets/bootstrap-4.0.0/dist/css/bootstrap.min.css">
@@ -33,9 +42,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Play <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
                     <a id='aboutLink' class="nav-link" href="#" data-toggle='modal' data-target='#about-modal'>About</a>
                     <a id='statsLink' class="nav-link" href="#" data-toggle='modal' data-target='#stats-modal'>Stats</a>
                 </li>
@@ -56,8 +62,7 @@
                 </div>
                 
             </div>
-
-            
+                 
             <!--no repeat mode-->
             <div id="nrHud" style='display: none'>
                  <div>Remaining:
@@ -99,12 +104,12 @@
                     <input id='numPlayers' type='number' min='2' max='6'>
                 </div>
 
-                <div id='player1' style='display: none'><input id='player1Input'value='Player 1:' maxlength='8'></div>
-                <div id='player2' style='display: none'><input id='player2Input'value='Player 2:' maxlength='8'></div>
-                <div id='player3' style='display: none'><input id='player3Input'value='Player 3:' maxlength='8'></div>
-                <div id='player4' style='display: none'><input id='player4Input'value='Player 4:' maxlength='8'></div>
-                <div id='player5' style='display: none'><input id='player5Input'value='Player 5:' maxlength='8'></div>                        
-                <div id='player6' style='display: none'><input id='player6Input'value='Player 6:' maxlength='8'></div>
+                <div id='player1' style='display: none'><input id='player1Input'value='Player 1' maxlength='8'></div>
+                <div id='player2' style='display: none'><input id='player2Input'value='Player 2' maxlength='8'></div>
+                <div id='player3' style='display: none'><input id='player3Input'value='Player 3' maxlength='8'></div>
+                <div id='player4' style='display: none'><input id='player4Input'value='Player 4' maxlength='8'></div>
+                <div id='player5' style='display: none'><input id='player5Input'value='Player 5' maxlength='8'></div>                        
+                <div id='player6' style='display: none'><input id='player6Input'value='Player 6' maxlength='8'></div>
 
                 <div class='col'>
                     <div class='row'>
@@ -212,6 +217,14 @@
                             </button>
                             </div>
                             <div class="modal-body">
+                                <div style='text-align: center'>
+                                <div><b>Trick Tried the Most</b></div>
+                                <div id='mostRolledDisplay'>-</div><br>
+                                <div><b>Trick Landed the Most</b></div>
+                                <div id='mostLandedDisplay'>-</div><br>
+                                <div><b>Trick Missed the Most</b></div>
+                                <div id='mostMissedDisplay'>-</div><br>
+                                </div>
                                 <h6><b>Game of Skate - Multi</b></h6>
                                 <p style='display: inline-block'>Games Played:</p>&ensp;
                                 <div id='gosMultiPlayed' style='display: inline-block'> 0</div>
@@ -272,15 +285,1109 @@
                                 <p style='display: inline-block'>Games Played</p>&ensp;
                                 <div id='marathonPlayed' style='display: inline-block'>0</div><br>
                                 <p style='display: inline-block'>Best Streak</p>&ensp;
-                                <div id='marathonStreak' style='display: inline-block'>0</div>
+                                <div id='marathonHighScore' style='display: inline-block'>0</div><br>
+                                <button id='resetAllStats' type='button' class='btn btn-danger mr-2' style='width:40%; font-size:75%'>Reset ALL Stats</button>
                             </div>
                         <div class="modal-footer">
-                            <button id='resetAllStats' type='button' class='btn btn-danger mr-2'>Reset ALL Stats</button>
-                            <button type="button" class="btn btn-secondary w-50" data-dismiss="modal">Back to game</button>
+                            
+                                    <button id='viewTrickStats' type='button' class='btn btn-success w-50' data-toggle='modal' data-target='#trickStats-modal'>View Trick Stats</button>
+                                    <button type="button" class="btn btn-secondary w-50" data-dismiss="modal">Back to game</button>
+                                
                         </div>
                         </div>
                         </div>
                     </div>
+
+                    <!-- trickStats-modal -->
+                    <div class="modal fade" id="trickStats-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Individual Trick Stats</h5>
+                                
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Trick......Landed/Attempted</h5>
+                                    <p><i>Sorted by stance</i></p><br>
+                                    <p><b>Regular</b></p>
+                                    <div style='overflow: scroll; border-style: solid; border-width: thin' class='h-50 mt-2'>
+                                        <div class='col'>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Ollie</div>
+                                                <div id='OllieLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='OllieRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside 180</div>
+                                                <div id='Frontside180LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Frontside180RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                    <div class='trickStatWidth'>Backside 180</div>
+                                                    <div id='Backside180LandedDisplay'>-</div>
+                                                    <p>/</p>
+                                                    <div id='Backside180RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside Shuvit</div>
+                                                <div id='FrontsideShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FrontsideShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside Shuvit</div>
+                                                <div id='BacksideShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='BacksideShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Kickflip</div>
+                                                <div id='KickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='KickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Heelflip</div>
+                                                <div id='HeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='HeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Hardflip</div>
+                                                <div id='HardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='HardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Varial Kickflip</div>
+                                                <div id='VarialKickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='VarialKickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Varial Heelflip</div>
+                                                <div id='VarialHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='VarialHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Inward Heelflip</div>
+                                                <div id='InwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='InwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside Flip</div>
+                                                <div id='FrontsideFlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FrontsideFlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside Flip</div>
+                                                <div id='BacksideFlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='BacksideFlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside Heelflip</div>
+                                                <div id='FrontsideHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FrontsideHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside Heelflip</div>
+                                                <div id='BacksideHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='BacksideHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside 360 Shuvit</div>
+                                                <div id='Frontside360ShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Frontside360ShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside 360 Shuvit</div>
+                                                <div id='Backside360ShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Backside360ShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside Bigspin</div>
+                                                <div id='FrontsideBigspinLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FrontsideBigspinRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside Bigspin</div>
+                                                <div id='BacksideBigspinLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='BacksideBigspinRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>360 Flip</div>
+                                                <div id='360FlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='360FlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>360 Hardflip</div>
+                                                <div id='360HardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='360HardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Laserflip</div>
+                                                <div id='LaserflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='LaserflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>360 Inward Heelflip</div>
+                                                <div id='360InwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='360InwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Big Hardflip</div>
+                                                <div id='BigHardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='BigHardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Bigflip</div>
+                                                <div id='BigflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='BigflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Big Heelflip</div>
+                                                <div id='BigHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='BigHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Big Inward Heelflip</div>
+                                                <div id='BigInwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='BigInwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside 360</div>
+                                                <div id='Frontside360LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Frontside360RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside 360</div>
+                                                <div id='Backside360LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Backside360RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside 360 Kickflip</div>
+                                                <div id='Frontside360KickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Frontside360KickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside 360 Kickflip</div>
+                                                <div id='Backside360KickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Backside360KickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside 360 Heelflip</div>
+                                                <div id='Frontside360HeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Frontside360HeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside 360 Heelflip</div>
+                                                <div id='Backside360HeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Backside360HeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Impossible</div>
+                                                <div id='ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Ollie North</div>
+                                                <div id='OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside 180 Impossible</div>
+                                                <div id='Frontside180ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Frontside180ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside 180 Ollie North</div>
+                                                <div id='Frontside180OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Frontside180OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside 180 Impossible</div>
+                                                <div id='Backside180ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Backside180ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside 180 Ollie North</div>
+                                                <div id='Backside180OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Backside180OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside 360 Impossible</div>
+                                                <div id='Frontside360ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Frontside360ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Frontside 360 Ollie North</div>
+                                                <div id='Frontside360OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Frontside360OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside 360 Impossible</div>
+                                                <div id='Backside360ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Backside360ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Backside 360 Ollie North</div>
+                                                <div id='Backside360OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Backside360OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div><br>
+
+
+                                    <p><b>Nollie</b></p>
+                                    <div style='overflow: scroll; border-style: solid; border-width: thin' class='h-50 mt-2'>
+                                        <div class='col'>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie </div>
+                                                <div id='NollieLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside 180</div>
+                                                <div id='NollieFrontside180LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontside180RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                    <div class='trickStatWidth'>Nollie Backside 180</div>
+                                                    <div id='NollieBackside180LandedDisplay'>-</div>
+                                                    <p>/</p>
+                                                    <div id='NollieBackside180RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside Shuvit</div>
+                                                <div id='NollieFrontsideShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontsideShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside Shuvit</div>
+                                                <div id='NollieBacksideShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBacksideShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollieflip</div>
+                                                <div id='NollieflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Heelflip</div>
+                                                <div id='NollieHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Hardflip</div>
+                                                <div id='NollieHardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieHardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Varial Kickflip</div>
+                                                <div id='NollieVarialKickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieVarialKickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Varial Heelflip</div>
+                                                <div id='NollieVarialHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieVarialHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Inward Heelflip</div>
+                                                <div id='NollieInwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieInwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside Flip</div>
+                                                <div id='NollieFrontsideFlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontsideFlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside Flip</div>
+                                                <div id='NollieBacksideFlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBacksideFlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside Heelflip</div>
+                                                <div id='NollieFrontsideHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontsideHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside Heelflip</div>
+                                                <div id='NollieBacksideHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBacksideHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside 360 Shuvit</div>
+                                                <div id='NollieFrontside360ShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontside360ShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside 360 Shuvit</div>
+                                                <div id='NollieBackside360ShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBackside360ShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside Bigspin</div>
+                                                <div id='NollieFrontsideBigspinLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontsideBigspinRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside Bigspin</div>
+                                                <div id='NollieBacksideBigspinLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBacksideBigspinRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie 360 Flip</div>
+                                                <div id='Nollie360FlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Nollie360FlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie 360 Hardflip</div>
+                                                <div id='Nollie360HardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Nollie360HardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Laserflip</div>
+                                                <div id='NollieLaserflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieLaserflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie 360 Inward Heelflip</div>
+                                                <div id='Nollie360InwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Nollie360InwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Big Hardflip</div>
+                                                <div id='NollieBigHardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBigHardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Bigflip</div>
+                                                <div id='NollieBigflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBigflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Big Heelflip</div>
+                                                <div id='NollieBigHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBigHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Big Inward Heelflip</div>
+                                                <div id='NollieBigInwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBigInwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside 360</div>
+                                                <div id='NollieFrontside360LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontside360RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside 360</div>
+                                                <div id='NollieBackside360LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBackside360RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside 360 Kickflip</div>
+                                                <div id='NollieFrontside360KickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontside360KickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside 360 Kickflip</div>
+                                                <div id='NollieBackside360KickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBackside360KickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside 360 Heelflip</div>
+                                                <div id='NollieFrontside360HeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontside360HeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside 360 Heelflip</div>
+                                                <div id='NollieBackside360HeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBackside360HeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Impossible</div>
+                                                <div id='NollieImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie North</div>
+                                                <div id='NollieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside 180 Impossible</div>
+                                                <div id='NollieFrontside180ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontside180ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside 180 Nollie North</div>
+                                                <div id='NollieFrontside180NollieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontside180NollieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside 180 Impossible</div>
+                                                <div id='NollieBackside180ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBackside180ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside 180 Nollie North</div>
+                                                <div id='NollieBackside180NollieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBackside180NollieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside 360 Impossible</div>
+                                                <div id='NollieFrontside360ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontside360ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Frontside 360 Nollie North</div>
+                                                <div id='NollieFrontside360NollieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieFrontside360NollieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside 360 Impossible</div>
+                                                <div id='NollieBackside360ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBackside360ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Nollie Backside 360 Nollie North</div>
+                                                <div id='NollieBackside360NollieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='NollieBackside360NollieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div><br>
+
+
+
+                                    <p><b>Switch</b></p>
+                                    <div style='overflow: scroll; border-style: solid; border-width: thin' class='h-50 mt-2'>
+                                        <div class='col'>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Ollie</div>
+                                                <div id='SwitchOllieLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchOllieRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside 180</div>
+                                                <div id='SwitchFrontside180LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontside180RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                    <div class='trickStatWidth'>Switch Backside 180</div>
+                                                    <div id='SwitchBackside180LandedDisplay'>-</div>
+                                                    <p>/</p>
+                                                    <div id='SwitchBackside180RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside Shuvit</div>
+                                                <div id='SwitchFrontsideShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontsideShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside Shuvit</div>
+                                                <div id='SwitchBacksideShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBacksideShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switchflip</div>
+                                                <div id='SwitchflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Heelflip</div>
+                                                <div id='SwitchHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Hardflip</div>
+                                                <div id='SwitchHardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchHardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Varial Kickflip</div>
+                                                <div id='SwitchVarialKickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchVarialKickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Varial Heelflip</div>
+                                                <div id='SwitchVarialHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchVarialHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Inward Heelflip</div>
+                                                <div id='SwitchInwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchInwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside Flip</div>
+                                                <div id='SwitchFrontsideFlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontsideFlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside Flip</div>
+                                                <div id='SwitchBacksideFlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBacksideFlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside Heelflip</div>
+                                                <div id='SwitchFrontsideHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontsideHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside Heelflip</div>
+                                                <div id='SwitchBacksideHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBacksideHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside 360 Shuvit</div>
+                                                <div id='SwitchFrontside360ShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontside360ShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside 360 Shuvit</div>
+                                                <div id='SwitchBackside360ShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBackside360ShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside Bigspin</div>
+                                                <div id='SwitchFrontsideBigspinLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontsideBigspinRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside Bigspin</div>
+                                                <div id='SwitchBacksideBigspinLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBacksideBigspinRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch 360 Flip</div>
+                                                <div id='Switch360FlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Switch360FlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch 360 Hardflip</div>
+                                                <div id='Switch360HardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Switch360HardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Laserflip</div>
+                                                <div id='SwitchLaserflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchLaserflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch 360 Inward Heelflip</div>
+                                                <div id='Switch360InwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Switch360InwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Big Hardflip</div>
+                                                <div id='SwitchBigHardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBigHardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Bigflip</div>
+                                                <div id='SwitchBigflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBigflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Big Heelflip</div>
+                                                <div id='SwitchBigHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBigHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Big Inward Heelflip</div>
+                                                <div id='SwitchBigInwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBigInwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside 360</div>
+                                                <div id='SwitchFrontside360LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontside360RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside 360</div>
+                                                <div id='SwitchBackside360LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBackside360RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside 360 Kickflip</div>
+                                                <div id='SwitchFrontside360KickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontside360KickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside 360 Kickflip</div>
+                                                <div id='SwitchBackside360KickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBackside360KickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside 360 Heelflip</div>
+                                                <div id='SwitchFrontside360HeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontside360HeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside 360 Heelflip</div>
+                                                <div id='SwitchBackside360HeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBackside360HeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Impossible</div>
+                                                <div id='SwitchImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Ollie North</div>
+                                                <div id='SwitchOllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchOllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside 180 Impossible</div>
+                                                <div id='SwitchFrontside180ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontside180ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside 180 Ollie North</div>
+                                                <div id='SwitchFrontside180OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontside180OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside 180 Impossible</div>
+                                                <div id='SwitchBackside180ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBackside180ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside 180 Ollie North</div>
+                                                <div id='SwitchBackside180OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBackside180OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside 360 Impossible</div>
+                                                <div id='SwitchFrontside360ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontside360ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Frontside 360 Ollie North</div>
+                                                <div id='SwitchFrontside360OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchFrontside360OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside 360 Impossible</div>
+                                                <div id='SwitchBackside360ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBackside360ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Switch Backside 360 Ollie North</div>
+                                                <div id='SwitchBackside360OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='SwitchBackside360OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div><br>
+
+
+
+
+                                    <p><b>Fakie</b></p>
+                                    <div style='overflow: scroll; border-style: solid; border-width: thin' class='h-50 mt-2'>
+                                        <div class='col'>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Ollie</div>
+                                                <div id='FakieOllieLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieOllieRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside 180</div>
+                                                <div id='FakieFrontside180LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontside180RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                    <div class='trickStatWidth'>Fakie Backside 180</div>
+                                                    <div id='FakieBackside180LandedDisplay'>-</div>
+                                                    <p>/</p>
+                                                    <div id='FakieBackside180RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside Shuvit</div>
+                                                <div id='FakieFrontsideShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontsideShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside Shuvit</div>
+                                                <div id='FakieBacksideShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBacksideShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakieflip</div>
+                                                <div id='FakieflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Heelflip</div>
+                                                <div id='FakieHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Hardflip</div>
+                                                <div id='FakieHardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieHardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Varial Kickflip</div>
+                                                <div id='FakieVarialKickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieVarialKickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Varial Heelflip</div>
+                                                <div id='FakieVarialHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieVarialHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Inward Heelflip</div>
+                                                <div id='FakieInwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieInwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside Flip</div>
+                                                <div id='FakieFrontsideFlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontsideFlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside Flip</div>
+                                                <div id='FakieBacksideFlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBacksideFlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside Heelflip</div>
+                                                <div id='FakieFrontsideHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontsideHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside Heelflip</div>
+                                                <div id='FakieBacksideHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBacksideHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside 360 Shuvit</div>
+                                                <div id='FakieFrontside360ShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontside360ShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside 360 Shuvit</div>
+                                                <div id='FakieBackside360ShuvitLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBackside360ShuvitRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside Bigspin</div>
+                                                <div id='FakieFrontsideBigspinLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontsideBigspinRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside Bigspin</div>
+                                                <div id='FakieBacksideBigspinLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBacksideBigspinRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie 360 Flip</div>
+                                                <div id='Fakie360FlipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Fakie360FlipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie 360 Hardflip</div>
+                                                <div id='Fakie360HardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Fakie360HardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Laserflip</div>
+                                                <div id='FakieLaserflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieLaserflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie 360 Inward Heelflip</div>
+                                                <div id='Fakie360InwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='Fakie360InwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Big Hardflip</div>
+                                                <div id='FakieBigHardflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBigHardflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Bigflip</div>
+                                                <div id='FakieBigflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBigflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Big Heelflip</div>
+                                                <div id='FakieBigHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBigHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Big Inward Heelflip</div>
+                                                <div id='FakieBigInwardHeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBigInwardHeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside 360</div>
+                                                <div id='FakieFrontside360LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontside360RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside 360</div>
+                                                <div id='FakieBackside360LandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBackside360RolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside 360 Kickflip</div>
+                                                <div id='FakieFrontside360KickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontside360KickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside 360 Kickflip</div>
+                                                <div id='FakieBackside360KickflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBackside360KickflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside 360 Heelflip</div>
+                                                <div id='FakieFrontside360HeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontside360HeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside 360 Heelflip</div>
+                                                <div id='FakieBackside360HeelflipLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBackside360HeelflipRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Impossible</div>
+                                                <div id='FakieImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Ollie North</div>
+                                                <div id='FakieOllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieOllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside 180 Impossible</div>
+                                                <div id='FakieFrontside180ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontside180ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside 180 Ollie North</div>
+                                                <div id='FakieFrontside180OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontside180OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside 180 Impossible</div>
+                                                <div id='FakieBackside180ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBackside180ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside 180 Ollie North</div>
+                                                <div id='FakieBackside180OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBackside180OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside 360 Impossible</div>
+                                                <div id='FakieFrontside360ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontside360ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Frontside 360 Ollie North</div>
+                                                <div id='FakieFrontside360OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieFrontside360OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside 360 Impossible</div>
+                                                <div id='FakieBackside360ImpossibleLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBackside360ImpossibleRolledDisplay'>-</div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='trickStatWidth'>Fakie Backside 360 Ollie North</div>
+                                                <div id='FakieBackside360OllieNorthLandedDisplay'>-</div>
+                                                <p>/</p>
+                                                <div id='FakieBackside360OllieNorthRolledDisplay'>-</div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <p><i>*Tricks are only tracked in modes that ask if you've landed the trick or not (yes/no buttons).</i></p>
+
+
+
+                                </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary w-50" data-dismiss="modal">Back to game</button>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
 
                     <!-- about-modal -->
                     <div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -764,27 +1871,27 @@
             <div id='gosMultiMissedList' style='display: none' class='mb-2'>
                 <div class='col'>
                     <div id='player1Scroll' class='row mt-2'>
-                        <div id='player1Name' class='mr-1'></div>
+                        <div id='player1Name' class='mr-1' style='font-weight: bold'></div>
                         <div id='player1Missed'></div>
                     </div>
-                    <div id='player2Scroll' class='row mt-2' style='display: none'>
-                        <div id='player2Name' class='mr-1'></div>
+                    <div id='player2Scroll' class='row mt-2' >
+                        <div id='player2Name' class='mr-1' style='font-weight: bold'><b></b></div>
                         <div id='player2Missed'></div>
                     </div>
-                    <div id='player3Scroll' class='row mt-2' style='display: none'>                            
-                        <div id='player3Name' class='mr-1'></div>
+                    <div id='player3Scroll' class='row mt-2' >                            
+                        <div id='player3Name' class='mr-1' style='font-weight: bold'><b></b></div>
                         <div id='player3Missed'></div>
                     </div>
-                    <div id='player4Scroll' class='row mt-2' style='display: none'>
-                        <div id='player4Name' class='mr-1'></div>
+                    <div id='player4Scroll' class='row mt-2' >
+                        <div id='player4Name' class='mr-1' style='font-weight: bold'><b></b></div>
                         <div id='player4Missed'></div>
                     </div>
-                    <div id='player5Scroll' class='row mt-2' style='display: none'>                            
-                        <div id='player5Name' class='mr-1'></div>
+                    <div id='player5Scroll' class='row mt-2' >                            
+                        <div id='player5Name' class='mr-1' style='font-weight: bold'><b></b></div>
                         <div id='player5Missed'></div>
                     </div>
                     <div id='player6Scroll' class='row mt-2'>
-                        <div id='player6Name' class='mr-1'></div>
+                        <div id='player6Name' class='mr-1' style='font-weight: bold'></div>
                         <div id='player6Missed'></div>
                     </div>
                 </div>
