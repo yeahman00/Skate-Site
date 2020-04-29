@@ -1,5 +1,4 @@
 (function(){
-  //global variables - need to find another way?
   const commentDisplay = document.getElementById("comment");
   const questionDisplay = document.getElementById("question");
   const modeSelect = document.getElementById('mode-select');
@@ -3015,80 +3014,6 @@ soloButton.addEventListener('click',function(){
       gameOfSkate();
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   //checks mode and dictates what yes/no buttons will do
   function ynButtonsEvent(){
